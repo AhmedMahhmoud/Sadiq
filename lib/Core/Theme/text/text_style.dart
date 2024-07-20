@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextStyle {
   AppTextStyle._();
@@ -7,89 +8,109 @@ class AppTextStyle {
   static const String fontFamily = "DIN";
 
   // Font styles
-  static const TextStyle title1 = TextStyle(
-    fontSize: 60,
+  static TextStyle title1 = TextStyle(
+    fontSize: 50.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle title2 = TextStyle(
-    fontSize: 48,
+  static TextStyle title2 = TextStyle(
+    fontSize: 47.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle title3 = TextStyle(
-    fontSize: 34,
+  static TextStyle title3 = TextStyle(
+    fontSize: 34.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle headline = TextStyle(
-    fontSize: 24,
+  static TextStyle headline = TextStyle(
+    fontSize: 24.sp,
     fontWeight: FontWeight.w800,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle subheadline = TextStyle(
-    fontSize: 18,
+  static TextStyle subheadline = TextStyle(
+    fontSize: 18.sp,
     fontWeight: FontWeight.w800,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle body = TextStyle(
-    fontSize: 16,
+  static TextStyle body = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.normal,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle bodyBold = TextStyle(
-    fontSize: 16,
+  static TextStyle bodyBold = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
-  static const TextStyle bodyHeavyBold = TextStyle(
-    fontSize: 16,
+  static TextStyle bodyMedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: fontFamily,
+  );
+  static TextStyle bodyHeavyBold = TextStyle(
+    fontSize: 16.sp,
     fontWeight: FontWeight.w900,
     fontFamily: fontFamily,
   );
-  static const TextStyle smallBody = TextStyle(
-    fontSize: 14,
+  static TextStyle largeBodyBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w700,
+    fontFamily: fontFamily,
+  );
+  static TextStyle largeBodyMedium = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w500,
+    fontFamily: fontFamily,
+  );
+  static TextStyle largeBodyHeavyBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w900,
+    fontFamily: fontFamily,
+  );
+  static TextStyle smallBody = TextStyle(
+    fontSize: 14.sp.sp,
     fontWeight: FontWeight.normal,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle smallBodyBold = TextStyle(
-    fontSize: 14,
+  static TextStyle smallBodyBold = TextStyle(
+    fontSize: 14.sp.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
-  static const TextStyle smallBodyHeavyBold = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w700,
-    fontFamily: fontFamily,
-  );
-
-  static const TextStyle caption = TextStyle(
-    fontSize: 12,
+  static TextStyle smallBodyHeavyBold = TextStyle(
+    fontSize: 14.sp.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle buttonLarge = TextStyle(
-    fontSize: 16,
+  static TextStyle caption = TextStyle(
+    fontSize: 12.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle buttonMedium = TextStyle(
-    fontSize: 14,
+  static TextStyle buttonLarge = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    fontFamily: fontFamily,
+  );
+
+  static TextStyle buttonMedium = TextStyle(
+    fontSize: 14.sp.sp,
     fontWeight: FontWeight.w800,
     fontFamily: fontFamily,
   );
 
-  static const TextStyle buttonSmall = TextStyle(
-    fontSize: 12,
+  static TextStyle buttonSmall = TextStyle(
+    fontSize: 12.sp,
     fontWeight: FontWeight.w800,
     fontFamily: fontFamily,
   );

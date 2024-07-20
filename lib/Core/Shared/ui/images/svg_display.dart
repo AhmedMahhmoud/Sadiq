@@ -5,9 +5,11 @@ class SvgDisplay extends StatelessWidget {
   final String path;
   final Size? size;
   final BoxFit? boxFit;
+  final Color? color;
   const SvgDisplay({
     required this.path,
     this.size,
+    this.color,
     this.boxFit,
     super.key,
   });
@@ -19,6 +21,7 @@ class SvgDisplay extends StatelessWidget {
       width: size?.width,
       height: size?.height,
       fit: boxFit ?? BoxFit.fill,
+      color: color,
     );
   }
 }

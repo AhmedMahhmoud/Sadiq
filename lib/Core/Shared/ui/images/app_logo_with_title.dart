@@ -4,7 +4,11 @@ import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 
 class DisplayAppTitleWithLogo extends StatelessWidget {
+  final Size? appIconsize;
+  final Size? appTitleSize;
   const DisplayAppTitleWithLogo({
+    this.appIconsize,
+    this.appTitleSize,
     super.key,
   });
 
@@ -14,11 +18,15 @@ class DisplayAppTitleWithLogo extends StatelessWidget {
       children: [
         SvgDisplay(
           path: SvgAssetsPaths.appIcon,
+          size: appIconsize,
         ),
-        SizedBox(
-          height: 10.h,
+        const SizedBox(
+          height: 5,
         ),
-        SvgDisplay(path: SvgAssetsPaths.appTitle)
+        SvgDisplay(
+          path: SvgAssetsPaths.appTitle,
+          size: appTitleSize,
+        )
       ],
     );
   }

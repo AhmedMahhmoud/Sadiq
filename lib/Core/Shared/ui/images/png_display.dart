@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sadiq/Core/Paths/image_paths.dart';
 
 class PngDisplay extends StatelessWidget {
   final String path;
@@ -15,7 +14,7 @@ class PngDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      PngAssetsPaths.buildingBG1,
+      path,
       fit: boxFit ?? BoxFit.fill,
       height: size?.height,
       width: size?.width,

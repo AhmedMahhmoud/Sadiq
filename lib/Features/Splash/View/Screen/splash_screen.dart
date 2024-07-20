@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sadiq/Core/Paths/image_paths.dart';
-import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/app_logo_with_title.dart';
 import 'package:sadiq/Core/Shared/ui/images/png_display.dart';
-import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushNamed(context, '/signin');
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +35,7 @@ class SplashScreen extends StatelessWidget {
             ),
             const DisplayAppTitleWithLogo(),
             SizedBox(
-              height: 20.h,
+              height: 30.h,
             ),
             Text('مرحبا بك في',
                 style: AppTextStyle.title3
@@ -37,7 +47,7 @@ class SplashScreen extends StatelessWidget {
             ),
           ]),
           PngDisplay(
-            path: PngAssetsPaths.imgPath,
+            path: PngAssetsPaths.buildingBG1,
             size: Size(MediaQuery.sizeOf(context).width, 300),
           )
         ],
