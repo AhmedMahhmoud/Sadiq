@@ -4,67 +4,83 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   final String hintText;
   final String icon;
   final TextEditingController? controller;
-
-  const CustomTextField({
-    Key? key,
-    required this.hintText,
-    required this.icon,
-    this.controller,
-  }) : super(key: key);
+  final double errorHeight;
+  final String? Function(String?)? validator;
+  final String? errorMsg;
+  final double height;
+  const CustomTextField(
+      {Key? key,
+      required this.hintText,
+      required this.icon,
+      this.controller,
+      this.validator,
+      this.errorMsg,
+      this.errorHeight = 40,
+      this.height = 57})
+      : super(key: key);
 
   @override
+  State<CustomTextField> createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  bool _hasError = false;
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        decoration: BoxDecoration(
-          color: AppColors.fieldsBGfillColor,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: AppColors.secondaryColor.withOpacity(0.2),
-          ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      decoration: BoxDecoration(
+        color: AppColors.fieldsBGfillColor,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: AppColors.secondaryColor.withOpacity(0.2),
         ),
-        child: IntrinsicHeight(
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  controller: controller,
+      ),
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            Expanded(
+              child: SizedBox(
+                height: _hasError || widget.errorMsg != null
+                    ? widget.height + widget.errorHeight
+                    : widget.height,
+                child: TextFormField(
+                  validator: widget.validator,
+                  controller: widget.controller,
                   cursorColor: AppColors.secondaryColor,
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.symmetric(vertical: 15),
-                      hintText: hintText,
+                      hintText: widget.hintText,
                       border: InputBorder.none,
                       hintStyle: TextStyle(
                           color: AppColors.secondaryColor.withOpacity(0.5))),
                   textAlign: TextAlign.right,
                 ),
               ),
-              SizedBox(
-                width: 70.w,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    VerticalDivider(
-                      color: AppColors.secondaryColor.withOpacity(0.2),
-                      thickness: 1,
-                    ),
-                    SvgDisplay(
-                      path: icon,
-                      size: const Size(20, 20),
-                      color: AppColors.secondaryColor,
-                    ),
-                  ],
-                ),
+            ),
+            SizedBox(
+              width: 70.w,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  VerticalDivider(
+                    color: AppColors.secondaryColor.withOpacity(0.2),
+                    thickness: 1,
+                  ),
+                  SvgDisplay(
+                    path: widget.icon,
+                    size: const Size(20, 20),
+                    color: AppColors.secondaryColor,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
