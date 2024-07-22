@@ -5,4 +5,5 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> with SigninMixin {
   AuthCubit() : super(AuthInitial());
+  
 }

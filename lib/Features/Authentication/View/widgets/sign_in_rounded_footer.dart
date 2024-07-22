@@ -62,13 +62,13 @@ class SignInRoundedFooter extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 10.h,
+                height: 5.h,
               ),
               Center(
                   child:
                       RoundedButton(onPressed: () {}, title: 'تسجيل الدخول')),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Center(
                 child: Text(

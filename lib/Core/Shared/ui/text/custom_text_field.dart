@@ -54,6 +54,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   cursorColor: AppColors.secondaryColor,
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   decoration: InputDecoration(
+                      errorText: widget.errorMsg,
                       contentPadding: const EdgeInsets.symmetric(vertical: 15),
                       hintText: widget.hintText,
                       border: InputBorder.none,
