@@ -5,7 +5,6 @@ import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/app_logo_with_title.dart';
 import 'package:sadiq/Core/Shared/ui/images/png_display.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
-import 'package:sadiq/Core/Shared/ui/text/custom_text_field.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Features/Authentication/View/widgets/sign_in_rounded_footer.dart';
@@ -20,7 +19,7 @@ class SignInScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: SizedBox(
           width: MediaQuery.sizeOf(context).width,
-          height: MediaQuery.sizeOf(context).height * 0.93,
+          height: MediaQuery.sizeOf(context).height,
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -31,8 +30,8 @@ class SignInScreen extends StatelessWidget {
                     alignment: Alignment.bottomLeft,
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: 15.h),
-                        height: 180.h,
+                        padding: EdgeInsets.symmetric(vertical: 10.h),
+                        height: 160.h,
                         color: AppColors.backgroundOfWhite,
                         child: const Center(
                           child: SizedBox(
@@ -50,7 +49,7 @@ class SignInScreen extends StatelessWidget {
                   ),
                   Expanded(
                       child: Container(
-                    padding: EdgeInsets.only(top: 20.h),
+                    padding: EdgeInsets.only(top: 15.h),
                     color: AppColors.secondaryColor,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -63,14 +62,14 @@ class SignInScreen extends StatelessWidget {
                         )),
                         // ignore: prefer_const_constructors
                         Spacer(),
-                        SignInRoundedFooter()
+                        const SignInRoundedFooter(),
                       ],
                     ),
                   ))
                 ],
               ),
               Positioned(
-                  top: MediaQuery.sizeOf(context).height / 3.9,
+                  top: MediaQuery.sizeOf(context).height / 4.5,
                   child: SvgDisplay(
                     path: SvgAssetsPaths.deliveryBoy,
                   ))

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sadiq/Features/Authentication/View/screen/sign_in.dart';
+import 'package:sadiq/Features/MyVechile/View/my_vechile_screen.dart';
 import 'package:sadiq/Features/Splash/View/Screen/splash_screen.dart';
 import 'package:sadiq/Routes/routes.dart';
 
@@ -29,6 +30,8 @@ class AppRouter {
         return _createRoute(const SplashScreen());
       case AppRoutes.login:
         return _createRoute(const SignInScreen());
+      case AppRoutes.home:
+        return _createRoute(const MyVechileScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

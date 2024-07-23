@@ -40,6 +40,11 @@ dependencies:
   flutter_svg: ^2.0.5
   #network
   dio: ^5.5.0+1
+  animate_do: ^3.3.4
+  #state_manegment
+  flutter_bloc: ^8.1.2
+  #objects_mangement
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

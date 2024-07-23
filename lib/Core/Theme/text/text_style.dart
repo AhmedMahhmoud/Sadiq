@@ -75,18 +75,18 @@ class AppTextStyle {
     fontFamily: fontFamily,
   );
   static TextStyle smallBody = TextStyle(
-    fontSize: 14.sp.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.normal,
     fontFamily: fontFamily,
   );
 
   static TextStyle smallBodyBold = TextStyle(
-    fontSize: 14.sp.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
   static TextStyle smallBodyHeavyBold = TextStyle(
-    fontSize: 14.sp.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w700,
     fontFamily: fontFamily,
   );
@@ -104,7 +104,7 @@ class AppTextStyle {
   );
 
   static TextStyle buttonMedium = TextStyle(
-    fontSize: 14.sp.sp,
+    fontSize: 14.sp,
     fontWeight: FontWeight.w800,
     fontFamily: fontFamily,
   );
