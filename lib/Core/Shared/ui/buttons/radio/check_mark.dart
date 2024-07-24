@@ -21,8 +21,8 @@ class _CustomCheckMarkState extends State<CustomCheckMark> {
       onTap: widget.onChanged,
       child: AnimatedContainer(
         curve: Curves.easeIn,
-        width: widget.enabled ? 30 : 20,
-        height: widget.enabled ? 30 : 20,
+        width: widget.enabled ? 25 : 15,
+        height: widget.enabled ? 25 : 15,
         duration: const Duration(milliseconds: 200),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(widget.enabled ? 6 : 4),

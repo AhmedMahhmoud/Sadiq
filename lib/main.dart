@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         SafeArea(
           child: MaterialApp(
             onGenerateRoute: AppRouter.generateRoute,
-            initialRoute: AppRoutes.home,
+            initialRoute: AppRoutes.signup,
             home: MyVechileScreen(),
             debugShowCheckedModeBanner: false,
             theme: AppTheme.appTheme,
