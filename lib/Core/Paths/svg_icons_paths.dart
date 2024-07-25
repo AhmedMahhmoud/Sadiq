@@ -14,4 +14,5 @@ class SvgAssetsPaths {
   static String box = "$imgPath/box.svg";
   static String circleGradient = "$imgPath/circle_gradient.svg";
   static const String location = "$imgPath/location.svg";
+  static const String saudiArabian = "$imgPath/saudiArabian.svg";
 }

@@ -10,14 +10,15 @@ class CustomDropDown extends StatelessWidget {
     super.key,
     required this.options,
     required this.onchange,
+    required this.selectedOption,
   });
 
   final List<String> options;
   final Function onchange;
+  final String selectedOption;
 
   @override
   Widget build(BuildContext context) {
-    String selectedOption = '';
     return Container(
       height: 30.h,
       padding: const EdgeInsets.symmetric(horizontal: 3),
@@ -55,7 +56,9 @@ class CustomDropDown extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               underline: const SizedBox(),
               isExpanded: true,
-              onChanged: (value) {},
+              onChanged: (value) {
+                onchange(value);
+              },
             ),
           ),
           SizedBox(
