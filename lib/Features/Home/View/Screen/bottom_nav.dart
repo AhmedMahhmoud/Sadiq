@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
-import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
+import 'package:sadiq/Core/Shared/ui/text/gradient_text.dart';
 import 'package:sadiq/Features/BottomNav/bloc/home_bloc.dart';
 
 class BottomNav extends StatefulWidget {
@@ -29,12 +29,36 @@ class _BottomNavState extends State<BottomNav> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SizedBox(height: 30.h),
-            SvgDisplay(path: SvgAssetsPaths.bottomNav),
-          ],
+        // Cloud-like shadow background
+        Positioned.fill(
+          child: Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.white.withOpacity(0.3),
+                  spreadRadius: 10,
+                  blurRadius: 30,
+                  offset: const Offset(0, 10),
+                ),
+                BoxShadow(
+                  color: Colors.white.withOpacity(0.3),
+                  spreadRadius: 30,
+                  blurRadius: 60,
+                  offset: const Offset(0, 20),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Container(
+          width: MediaQuery.sizeOf(context).width,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(height: 30.h),
+              SvgDisplay(path: SvgAssetsPaths.bottomNav),
+            ],
+          ),
         ),
         Positioned(
           top: 15.h,
@@ -105,18 +129,9 @@ class _BottomNavState extends State<BottomNav> {
       top: topOffset,
       child: InkWell(
         onTap: () => _onPageSelected(index),
-        child: ShaderMask(
-          blendMode: BlendMode.srcIn,
-          shaderCallback: (bounds) {
-            return AppColors.appLinearGradient.createShader(
-              Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-            );
-          },
-          child: Text(
-            label,
-            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
-          ),
-        ),
+        child: GradientText(
+            label: label,
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500)),
       ),
     );
   }

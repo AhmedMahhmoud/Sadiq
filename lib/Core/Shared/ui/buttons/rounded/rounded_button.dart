@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
-import 'package:sadiq/Core/Theme/text/text_style.dart';
 
 class RoundedButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String title;
+  final TextStyle? style;
+  final Widget? iconWidget;
   const RoundedButton(
-      {required this.onPressed, required this.title, super.key});
+      {required this.onPressed,
+      required this.title,
+      this.iconWidget,
+      this.style,
+      super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,10 +30,18 @@ class RoundedButton extends StatelessWidget {
           ],
           gradient: AppColors.appLinearGradient),
       child: Center(
-        child: Text(title,
-            textAlign: TextAlign.center,
-            style: AppTextStyle.bodyBold
-                .copyWith(color: Colors.white, fontSize: 14)),
+        child: iconWidget == null
+            ? Text(title, textAlign: TextAlign.center, style: style)
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  iconWidget!,
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(title, textAlign: TextAlign.center, style: style),
+                ],
+              ),
       ),
     );
   }

@@ -49,6 +49,8 @@ dependencies:
 
   #localization:
   easy_localization: ^3.0.7
+  gradient_widgets: ^0.6.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

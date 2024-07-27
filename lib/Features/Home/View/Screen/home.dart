@@ -23,12 +23,21 @@ class HomeScreen extends StatelessWidget {
           },
           child: Scaffold(
             backgroundColor: AppColors.backgroundSecondaryColor,
-            body: Column(children: [
-              state.routes.isEmpty
-                  ? pages[state.currentIndex]
-                  : state.routes.last,
-            ]),
-            bottomNavigationBar: const BottomNav(),
+            body: Stack(
+              alignment: Alignment.bottomCenter,
+              children: [
+                SizedBox(
+                  width: MediaQuery.sizeOf(context).width,
+                  height: MediaQuery.sizeOf(context).height * 0.95,
+                  child: Column(children: [
+                    state.routes.isEmpty
+                        ? pages[state.currentIndex]
+                        : state.routes.last,
+                  ]),
+                ),
+                const BottomNav()
+              ],
+            ),
           ),
         );
       },
