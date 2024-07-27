@@ -10,8 +10,9 @@ class AppbarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
       children: [
+        SvgDisplay(path: SvgAssetsPaths.logoHorizontal),
+        Expanded(child: Container()),
         SvgInsideCircle(
           path: SvgAssetsPaths.support,
         ),
@@ -21,8 +22,6 @@ class AppbarHeader extends StatelessWidget {
         SvgInsideCircle(
           path: SvgAssetsPaths.notificationBell,
         ),
-        Expanded(child: Container()),
-        SvgDisplay(path: SvgAssetsPaths.logoHorizontal),
       ],
     );
   }

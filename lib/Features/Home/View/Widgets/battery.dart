@@ -29,37 +29,40 @@ class AnimatedBatteryIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder<double>(
-      tween: Tween<double>(begin: 0, end: endValue),
-      curve: Curves.easeOut,
-      duration: duration,
-      builder: (context, animatedValue, child) {
-        final batteryPercentage = (animatedValue * 100).toInt();
-        final iconText = '$batteryPercentage٪';
-        return BatteryIndicator(
-          value: animatedValue,
-          trackHeight: 50.0,
-          iconOutlineBlur: 1.0,
-          barColor: getBatteryColor(animatedValue),
-          icon: Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: Text(
-              iconText,
-              style: AppTextStyle.body.copyWith(
-                  color: AppColors.secondaryColor.withOpacity(0.5),
-                  fontSize: 22.sp),
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: TweenAnimationBuilder<double>(
+        tween: Tween<double>(begin: 0, end: endValue),
+        curve: Curves.easeOut,
+        duration: duration,
+        builder: (context, animatedValue, child) {
+          final batteryPercentage = (animatedValue * 100).toInt();
+          final iconText = '$batteryPercentage٪';
+          return BatteryIndicator(
+            value: animatedValue,
+            trackHeight: 50.0,
+            iconOutlineBlur: 1.0,
+            barColor: getBatteryColor(animatedValue),
+            icon: Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Text(
+                iconText,
+                style: AppTextStyle.body.copyWith(
+                    color: AppColors.secondaryColor.withOpacity(0.5),
+                    fontSize: 22.sp),
+              ),
             ),
-          ),
-          trackBorderColor: AppColors.secondaryColor,
-          trackColor: Colors.white,
-          trackAspectRatio: 2.1,
-          barBorderRadius: BorderRadius.circular(6),
-          trackPadding: 3,
-          trackBorderRadius: BorderRadius.circular(6),
-          withKnob: true,
-          iconOutline: Colors.white,
-        );
-      },
+            trackBorderColor: AppColors.secondaryColor,
+            trackColor: Colors.white,
+            trackAspectRatio: 2.1,
+            barBorderRadius: BorderRadius.circular(6),
+            trackPadding: 3,
+            trackBorderRadius: BorderRadius.circular(6),
+            withKnob: true,
+            iconOutline: Colors.white,
+          );
+        },
+      ),
     );
   }
 }

@@ -18,7 +18,7 @@ class VechileStatus extends StatelessWidget {
     return Container(
       alignment: Alignment.topRight,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,

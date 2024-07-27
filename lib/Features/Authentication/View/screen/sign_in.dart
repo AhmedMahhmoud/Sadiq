@@ -35,10 +35,11 @@ class SignInScreen extends StatelessWidget {
                         color: AppColors.backgroundOfWhite,
                         child: const Center(
                           child: SizedBox(
-                              child: DisplayAppTitleWithLogo(
-                            appIconsize: Size(70, 70),
-                            appTitleSize: Size(50, 50),
-                          )),
+                            child: DisplayAppTitleWithLogo(
+                              appIconsize: Size(70, 70),
+                              appTitleSize: Size(50, 50),
+                            ),
+                          ),
                         ),
                       ),
                       PngDisplay(
@@ -48,31 +49,34 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                   Expanded(
-                      child: Container(
-                    padding: EdgeInsets.only(top: 15.h),
-                    color: AppColors.secondaryColor,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Center(
+                    child: Container(
+                      padding: EdgeInsets.only(top: 15.h),
+                      color: AppColors.secondaryColor,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Center(
                             child: Text(
-                          'تطبيق المندوب',
-                          style: AppTextStyle.largeBodyMedium
-                              .copyWith(color: Colors.white, fontSize: 24),
-                        )),
-                        // ignore: prefer_const_constructors
-                        Spacer(),
-                        const SignInRoundedFooter(),
-                      ],
+                              'تطبيق المندوب',
+                              style: AppTextStyle.largeBodyMedium
+                                  .copyWith(color: Colors.white, fontSize: 24),
+                            ),
+                          ),
+                          // ignore: prefer_const_constructors
+                          Spacer(),
+                          const SignInRoundedFooter(),
+                        ],
+                      ),
                     ),
-                  ))
+                  )
                 ],
               ),
               Positioned(
-                  top: MediaQuery.sizeOf(context).height / 4.5,
-                  child: SvgDisplay(
-                    path: SvgAssetsPaths.deliveryBoy,
-                  ))
+                top: MediaQuery.sizeOf(context).height / 4.5,
+                child: SvgDisplay(
+                  path: SvgAssetsPaths.deliveryBoy,
+                ),
+              )
             ],
           ),
         ),

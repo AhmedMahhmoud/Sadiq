@@ -18,4 +18,5 @@ class SvgAssetsPaths {
   static String support = "$imgPath/support.svg";
   static String vehicleType = "$imgPath/vechile_type.svg";
   static String location = "$imgPath/location.svg";
+  static const String saudiArabian = "$imgPath/saudiArabian.svg";
 }
