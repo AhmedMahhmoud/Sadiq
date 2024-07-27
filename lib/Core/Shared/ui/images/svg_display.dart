@@ -22,6 +22,7 @@ class SvgDisplay extends StatelessWidget {
       width: size?.width,
       height: size?.height,
       fit: boxFit ?? BoxFit.fill,
+      // ignore: deprecated_member_use
       color: color,
     );
   }

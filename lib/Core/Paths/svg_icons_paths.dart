@@ -24,4 +24,5 @@ class SvgAssetsPaths {
   static const String arrowDown = "$imgPath/arrow_down.svg";
   static const String distance = "$imgPath/distance.svg";
   static const String completeRequests = "$imgPath/completeRequests.svg";
+  static const String company = "$imgPath/company.svg";
 }
