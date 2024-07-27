@@ -71,7 +71,7 @@ class CustomDropDown extends StatelessWidget {
                   width: 0.5,
                   height: 30.h,
                 ),
-                const SvgDisplay(
+                SvgDisplay(
                   path: SvgAssetsPaths.location,
                   size: Size(22, 22),
                   color: AppColors.secondaryColor,

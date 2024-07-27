@@ -45,6 +45,8 @@ dependencies:
   flutter_bloc: ^8.1.2
   #objects_mangement
   equatable: ^2.0.5
+  cupertino_battery_indicator: ^1.1.0
+
   #localization:
   easy_localization: ^3.0.7
   #Stepper

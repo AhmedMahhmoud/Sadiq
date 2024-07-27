@@ -1,13 +1,22 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/AppProviders/bloc_providers.dart';
 import 'package:sadiq/Core/Theme/appTheme/apptheme.dart';
-import 'package:sadiq/Features/MyVechile/View/my_vechile_screen.dart';
+import 'package:sadiq/Features/Home/View/Screen/home.dart';
 import 'package:sadiq/Routes/app_routes.dart';
 import 'package:sadiq/Routes/routes.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(EasyLocalization(
+    supportedLocales: [ Locale('ar')],
+    path: 'assets/translations',
+    fallbackLocale: const Locale('ar'),
+    startLocale: const Locale('ar'),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,14 +26,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(390, 436),
-      child: appProviders(
+      builder: (context, child) => appProviders(
         SafeArea(
           child: MaterialApp(
-            locale: const Locale('ar'),
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            localizationsDelegates: context.localizationDelegates,
             onGenerateRoute: AppRouter.generateRoute,
-            initialRoute: AppRoutes.signup,
-            home: Directionality(
-                textDirection: TextDirection.rtl, child: MyVechileScreen()),
+            initialRoute: AppRoutes.home,
+            home: const HomeScreen(),
             debugShowCheckedModeBanner: false,
             theme: AppTheme.appTheme,
           ),
