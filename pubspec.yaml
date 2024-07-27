@@ -45,9 +45,10 @@ dependencies:
   flutter_bloc: ^8.1.2
   #objects_mangement
   equatable: ^2.0.5
-
   #localization:
   easy_localization: ^3.0.7
+  #Stepper
+  easy_stepper: ^0.8.5
 
 dev_dependencies:
   flutter_test:
