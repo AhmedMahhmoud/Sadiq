@@ -13,4 +13,9 @@ class SvgAssetsPaths {
   static String unSelectedVechileNav = "$imgPath/unselected_vechile_nav.svg";
   static String box = "$imgPath/box.svg";
   static String circleGradient = "$imgPath/circle_gradient.svg";
+  static String logoHorizontal = "$imgPath/logo_horizontal.svg";
+  static String notificationBell = "$imgPath/notification.svg";
+  static String support = "$imgPath/support.svg";
+  static String vehicleType = "$imgPath/vechile_type.svg";
+  static String location = "$imgPath/location.svg";
 }

@@ -1,38 +1,28 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
-import 'package:sadiq/Core/Theme/text/text_style.dart';
+import 'package:sadiq/Features/BottomNav/bloc/home_bloc.dart';
 
-class MyVechileScreen extends StatefulWidget {
-  const MyVechileScreen({super.key});
+class BottomNav extends StatefulWidget {
+  const BottomNav({super.key});
 
   @override
-  State<MyVechileScreen> createState() => _MyVechileScreenState();
+  State<BottomNav> createState() => _BottomNavState();
 }
 
-class _MyVechileScreenState extends State<MyVechileScreen> {
-  int pageIndex = 0;
-
+class _BottomNavState extends State<BottomNav> {
   void _onPageSelected(int index) {
-    setState(() {
-      pageIndex = index;
-    });
+    final homebloc = BlocProvider.of<HomeBloc>(context);
+    homebloc.add(HomeTappedEvent(index));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundSecondaryColor,
-      body: SizedBox(
-        width: MediaQuery.sizeOf(context).width,
-        height: MediaQuery.sizeOf(context).height,
-        child: Column(),
-      ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
-    );
+    return _buildBottomNavigationBar();
   }
 
   Widget _buildBottomNavigationBar() {
@@ -90,13 +80,18 @@ class _MyVechileScreenState extends State<MyVechileScreen> {
       left: position == Alignment.bottomLeft ? offset.dx : null,
       right: position == Alignment.bottomRight ? offset.dx : null,
       bottom: offset.dy,
-      child: FadeIn(
-        child: InkWell(
-          onTap: () => _onPageSelected(index),
-          child: SvgDisplay(
-            path: pageIndex == index ? selectedPath : unselectedPath,
-          ),
-        ),
+      child: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+          return FadeIn(
+            child: InkWell(
+              onTap: () => _onPageSelected(index),
+              child: SvgDisplay(
+                path:
+                    state.currentIndex == index ? selectedPath : unselectedPath,
+              ),
+            ),
+          );
+        },
       ),
     );
   }
