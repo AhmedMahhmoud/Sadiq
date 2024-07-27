@@ -28,6 +28,7 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
+  // ignore: prefer_final_fields
   bool _hasError = false;
   @override
   Widget build(BuildContext context) {

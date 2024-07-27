@@ -36,21 +36,20 @@ class ChooseCityStep extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'تطبيق المندوب',
+                            'سجل علي',
                             style: AppTextStyle.headline.copyWith(
-                              color: AppColors.primaryColor,
+                              color: AppColors.secondaryColor,
                               fontSize: 24.sp,
                             ),
                           ),
                           SizedBox(width: 5.sp),
                           Text(
-                            'سجل علي',
+                            'تطبيق المندوب',
                             style: AppTextStyle.headline.copyWith(
-                              color: AppColors.secondaryColor,
+                              color: AppColors.primaryColor,
                               fontSize: 24.sp,
                             ),
                           ),

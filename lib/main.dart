@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
-    supportedLocales: [ Locale('ar')],
+    supportedLocales: [Locale('ar')],
     path: 'assets/translations',
     fallbackLocale: const Locale('ar'),
     startLocale: const Locale('ar'),
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             locale: context.locale,
             localizationsDelegates: context.localizationDelegates,
             onGenerateRoute: AppRouter.generateRoute,
-            initialRoute: AppRoutes.home,
+            initialRoute: AppRoutes.signup,
             home: const HomeScreen(),
             debugShowCheckedModeBanner: false,
             theme: AppTheme.appTheme,

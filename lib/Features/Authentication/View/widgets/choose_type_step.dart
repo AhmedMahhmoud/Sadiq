@@ -35,21 +35,20 @@ class ChooseTypeStep extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'نوع التسجيل',
+                      'اختار',
                       style: AppTextStyle.headline.copyWith(
-                        color: AppColors.primaryColor,
+                        color: AppColors.secondaryColor,
                         fontSize: 24.sp,
                       ),
                     ),
                     SizedBox(width: 5.sp),
                     Text(
-                      'اختار',
+                      'نوع التسجيل',
                       style: AppTextStyle.headline.copyWith(
-                        color: AppColors.secondaryColor,
+                        color: AppColors.primaryColor,
                         fontSize: 24.sp,
                       ),
                     ),
@@ -60,20 +59,20 @@ class ChooseTypeStep extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     SignUpTypeBtn(
-                      icon: SvgAssetsPaths.saudiArabian,
-                      title: 'سعودي',
-                      isChooised: authCubit.choosedType == 0 ? true : false,
-                      onClick: () {
-                        authCubit.chooseType(0);
-                      },
-                    ),
-                    SizedBox(width: 10.w),
-                    SignUpTypeBtn(
                       icon: SvgAssetsPaths.company,
                       title: 'شركة',
                       isChooised: authCubit.choosedType == 1 ? true : false,
                       onClick: () {
                         authCubit.chooseType(1);
+                      },
+                    ),
+                    SizedBox(width: 10.w),
+                    SignUpTypeBtn(
+                      icon: SvgAssetsPaths.saudiArabian,
+                      title: 'سعودي',
+                      isChooised: authCubit.choosedType == 0 ? true : false,
+                      onClick: () {
+                        authCubit.chooseType(0);
                       },
                     ),
                   ],
@@ -126,7 +125,6 @@ class SignUpTypeBtn extends StatelessWidget {
           children: [
             isChooised
                 ? Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
                         margin: const EdgeInsets.only(right: 10),

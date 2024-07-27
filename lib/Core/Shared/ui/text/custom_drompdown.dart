@@ -31,6 +31,24 @@ class CustomDropDown extends StatelessWidget {
       ),
       child: Row(
         children: [
+          SizedBox(
+            width: 70.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SvgDisplay(
+                  path: SvgAssetsPaths.location,
+                  size: Size(22, 22),
+                  color: AppColors.secondaryColor,
+                ),
+                Container(
+                  color: AppColors.secondaryColor.withOpacity(0.2),
+                  width: 0.5,
+                  height: 30.h,
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: DropdownButton<String>(
               menuMaxHeight: 300,
@@ -59,24 +77,6 @@ class CustomDropDown extends StatelessWidget {
               onChanged: (value) {
                 onchange(value);
               },
-            ),
-          ),
-          SizedBox(
-            width: 70.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  color: AppColors.secondaryColor.withOpacity(0.2),
-                  width: 0.5,
-                  height: 30.h,
-                ),
-                SvgDisplay(
-                  path: SvgAssetsPaths.location,
-                  size: Size(22, 22),
-                  color: AppColors.secondaryColor,
-                ),
-              ],
             ),
           ),
         ],
