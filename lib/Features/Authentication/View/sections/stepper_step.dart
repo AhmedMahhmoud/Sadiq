@@ -138,8 +138,14 @@ class StepperStep extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(height: 12.h),
         Center(
           child: RoundedButton(
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w700,
+            ),
             onPressed: () {},
             title: 'التالي',
           ),

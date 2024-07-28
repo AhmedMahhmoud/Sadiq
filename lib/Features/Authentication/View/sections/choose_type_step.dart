@@ -48,18 +48,18 @@ class ChooseTypeStep extends StatelessWidget {
               SignUpTypeBtn(
                 icon: SvgAssetsPaths.company,
                 title: 'شركة',
-                isChooised: authCubit.choosedType == 1 ? true : false,
+                isChooised: authCubit.choosedType == 0 ? true : false,
                 onClick: () {
-                  authCubit.chooseType(2);
+                  authCubit.chooseType(0);
                 },
               ),
               SizedBox(width: 10.w),
               SignUpTypeBtn(
                 icon: SvgAssetsPaths.saudiArabian,
                 title: 'سعودي',
-                isChooised: authCubit.choosedType == 0 ? true : false,
+                isChooised: authCubit.choosedType == 1 ? true : false,
                 onClick: () {
-                  authCubit.chooseType(0);
+                  authCubit.chooseType(1);
                 },
               ),
             ],
@@ -67,6 +67,11 @@ class ChooseTypeStep extends StatelessWidget {
           SizedBox(height: 12.h),
           Center(
             child: RoundedButton(
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w700,
+              ),
               onPressed: () {
                 authCubit.changeSignUpStep(2);
               },
