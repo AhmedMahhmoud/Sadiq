@@ -10,13 +10,15 @@ import 'package:sadiq/Routes/routes.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  runApp(EasyLocalization(
-    supportedLocales: [Locale('ar')],
-    path: 'assets/translations',
-    fallbackLocale: const Locale('ar'),
-    startLocale: const Locale('ar'),
-    child: const MyApp(),
-  ));
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [Locale('ar')],
+      path: 'assets/translations',
+      fallbackLocale: const Locale('ar'),
+      startLocale: const Locale('ar'),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -20,4 +20,9 @@ class SvgAssetsPaths {
   static String location = "$imgPath/location.svg";
   static const String saudiArabian = "$imgPath/saudiArabian.svg";
   static const String company = "$imgPath/company.svg";
+  static const String world = "$imgPath/world.svg";
+  static const String phone = "$imgPath/phone.svg";
+  static const String iD = "$imgPath/iD.svg";
+  static const String email = "$imgPath/email.svg";
+  static const String calender = "$imgPath/calendar.svg";
 }

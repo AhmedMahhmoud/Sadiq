@@ -9,26 +9,33 @@ class RoundedButton extends StatelessWidget {
       {required this.onPressed, required this.title, super.key});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 350,
-      height: 55,
-      decoration: BoxDecoration(
+    return InkWell(
+      onTap: onPressed,
+      child: Container(
+        width: 350,
+        height: 55,
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           boxShadow: [
             BoxShadow(
-              color: Colors.black
-                  .withOpacity(0.25), // Adjust color and opacity as needed
+              color: Colors.black.withOpacity(0.25),
               blurRadius: 13,
               spreadRadius: 4,
-              offset: const Offset(0, 4), // You can adjust the offset as needed
+              offset: const Offset(0, 4),
             ),
           ],
-          gradient: AppColors.appLinearGradient),
-      child: Center(
-        child: Text(title,
+          gradient: AppColors.appLinearGradient,
+        ),
+        child: Center(
+          child: Text(
+            title,
             textAlign: TextAlign.center,
-            style: AppTextStyle.bodyBold
-                .copyWith(color: Colors.white, fontSize: 14)),
+            style: AppTextStyle.bodyBold.copyWith(
+              color: Colors.white,
+              fontSize: 14,
+            ),
+          ),
+        ),
       ),
     );
   }

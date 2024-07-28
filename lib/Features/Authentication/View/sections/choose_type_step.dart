@@ -18,73 +18,63 @@ class ChooseTypeStep extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
       final authCubit = context.read<AuthCubit>();
-      return Container(
-        padding: EdgeInsets.only(bottom: 10.h),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'اختار',
+                style: AppTextStyle.headline.copyWith(
+                  color: AppColors.secondaryColor,
+                  fontSize: 24.sp,
+                ),
+              ),
+              SizedBox(width: 5.sp),
+              Text(
+                'نوع التسجيل',
+                style: AppTextStyle.headline.copyWith(
+                  color: AppColors.primaryColor,
+                  fontSize: 24.sp,
+                ),
+              ),
+            ],
           ),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 10.w),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'اختار',
-                      style: AppTextStyle.headline.copyWith(
-                        color: AppColors.secondaryColor,
-                        fontSize: 24.sp,
-                      ),
-                    ),
-                    SizedBox(width: 5.sp),
-                    Text(
-                      'نوع التسجيل',
-                      style: AppTextStyle.headline.copyWith(
-                        color: AppColors.primaryColor,
-                        fontSize: 24.sp,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SignUpTypeBtn(
-                      icon: SvgAssetsPaths.company,
-                      title: 'شركة',
-                      isChooised: authCubit.choosedType == 1 ? true : false,
-                      onClick: () {
-                        authCubit.chooseType(1);
-                      },
-                    ),
-                    SizedBox(width: 10.w),
-                    SignUpTypeBtn(
-                      icon: SvgAssetsPaths.saudiArabian,
-                      title: 'سعودي',
-                      isChooised: authCubit.choosedType == 0 ? true : false,
-                      onClick: () {
-                        authCubit.chooseType(0);
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(height: 15.h),
-                Center(
-                  child: RoundedButton(onPressed: () {}, title: 'ابدأ التسجيل'),
-                ),
-              ],
+          SizedBox(height: 10.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SignUpTypeBtn(
+                icon: SvgAssetsPaths.company,
+                title: 'شركة',
+                isChooised: authCubit.choosedType == 1 ? true : false,
+                onClick: () {
+                  authCubit.chooseType(2);
+                },
+              ),
+              SizedBox(width: 10.w),
+              SignUpTypeBtn(
+                icon: SvgAssetsPaths.saudiArabian,
+                title: 'سعودي',
+                isChooised: authCubit.choosedType == 0 ? true : false,
+                onClick: () {
+                  authCubit.chooseType(0);
+                },
+              ),
+            ],
+          ),
+          SizedBox(height: 12.h),
+          Center(
+            child: RoundedButton(
+              onPressed: () {
+                authCubit.changeSignUpStep(2);
+              },
+              title: 'التالي',
             ),
           ),
-        ),
+          SizedBox(height: 5.h),
+        ],
       );
     });
   }

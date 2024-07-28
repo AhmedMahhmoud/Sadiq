@@ -15,7 +15,7 @@ class CustomTextField extends StatefulWidget {
   const CustomTextField(
       {Key? key,
       required this.hintText,
-      required this.icon,
+      this.icon = '',
       this.controller,
       this.validator,
       this.errorMsg,
@@ -44,6 +44,25 @@ class _CustomTextFieldState extends State<CustomTextField> {
       child: IntrinsicHeight(
         child: Row(
           children: [
+            widget.icon.isNotEmpty
+                ? SizedBox(
+                    width: 70.w,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SvgDisplay(
+                          path: widget.icon,
+                          size: const Size(20, 20),
+                          color: AppColors.secondaryColor,
+                        ),
+                        VerticalDivider(
+                          color: AppColors.secondaryColor.withOpacity(0.2),
+                          thickness: 1,
+                        ),
+                      ],
+                    ),
+                  )
+                : const SizedBox(),
             Expanded(
               child: SizedBox(
                 height: _hasError || widget.errorMsg != null
@@ -63,23 +82,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           color: AppColors.secondaryColor.withOpacity(0.5))),
                   textAlign: TextAlign.right,
                 ),
-              ),
-            ),
-            SizedBox(
-              width: 70.w,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  VerticalDivider(
-                    color: AppColors.secondaryColor.withOpacity(0.2),
-                    thickness: 1,
-                  ),
-                  SvgDisplay(
-                    path: widget.icon,
-                    size: const Size(20, 20),
-                    color: AppColors.secondaryColor,
-                  ),
-                ],
               ),
             ),
           ],
