@@ -40,13 +40,13 @@ dependencies:
   flutter_svg: ^2.0.5
   #network
   dio: ^5.5.0+1
+  #ui
+  cupertino_battery_indicator: ^1.1.0
   animate_do: ^3.3.4
   #state_manegment
   flutter_bloc: ^8.1.2
   #objects_mangement
   equatable: ^2.0.5
-  cupertino_battery_indicator: ^1.1.0
-
   #localization:
   easy_localization: ^3.0.7
   #Stepper
@@ -63,14 +63,13 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons: ^0.13.1
-  
+
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/png/logo.png"
   remove_alpha_ios: true
   adaptive_icon_foreground: "assets/images/logo.png"
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

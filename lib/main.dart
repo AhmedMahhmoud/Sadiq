@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/date_symbol_data_file.dart';
 import 'package:sadiq/Core/AppProviders/bloc_providers.dart';
 import 'package:sadiq/Core/Theme/appTheme/apptheme.dart';
 import 'package:sadiq/Features/Home/View/Screen/home.dart';
@@ -19,6 +20,13 @@ void main() async {
       child: const MyApp(),
     ),
   );
+  runApp(EasyLocalization(
+    supportedLocales: [const Locale('ar')],
+    path: 'assets/translations',
+    fallbackLocale: const Locale('ar'),
+    startLocale: const Locale('ar'),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

@@ -11,15 +11,15 @@ class AppbarHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgDisplay(path: SvgAssetsPaths.logoHorizontal),
+        const SvgDisplay(path: SvgAssetsPaths.logoHorizontal),
         Expanded(child: Container()),
-        SvgInsideCircle(
+        const SvgInsideCircle(
           path: SvgAssetsPaths.support,
         ),
         const SizedBox(
           width: 10,
         ),
-        SvgInsideCircle(
+        const SvgInsideCircle(
           path: SvgAssetsPaths.notificationBell,
         ),
       ],

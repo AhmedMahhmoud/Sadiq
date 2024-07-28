@@ -23,9 +23,9 @@ class VechileStatus extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgDisplay(
+              const SvgDisplay(
                 path: SvgAssetsPaths.vehicleType,
-                size: const Size(32, 18),
+                size: Size(32, 18),
               ),
               SizedBox(
                 width: 10.w,
@@ -47,7 +47,7 @@ class VechileStatus extends StatelessWidget {
             height: 10.h,
           ),
           SlideInRight(
-            duration: Duration(milliseconds: 1200),
+            duration: const Duration(milliseconds: 1200),
             child: SizedBox(
               width: 235,
               height: 168,
