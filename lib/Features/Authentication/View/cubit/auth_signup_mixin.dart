@@ -6,12 +6,11 @@ mixin SignUpMixin on Cubit<AuthState> {
   int stepperStep = 0;
   String choosedCity = '';
   int choosedType = -1;
+  int choosedVehcile = -1;
 
   changeSignUpStep(int step) {
-    print(step);
     signUpStep = step;
     emit(ChangeSignUpStep());
-    print(step);
   }
 
   changeStepperStep(int step) {
@@ -26,5 +25,10 @@ mixin SignUpMixin on Cubit<AuthState> {
   chooseType(int type) {
     choosedType = type;
     emit(ChooseType());
+  }
+
+  chooseVehcile(int type) {
+    choosedVehcile = type;
+    emit(ChooseVehicle());
   }
 }

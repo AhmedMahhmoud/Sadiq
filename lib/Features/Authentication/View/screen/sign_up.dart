@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:easy_stepper/easy_stepper.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Features/Authentication/View/sections/choose_type_step.dart';
-import 'package:sadiq/Features/Authentication/View/sections/stepper_step.dart';
+import 'package:sadiq/Features/Authentication/View/sections/main_details_step.dart';
 
 import '../../../../Core/Paths/image_paths.dart';
-import '../../../../Core/Paths/svg_icons_paths.dart';
-import '../../../../Core/Shared/ui/buttons/rounded/rounded_button.dart';
 import '../../../../Core/Shared/ui/images/app_logo_with_title.dart';
 import '../../../../Core/Shared/ui/images/png_display.dart';
-import '../../../../Core/Shared/ui/text/custom_text_field.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
-import '../../../../Core/Theme/text/text_style.dart';
 import '../cubit/auth_cubit.dart';
 import '../sections/choose_city_step.dart';
+import '../sections/documents_step.dart';
+import '../sections/vehicle_details.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -73,133 +72,18 @@ class SignUpScreen extends StatelessWidget {
                               ? const ChooseCityStep()
                               : authCubit.signUpStep == 1
                                   ? const ChooseTypeStep()
-                                  : authCubit.signUpStep == 2
-                                      ? const StepperStep()
-                                      : SizedBox(),
-                          /*SizedBox(
-                          height: 35.h,
-                          child: EasyStepper(
-                            padding: const EdgeInsets.all(0),
-                            activeStep: 1,
-                            activeStepTextColor: AppColors.secondaryColor,
-                            finishedStepTextColor: Colors.black87,
-                            internalPadding: 0,
-                            showLoadingAnimation: false,
-                            stepRadius: 15,
-                            lineStyle: const LineStyle(
-                                lineLength: 90,
-                                defaultLineColor: Colors.grey,
-                                finishedLineColor: AppColors.secondaryColor),
-                            showStepBorder: false,
-                            steps: [
-                              EasyStep(
-                                customStep: Container(
-                                  padding: const EdgeInsets.only(bottom: 5),
-                                  height: 26.17.h,
-                                  width: 26.17.w,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: const Text(
-                                    '١',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                                title: 'البيانات الاساسية',
-                              ),
-                              EasyStep(
-                                customStep: Container(
-                                  padding: const EdgeInsets.only(bottom: 5),
-                                  height: 26.17.h,
-                                  width: 26.17.w,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: const Text(
-                                    '٢',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                                title: 'بيانات المركبة',
-                              ),
-                              EasyStep(
-                                customStep: Container(
-                                  padding: const EdgeInsets.only(bottom: 5),
-                                  height: 26.17.h,
-                                  width: 26.17.w,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: AppColors.primaryColor,
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: const Text(
-                                    '٣',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                                title: 'المستندات',
-                              ),
-                            ],
-                            onStepReached: (index) {},
-                          ),
-                        ),
-                        Text(
-                          'البيانات الاساسية',
-                          style: AppTextStyle.largeBodyMedium.copyWith(
-                              color: AppColors.primaryColor, fontSize: 24),
-                        ),
-                        SizedBox(height: 12.h),
-                        Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: CustomTextField(
-                                    hintText: 'الاسم الاول',
-                                    icon: SvgAssetsPaths.user,
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: CustomTextField(
-                                    hintText: 'اسم العائلة',
-                                  ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 6.h),
-                            CustomTextField(
-                              hintText: 'رقم الجوال',
-                              icon: SvgAssetsPaths.phone,
-                            ),
-                            SizedBox(height: 6.h),
-                            CustomTextField(
-                              hintText: 'البريد الالكتروني',
-                              icon: SvgAssetsPaths.email,
-                            ),
-                            SizedBox(height: 6.h),
-                            CustomTextField(
-                              hintText: 'رقم الهوية',
-                              icon: SvgAssetsPaths.iD,
-                            ),
-                            SizedBox(height: 6.h),
-                            CustomTextField(
-                              hintText: 'الجنسية',
-                              icon: SvgAssetsPaths.world,
-                            ),
-                            SizedBox(height: 6.h),
-                            CustomTextField(
-                              hintText: 'تاريخ الميلاد',
-                              icon: SvgAssetsPaths.calender,
-                            ),
-                          ],
-                        ),
-                        */
+                                  : Column(
+                                      children: [
+                                        SignUpStepper(
+                                          activeStep: authCubit.signUpStep - 2,
+                                        ),
+                                        authCubit.signUpStep == 2
+                                            ? const MainDetailsStep()
+                                            : authCubit.signUpStep == 3
+                                                ? const VehicleDetailsStep()
+                                                : const DocumentsStep(),
+                                      ],
+                                    )
                         ],
                       ),
                     ),
@@ -211,5 +95,108 @@ class SignUpScreen extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class SignUpStepper extends StatelessWidget {
+  final int activeStep;
+  const SignUpStepper({
+    super.key,
+    required this.activeStep,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 35.h,
+      child: EasyStepper(
+        padding: const EdgeInsets.all(0),
+        activeStep: activeStep,
+        activeStepBackgroundColor: AppColors.primaryColor,
+        activeStepTextColor: AppColors.secondaryColor,
+        activeStepBorderColor: AppColors.secondaryColor.withOpacity(0.5),
+        unreachedStepBackgroundColor:
+            const Color.fromARGB(255, 29, 44, 90).withOpacity(0.08),
+        unreachedStepTextColor: AppColors.secondaryColor,
+        finishedStepTextColor: AppColors.secondaryColor,
+        finishedStepBackgroundColor: AppColors.secondaryColor.withOpacity(0.5),
+        internalPadding: 0,
+        stepRadius: 15,
+        showLoadingAnimation: false,
+        lineStyle: const LineStyle(
+          lineLength: 90,
+          defaultLineColor: Colors.grey,
+          finishedLineColor: AppColors.secondaryColor,
+        ),
+        showStepBorder: true,
+        defaultStepBorderType: BorderType.normal,
+        borderThickness: 1.5,
+        enableStepTapping: false,
+        steps: [
+          EasyStep(
+            customStep: Container(
+              padding: const EdgeInsets.only(bottom: 5),
+              height: 26.17.h,
+              width: 26.17.w,
+              decoration: BoxDecoration(
+                gradient: activeStep >= 1 ? AppColors.appLinearGradient : null,
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: activeStep >= 1
+                  ? const Icon(Icons.check, color: Colors.white)
+                  : const Text(
+                      '١',
+                      style: TextStyle(color: Colors.white),
+                    ),
+            ),
+            title: 'البيانات الاساسية',
+          ),
+          EasyStep(
+            customStep: Container(
+              padding: const EdgeInsets.only(bottom: 5),
+              height: 26.17.h,
+              width: 26.17.w,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: activeStep >= 1 ? AppColors.appLinearGradient : null,
+              ),
+              alignment: Alignment.center,
+              child: activeStep > 1
+                  ? const Icon(Icons.check, color: Colors.white)
+                  : Text(
+                      '٢',
+                      style: TextStyle(
+                        color: activeStep != 1
+                            ? AppColors.secondaryColor
+                            : Colors.white,
+                      ),
+                    ),
+            ),
+            title: 'بيانات المركبة',
+          ),
+          EasyStep(
+            customStep: Container(
+              padding: const EdgeInsets.only(bottom: 5),
+              height: 26.17.h,
+              width: 26.17.w,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                '٣',
+                style: TextStyle(
+                  color:
+                      activeStep != 2 ? AppColors.secondaryColor : Colors.white,
+                ),
+              ),
+            ),
+            title: 'المستندات',
+          ),
+        ],
+        onStepReached: (index) {},
+      ),
+    );
   }
 }

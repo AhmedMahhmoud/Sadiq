@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/buttons/rounded/rounded_button.dart';
-import 'package:sadiq/Core/Shared/ui/text/custom_text_field.dart';
+import 'package:sadiq/Core/Shared/ui/form/custom_text_field.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Features/Authentication/View/widgets/login_checkmark.dart';

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
-import 'package:sadiq/Core/Shared/ui/text/gradient_text.dart';
+import 'package:sadiq/Core/Shared/ui/form/gradient_text.dart';
 import 'package:sadiq/Features/BottomNav/bloc/home_bloc.dart';
 
 class BottomNav extends StatefulWidget {

@@ -39,7 +39,7 @@ class _CustomCheckMarkState extends State<CustomCheckMark> {
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: FadeIn(
-                      child: SvgDisplay(
+                      child: const SvgDisplay(
                         path: SvgAssetsPaths.checkmark,
                       ),
                     ),
