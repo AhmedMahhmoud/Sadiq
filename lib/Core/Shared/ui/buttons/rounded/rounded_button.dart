@@ -6,11 +6,13 @@ class RoundedButton extends StatelessWidget {
   final String title;
   final TextStyle? style;
   final Widget? iconWidget;
+  final Color? btnColor;
   const RoundedButton(
       {required this.onPressed,
       required this.title,
       this.iconWidget,
       this.style,
+      this.btnColor,
       super.key});
   @override
   Widget build(BuildContext context) {
@@ -20,16 +22,18 @@ class RoundedButton extends StatelessWidget {
         width: 350,
         height: 55,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.25),
-                blurRadius: 13,
-                spreadRadius: 4,
-                offset: const Offset(0, 4),
-              ),
-            ],
-            gradient: AppColors.appLinearGradient),
+          borderRadius: BorderRadius.circular(25),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              blurRadius: 13,
+              spreadRadius: 4,
+              offset: const Offset(0, 4),
+            ),
+          ],
+          gradient: btnColor == null ? AppColors.appLinearGradient : null,
+          color: btnColor,
+        ),
         child: Center(
           child: iconWidget == null
               ? Text(title, textAlign: TextAlign.center, style: style)

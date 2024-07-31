@@ -7,6 +7,7 @@ import 'package:sadiq/Features/Authentication/View/sections/choose_type_step.dar
 import 'package:sadiq/Features/Authentication/View/sections/main_details_step.dart';
 
 import '../../../../Core/Paths/image_paths.dart';
+import '../../../../Core/Shared/ui/buttons/back_btn.dart';
 import '../../../../Core/Shared/ui/images/app_logo_with_title.dart';
 import '../../../../Core/Shared/ui/images/png_display.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
@@ -47,7 +48,7 @@ class SignUpScreen extends StatelessWidget {
                       child: const Center(
                         child: SizedBox(
                           child: DisplayAppTitleWithLogo(
-                            appIconsize: Size(40, 40),
+                            appIconsize: Size(47, 47),
                             appTitleSize: Size(30, 30),
                           ),
                         ),
@@ -89,6 +90,18 @@ class SignUpScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                authCubit.signUpStep > 0
+                    ? Positioned(
+                        top: MediaQuery.sizeOf(context).height * 0.001,
+                        left: 10.w,
+                        child: BackBtn(
+                          onClick: () {
+                            authCubit
+                                .changeSignUpStep(authCubit.signUpStep - 1);
+                          },
+                        ),
+                      )
+                    : const SizedBox(),
               ],
             ),
           ),

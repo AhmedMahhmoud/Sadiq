@@ -13,10 +13,6 @@ mixin SignUpMixin on Cubit<AuthState> {
     emit(ChangeSignUpStep());
   }
 
-  changeStepperStep(int step) {
-    emit(ChangeStepperStep());
-  }
-
   chooseCity(String city) {
     choosedCity = city;
     emit(ChooseCity());
