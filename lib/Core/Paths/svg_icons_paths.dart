@@ -13,6 +13,7 @@ class SvgAssetsPaths {
   static const String unSelectedVechileNav =
       "$imgPath/unselected_vechile_nav.svg";
   static const String box = "$imgPath/box.svg";
+  static const String gradientBox = "$imgPath/gradient_box.svg";
   static const String circleGradient = "$imgPath/circle_gradient.svg";
   static const String logoHorizontal = "$imgPath/logo_horizontal.svg";
   static const String notificationBell = "$imgPath/notification.svg";
@@ -34,4 +35,6 @@ class SvgAssetsPaths {
   static const String normalMoto = "$imgPath/Normal_Moto.svg";
   static const String electricCar = "$imgPath/Electric_Car.svg";
   static const String electricMoto = "$imgPath/Electric_Moto.svg";
+  static const String charginStation = "$imgPath/charging_station.svg";
+  static const String gradientlocation = "$imgPath/gradient_location.svg";
 }

@@ -7,6 +7,7 @@ import 'package:sadiq/Features/Home/View/Screen/home.dart';
 import 'package:sadiq/Routes/app_routes.dart';
 import 'package:sadiq/Routes/routes.dart';
 
+GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -42,8 +43,8 @@ class MyApp extends StatelessWidget {
             locale: context.locale,
             localizationsDelegates: context.localizationDelegates,
             onGenerateRoute: AppRouter.generateRoute,
-            initialRoute: AppRoutes.success,
             home: const HomeScreen(),
+            navigatorKey: navKey,
             debugShowCheckedModeBanner: false,
             theme: AppTheme.appTheme,
           ),

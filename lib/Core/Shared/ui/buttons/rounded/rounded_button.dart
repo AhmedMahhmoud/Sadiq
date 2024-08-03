@@ -7,20 +7,24 @@ class RoundedButton extends StatelessWidget {
   final TextStyle? style;
   final Widget? iconWidget;
   final Color? btnColor;
+  final Size? btnSize;
+  final bool navigationArrowEnabled;
   const RoundedButton(
       {required this.onPressed,
       required this.title,
       this.iconWidget,
+      this.navigationArrowEnabled = false,
       this.style,
       this.btnColor,
+      this.btnSize,
       super.key});
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: 350,
-        height: 55,
+        width: btnSize?.width ?? 350,
+        height: btnSize?.height ?? 55,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           boxShadow: [
@@ -35,18 +39,29 @@ class RoundedButton extends StatelessWidget {
           color: btnColor,
         ),
         child: Center(
-          child: iconWidget == null
-              ? Text(title, textAlign: TextAlign.center, style: style)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          child: navigationArrowEnabled
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    iconWidget!,
-                    const SizedBox(
-                      width: 10,
-                    ),
                     Text(title, textAlign: TextAlign.center, style: style),
+                    const Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color: Colors.white,
+                    ),
                   ],
-                ),
+                )
+              : iconWidget == null
+                  ? Text(title, textAlign: TextAlign.center, style: style)
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        iconWidget!,
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(title, textAlign: TextAlign.center, style: style),
+                      ],
+                    ),
         ),
       ),
     );

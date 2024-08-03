@@ -7,11 +7,7 @@ class HomeTappedEvent extends HomeEvent {
   HomeTappedEvent(this.tabIndex);
 }
 
-class UpdateAmIatHomeEvent extends HomeEvent {
-  bool amIatHomeNav;
 
-  UpdateAmIatHomeEvent(this.amIatHomeNav);
-}
 
 class PushPageWithBottomNav extends HomeEvent {
   final Widget page;
