@@ -54,6 +54,8 @@ dependencies:
   #Wheel Picker
   wheel_picker: ^0.0.5
 
+  flutter_chat_bubble: ^2.0.2
+
 
 
   google_maps_flutter: ^2.5.3

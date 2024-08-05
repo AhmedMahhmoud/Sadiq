@@ -5,6 +5,7 @@ import 'package:sadiq/Features/Authentication/View/screen/success.dart';
 import 'package:sadiq/Features/Home/View/Screen/home.dart';
 import 'package:sadiq/Features/Setting/View/Screen/setting.dart';
 import 'package:sadiq/Features/Splash/View/Screen/splash_screen.dart';
+import 'package:sadiq/Features/support/View/Screens/support.dart';
 import 'package:sadiq/Routes/routes.dart';
 
 import '../Features/Notification/View/Screen/notification.dart';
@@ -45,6 +46,8 @@ class AppRouter {
         return _createRoute(const SettingScreen());
       case AppRoutes.notification:
         return _createRoute(const NotificationScreen());
+      case AppRoutes.support:
+        return _createRoute(const SupportScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
