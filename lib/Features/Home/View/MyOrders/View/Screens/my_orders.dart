@@ -11,46 +11,50 @@ class MyOrders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        child: Column(children: [
-      HomeRoundedBottomCard(
-        widget: SizedBox(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'طلبات جديدة (3)',
-                  style: AppTextStyle.largeBodyBold.copyWith(fontSize: 24),
+      child: Column(
+        children: [
+          HomeRoundedBottomCard(
+            widget: SizedBox(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'طلبات جديدة (3)',
+                      style: AppTextStyle.largeBodyBold.copyWith(fontSize: 24),
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.all(5),
+                      height: 250,
+                      child: ListView.separated(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) => const Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: NewOrdersDisplay(),
+                              ),
+                          separatorBuilder: (context, index) => SizedBox(
+                                width: 10.w,
+                              ),
+                          itemCount: 2),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
-                Container(
-                  margin: const EdgeInsets.all(5),
-                  height: 250,
-                  child: ListView.separated(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) => const Padding(
-                            padding: EdgeInsets.all(5.0),
-                            child: NewOrdersDisplay(),
-                          ),
-                      separatorBuilder: (context, index) => SizedBox(
-                            width: 10.w,
-                          ),
-                      itemCount: 2),
-                )
-              ],
+              ),
             ),
+            height: 90.h,
           ),
-        ),
-        height: 90.h,
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.40,
+            child:
+                ListView(physics: const BouncingScrollPhysics(), children: []),
+          )
+        ],
       ),
-      SizedBox(
-        height: MediaQuery.sizeOf(context).height * 0.40,
-        child: ListView(physics: const BouncingScrollPhysics(), children: []),
-      )
-    ]));
+    );
   }
 }

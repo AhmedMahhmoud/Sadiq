@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             locale: context.locale,
             localizationsDelegates: context.localizationDelegates,
             onGenerateRoute: AppRouter.generateRoute,
-            initialRoute: AppRoutes.setting,
+            initialRoute: AppRoutes.notification,
             home: const HomeScreen(),
             navigatorKey: navKey,
             debugShowCheckedModeBanner: false,

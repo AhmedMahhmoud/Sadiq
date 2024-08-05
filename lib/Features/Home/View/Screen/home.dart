@@ -51,12 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 SizedBox(
                   child: ListView(
-                      physics: const NeverScrollableScrollPhysics(),
-                      children: [
-                        state.routes.isEmpty
-                            ? pages[state.currentIndex]
-                            : state.routes.last,
-                      ]),
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      state.routes.isEmpty
+                          ? pages[state.currentIndex]
+                          : state.routes.last,
+                    ],
+                  ),
                 ),
                 const BottomNav()
               ],

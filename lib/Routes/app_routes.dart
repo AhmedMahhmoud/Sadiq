@@ -7,6 +7,8 @@ import 'package:sadiq/Features/Setting/View/Screen/setting.dart';
 import 'package:sadiq/Features/Splash/View/Screen/splash_screen.dart';
 import 'package:sadiq/Routes/routes.dart';
 
+import '../Features/Notification/View/Screen/notification.dart';
+
 class AppRouter {
   static PageRouteBuilder<dynamic> _createRoute(Widget page) {
     return PageRouteBuilder(
@@ -41,6 +43,8 @@ class AppRouter {
         return _createRoute(const SuccessScreen());
       case AppRoutes.setting:
         return _createRoute(const SettingScreen());
+      case AppRoutes.notification:
+        return _createRoute(const NotificationScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

@@ -30,8 +30,11 @@ class SvgDisplay extends StatelessWidget {
 
 class SvgInsideCircle extends StatelessWidget {
   final String path;
+
+  final BoxDecoration? decoration;
   const SvgInsideCircle({
     required this.path,
+    this.decoration,
     super.key,
   });
 
@@ -40,8 +43,11 @@ class SvgInsideCircle extends StatelessWidget {
     return Container(
       width: 40,
       height: 40,
-      decoration: const BoxDecoration(
-          shape: BoxShape.circle, color: AppColors.iconsBackgroundColor),
+      decoration: decoration ??
+          const BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.iconsBackgroundColor,
+          ),
       child: Center(
         child: SvgDisplay(path: path),
       ),

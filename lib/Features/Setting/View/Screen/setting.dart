@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -203,21 +201,15 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                height: 40.h,
-                width: 40.w,
+              SvgInsideCircle(
+                path: SvgAssetsPaths.delivery,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                  shape: BoxShape.circle,
+                  color:
+                      const Color.fromARGB(255, 29, 44, 90).withOpacity(0.04),
+                  border: Border.all(
                     color:
-                        const Color.fromARGB(255, 29, 44, 90).withOpacity(0.04),
-                    border: Border.all(
-                        color: const Color.fromARGB(255, 29, 44, 90)
-                            .withOpacity(0.1))),
-                child: const Center(
-                  child: SvgDisplay(
-                    path: SvgAssetsPaths.delivery,
-                    size: Size(25, 25),
-                    color: Color.fromRGBO(38, 92, 255, 1),
+                        const Color.fromARGB(255, 29, 44, 90).withOpacity(0.1),
                   ),
                 ),
               ),
@@ -228,9 +220,9 @@ class SettingScreen extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              SizedBox(
-                child: WheelPickerExample(),
+              const SizedBox(
                 width: 300,
+                child: WheelPickerExample(),
               ),
               RoundedButton(
                 onPressed: () {},
