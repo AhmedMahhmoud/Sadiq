@@ -16,7 +16,6 @@ class DocumentsStep extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        final authCubit = context.read<AuthCubit>();
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

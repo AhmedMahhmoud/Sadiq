@@ -43,16 +43,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         }
       },
     );
-    on<UpdateAmIatHomeEvent>(_onUpdateAmIatHome);
   }
-  bool amIatHomeNav = true;
   int tabIndex = 0;
-
-  FutureOr<void> _onUpdateAmIatHome(
-      UpdateAmIatHomeEvent event, Emitter<HomeState> emit) {
-    amIatHomeNav = event.amIatHomeNav;
-    emit(HomeTabState(tabIndex, state.routes));
-  }
 
   FutureOr<void> _onHomeTapped(HomeTappedEvent event, Emitter<HomeState> emit) {
     emit(HomeTabState(event.tabIndex, const []));

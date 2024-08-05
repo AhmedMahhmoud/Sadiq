@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Features/Home/View/MyVechile/Views/widgets/vechile_info.dart';
 
-import 'package:sadiq/Features/Home/View/Widgets/appbar_header.dart';
 import 'package:sadiq/Features/Home/View/Widgets/vehicle_status.dart';
 
 class DisplayVechile extends StatelessWidget {
@@ -21,10 +19,6 @@ class DisplayVechile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppbarHeader(),
-          SizedBox(
-            height: 10.h,
-          ),
           const Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,7 +28,7 @@ class DisplayVechile extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
-                child:  VechileInfo(),
+                child: VechileInfo(),
               ),
             ],
           ),

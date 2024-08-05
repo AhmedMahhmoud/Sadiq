@@ -56,18 +56,21 @@ class _BottomNavState extends State<BottomNav> {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(height: 30.h),
-              SvgDisplay(path: SvgAssetsPaths.bottomNav),
+              const SvgDisplay(path: SvgAssetsPaths.bottomNav),
             ],
           ),
         ),
         Positioned(
           top: 15.h,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              SvgDisplay(path: SvgAssetsPaths.circleGradient),
-              SvgDisplay(path: SvgAssetsPaths.box),
-            ],
+          child: InkWell(
+            onTap: () => _onPageSelected(1),
+            child: const Stack(
+              alignment: Alignment.center,
+              children: [
+                SvgDisplay(path: SvgAssetsPaths.circleGradient),
+                SvgDisplay(path: SvgAssetsPaths.box),
+              ],
+            ),
           ),
         ),
         _buildNavItem(

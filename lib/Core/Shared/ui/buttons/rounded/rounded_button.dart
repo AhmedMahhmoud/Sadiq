@@ -9,14 +9,18 @@ class RoundedButton extends StatelessWidget {
   final Color? btnColor;
   final double? width;
   final double? height;
+  final Size? btnSize;
+  final bool navigationArrowEnabled;
   const RoundedButton(
       {required this.onPressed,
       required this.title,
       this.iconWidget,
+      this.navigationArrowEnabled = false,
       this.style,
       this.btnColor,
       this.width = 350,
       this.height = 55,
+      this.btnSize,
       super.key});
   @override
   Widget build(BuildContext context) {
@@ -39,18 +43,29 @@ class RoundedButton extends StatelessWidget {
           color: btnColor,
         ),
         child: Center(
-          child: iconWidget == null
-              ? Text(title, textAlign: TextAlign.center, style: style)
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          child: navigationArrowEnabled
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    iconWidget!,
-                    const SizedBox(
-                      width: 10,
-                    ),
                     Text(title, textAlign: TextAlign.center, style: style),
+                    const Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color: Colors.white,
+                    ),
                   ],
-                ),
+                )
+              : iconWidget == null
+                  ? Text(title, textAlign: TextAlign.center, style: style)
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        iconWidget!,
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(title, textAlign: TextAlign.center, style: style),
+                      ],
+                    ),
         ),
       ),
     );
