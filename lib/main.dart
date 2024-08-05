@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             locale: context.locale,
             localizationsDelegates: context.localizationDelegates,
             onGenerateRoute: AppRouter.generateRoute,
-            initialRoute: AppRoutes.success,
+            initialRoute: AppRoutes.setting,
             home: const HomeScreen(),
             debugShowCheckedModeBanner: false,
             theme: AppTheme.appTheme,

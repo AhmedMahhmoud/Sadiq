@@ -7,20 +7,24 @@ class RoundedButton extends StatelessWidget {
   final TextStyle? style;
   final Widget? iconWidget;
   final Color? btnColor;
+  final double? width;
+  final double? height;
   const RoundedButton(
       {required this.onPressed,
       required this.title,
       this.iconWidget,
       this.style,
       this.btnColor,
+      this.width = 350,
+      this.height = 55,
       super.key});
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: 350,
-        height: 55,
+        width: width,
+        height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           boxShadow: [

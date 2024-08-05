@@ -34,4 +34,7 @@ class SvgAssetsPaths {
   static const String normalMoto = "$imgPath/Normal_Moto.svg";
   static const String electricCar = "$imgPath/Electric_Car.svg";
   static const String electricMoto = "$imgPath/Electric_Moto.svg";
+  static const String available = "$imgPath/available.svg";
+  static const String delivery = "$imgPath/delivery.svg";
+  static const String temperature = "$imgPath/temperature.svg";
 }

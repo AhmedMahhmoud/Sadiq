@@ -51,6 +51,11 @@ dependencies:
   easy_localization: ^3.0.7
   #Stepper
   easy_stepper: ^0.8.5
+  #Wheel Picker
+  wheel_picker: ^0.0.5
+
+
+
 
 dev_dependencies:
   flutter_test:

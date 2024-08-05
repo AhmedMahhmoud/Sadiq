@@ -5,4 +5,5 @@ class PngAssetsPaths {
   static String vehicle = "$imgPath/vehicle.png";
   static String vehiclePng = "$imgPath/vehiclepng.png";
   static String city = "$imgPath/city.png";
+  static String available = "$imgPath/available.jpg";
 }
