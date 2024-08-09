@@ -12,6 +12,7 @@ import 'package:sadiq/Routes/routes.dart';
 GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
