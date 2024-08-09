@@ -65,8 +65,13 @@ class SignInRoundedFooter extends StatelessWidget {
                 height: 5.h,
               ),
               Center(
-                  child:
-                      RoundedButton(onPressed: () {}, title: 'تسجيل الدخول')),
+                  child: RoundedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/setting');
+                },
+                title: 'تسجيل الدخول',
+                style: AppTextStyle.smallBodyBold.copyWith(color: Colors.white),
+              )),
               const SizedBox(
                 height: 5,
               ),
@@ -77,12 +82,15 @@ class SignInRoundedFooter extends StatelessWidget {
                       .copyWith(color: AppColors.secondaryColor),
                 ),
               ),
-              Center(
-                child: Text(
-                  'اطلب انشاء حساب',
-                  style: AppTextStyle.smallBodyBold.copyWith(
-                      color: AppColors.primaryColor,
-                      decoration: TextDecoration.underline),
+              InkWell(
+                onTap: () => Navigator.pushReplacementNamed(context, '/signup'),
+                child: Center(
+                  child: Text(
+                    'اطلب انشاء حساب',
+                    style: AppTextStyle.smallBodyBold.copyWith(
+                        color: AppColors.primaryColor,
+                        decoration: TextDecoration.underline),
+                  ),
                 ),
               ),
             ],

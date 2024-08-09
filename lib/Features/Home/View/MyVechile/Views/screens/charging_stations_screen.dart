@@ -36,7 +36,7 @@ class ChargingStationsScreen extends StatelessWidget {
                     .copyWith(fontSize: 14, color: Colors.white),
               )),
           Positioned(
-              bottom: 45.h,
+              bottom: 50.h,
               child: SizedBox(
                   width: MediaQuery.sizeOf(context).width,
                   height: 200.h,

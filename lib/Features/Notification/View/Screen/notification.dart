@@ -13,52 +13,48 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppbarHeader(),
-      backgroundColor: AppColors.backgroundSecondaryColor,
-      body: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 15.h),
-            width: MediaQuery.sizeOf(context).width,
-            color: Colors.white,
-            child: Center(
-              child: Text(
-                'إشعارات',
-                style: AppTextStyle.headline.copyWith(
-                  color: AppColors.secondaryColor,
-                  fontWeight: FontWeight.w500,
-                ),
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.symmetric(vertical: 15.h),
+          width: MediaQuery.sizeOf(context).width,
+          color: Colors.white,
+          child: Center(
+            child: Text(
+              'إشعارات',
+              style: AppTextStyle.headline.copyWith(
+                color: AppColors.secondaryColor,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'اشعار جديد',
-                  style: AppTextStyle.smallBodyHeavyBold.copyWith(
-                    color: AppColors.secondaryColor,
-                  ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'اشعار جديد',
+                style: AppTextStyle.smallBodyHeavyBold.copyWith(
+                  color: AppColors.secondaryColor,
                 ),
-                const SizedBox(height: 5),
-                const NotificationCard(isActive: true),
-                const SizedBox(height: 15),
-                Text(
-                  'تم قرائتها',
-                  style: AppTextStyle.smallBodyHeavyBold.copyWith(
-                    color: AppColors.secondaryColor,
-                  ),
+              ),
+              const SizedBox(height: 5),
+              const NotificationCard(isActive: true),
+              const SizedBox(height: 15),
+              Text(
+                'تم قرائتها',
+                style: AppTextStyle.smallBodyHeavyBold.copyWith(
+                  color: AppColors.secondaryColor,
                 ),
-                const SizedBox(height: 5),
-                const NotificationCard(isActive: false),
-              ],
-            ),
+              ),
+              const SizedBox(height: 5),
+              const NotificationCard(isActive: false),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

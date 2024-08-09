@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Shared/ui/cards/home_rounded_bottom_card.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
+import 'package:sadiq/Core/enums/enums.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/new_orders_display.dart';
+import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/orders_filteration.dart';
 
 class MyOrders extends StatelessWidget {
   const MyOrders({super.key});
@@ -25,13 +27,14 @@ class MyOrders extends StatelessWidget {
                       style: AppTextStyle.largeBodyBold.copyWith(fontSize: 24),
                     ),
                     SizedBox(
-                      height: 10.h,
+                      height: 5.h,
                     ),
                     Container(
                       margin: const EdgeInsets.all(5),
-                      height: 250,
+                      height: 140.h,
                       child: ListView.separated(
                           shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) => const Padding(
                                 padding: EdgeInsets.all(5.0),
@@ -48,11 +51,7 @@ class MyOrders extends StatelessWidget {
             ),
             height: 90.h,
           ),
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.40,
-            child:
-                ListView(physics: const BouncingScrollPhysics(), children: []),
-          )
+          const OrdersFilteration()
         ],
       ),
     );

@@ -79,7 +79,13 @@ class SuccessScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 25.h),
                       RoundedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/signin',
+                            (route) => false,
+                          );
+                        },
                         title: 'العودة للصفحة الرئيسية',
                         style: TextStyle(
                             color: AppColors.secondaryColor,

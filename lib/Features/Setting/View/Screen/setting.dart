@@ -150,7 +150,10 @@ class SettingScreen extends StatelessWidget {
                   ],
                 ),
                 RoundedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (route) => false);
+                  },
                   title: 'إبدأ العمل',
                   style: TextStyle(
                     color: Colors.white,
