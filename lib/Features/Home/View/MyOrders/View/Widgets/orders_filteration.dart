@@ -39,69 +39,57 @@ class _OrdersFilterationState extends State<OrdersFilteration> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
-          child: Container(
-            height: MediaQuery.sizeOf(context).height * 0.40,
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5),
+      child: SizedBox(
+        height: MediaQuery.sizeOf(context).height * 0.40,
+        child: ListView(
+          physics: const BouncingScrollPhysics(),
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    _buildOrderOption('طلبات فعالة', 0),
-                    SizedBox(width: 10.w),
-                    _buildOrderOption('طلبات سابقة', 1),
-                    SizedBox(width: 10.w),
-                    _buildOrderCount(),
-                  ],
-                ),
-                SizedBox(
-                  height: 5.h,
-                ),
-                _selectedOrderIndex == 0
-                    ? const ActiveOrdersDisplay()
-                    : SizedBox(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  CustomDatePickerButton(
-                                      title: 'من', initialDate: DateTime.now()),
-                                  CustomDatePickerButton(
-                                      title: 'الي',
-                                      initialDate: DateTime.now()),
-                                  CustomDropdownButton(
-                                    title: 'الحالة',
-                                    items: const [
-                                      'الجميع',
-                                      'منتهي',
-                                      'غير منتهي'
-                                    ],
-                                    initialValue: 'الجميع',
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              const OrdersTableView()
-                            ]),
-                      ),
-                SizedBox(
-                  height: 70.h,
-                )
+                _buildOrderOption('طلبات فعالة', 0),
+                SizedBox(width: 10.w),
+                _buildOrderOption('طلبات سابقة', 1),
+                SizedBox(width: 10.w),
+                _buildOrderCount(),
               ],
             ),
-          ),
+            SizedBox(
+              height: 5.h,
+            ),
+            _selectedOrderIndex == 0
+                ? const ActiveOrdersDisplay()
+                : SizedBox(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomDatePickerButton(
+                                  title: 'من', initialDate: DateTime.now()),
+                              CustomDatePickerButton(
+                                  title: 'الي', initialDate: DateTime.now()),
+                              CustomDropdownButton(
+                                title: 'الحالة',
+                                items: const ['الجميع', 'منتهي', 'غير منتهي'],
+                                initialValue: 'الجميع',
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          const OrdersTableView()
+                        ]),
+                  ),
+            SizedBox(
+              height: 70.h,
+            )
+          ],
         ),
-        // if (_selectedOrderIndex == 1)
-      ],
+      ),
     );
   }
 
