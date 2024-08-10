@@ -7,7 +7,9 @@ import 'package:sadiq/Features/Notification/View/Screen/notification.dart';
 import 'package:sadiq/Features/support/View/Screens/support.dart';
 
 class AppbarHeader extends StatelessWidget implements PreferredSizeWidget {
-  const AppbarHeader({super.key});
+  final Color? backGC;
+
+  const AppbarHeader({super.key, this.backGC = Colors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class AppbarHeader extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      backgroundColor: Colors.white, // Set the desired background color
+      backgroundColor: backGC, // Set the desired background color
       elevation: 0, // Set the desired elevation
     );
   }
