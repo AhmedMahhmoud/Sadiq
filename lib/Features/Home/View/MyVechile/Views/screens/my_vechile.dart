@@ -50,14 +50,16 @@ class MyVechile extends StatelessWidget {
                             SizedBox(
                               height: 10.h,
                             ),
-                            RoundedButton(
-                              onPressed: () {},
-                              style: AppTextStyle.bodyBold
-                                  .copyWith(color: Colors.white, fontSize: 14),
-                              title: 'تجديد الخدمة',
-                              iconWidget: const SvgDisplay(
-                                  path: SvgAssetsPaths.renew,
-                                  size: Size(25, 20)),
+                            Center(
+                              child: RoundedButton(
+                                onPressed: () {},
+                                style: AppTextStyle.bodyBold.copyWith(
+                                    color: Colors.white, fontSize: 14),
+                                title: 'تجديد الخدمة',
+                                iconWidget: const SvgDisplay(
+                                    path: SvgAssetsPaths.renew,
+                                    size: Size(25, 20)),
+                              ),
                             ),
                             const SizedBox(
                               height: 10,

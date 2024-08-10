@@ -76,12 +76,16 @@ class ChooseCityStep extends StatelessWidget {
                         .copyWith(color: AppColors.secondaryColor),
                   ),
                 ),
-                Center(
-                  child: Text(
-                    'تسجيل الدخول',
-                    style: AppTextStyle.smallBodyBold.copyWith(
-                        color: AppColors.primaryColor,
-                        decoration: TextDecoration.underline),
+                InkWell(
+                  onTap: () =>
+                      Navigator.pushReplacementNamed(context, '/signin'),
+                  child: Center(
+                    child: Text(
+                      'تسجيل الدخول',
+                      style: AppTextStyle.smallBodyBold.copyWith(
+                          color: AppColors.primaryColor,
+                          decoration: TextDecoration.underline),
+                    ),
                   ),
                 ),
               ],

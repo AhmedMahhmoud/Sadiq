@@ -11,10 +11,9 @@ class SupportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppbarHeader(),
-      backgroundColor: AppColors.backgroundSecondaryColor,
-      body: Column(
+    return SizedBox(
+      height: MediaQuery.sizeOf(context).height,
+      child: Column(
         children: [
           Container(
             padding: EdgeInsets.symmetric(vertical: 15.h),

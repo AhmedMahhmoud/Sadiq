@@ -19,7 +19,7 @@ class RoundedButton extends StatelessWidget {
       this.style,
       this.btnColor,
       this.width = 350,
-      this.height = 55,
+      this.height = 50,
       this.btnSize,
       super.key});
   @override
@@ -27,8 +27,8 @@ class RoundedButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: width,
-        height: height,
+        width: btnSize?.width ?? width,
+        height: btnSize?.height ?? height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           boxShadow: [
@@ -57,6 +57,7 @@ class RoundedButton extends StatelessWidget {
               : iconWidget == null
                   ? Text(title, textAlign: TextAlign.center, style: style)
                   : Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         iconWidget!,

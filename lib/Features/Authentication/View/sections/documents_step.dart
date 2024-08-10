@@ -88,7 +88,9 @@ class DocumentsStep extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w700,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/success');
+                },
                 title: 'إرسال',
               ),
             ),

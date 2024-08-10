@@ -37,6 +37,7 @@ class SvgAssetsPaths {
   static const String electricMoto = "$imgPath/Electric_Moto.svg";
   static const String available = "$imgPath/available.svg";
   static const String delivery = "$imgPath/delivery.svg";
+  static const String deliveryMan = "$imgPath/delivery_man.svg";
   static const String temperature = "$imgPath/temperature.svg";
   static const String charginStation = "$imgPath/charging_station.svg";
   static const String gradientlocation = "$imgPath/gradient_location.svg";
@@ -51,4 +52,5 @@ class SvgAssetsPaths {
   static const String termsConditions = "$imgPath/termsconditions.svg";
   static const String privacyPolicy = "$imgPath/privacyPolicy.svg";
   static const String logout = "$imgPath/logout.svg";
+  static const String refresh = "$imgPath/refresh.svg";
 }

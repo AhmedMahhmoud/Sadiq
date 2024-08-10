@@ -36,13 +36,13 @@ class _BottomNavState extends State<BottomNav> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.white.withOpacity(0.3),
-                  spreadRadius: 10,
-                  blurRadius: 30,
+                  spreadRadius: 5,
+                  blurRadius: 25,
                   offset: const Offset(0, 10),
                 ),
                 BoxShadow(
                   color: Colors.white.withOpacity(0.3),
-                  spreadRadius: 30,
+                  spreadRadius: 5,
                   blurRadius: 60,
                   offset: const Offset(0, 20),
                 ),

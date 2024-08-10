@@ -9,6 +9,7 @@ class AppColors {
   static const Color iconsBackgroundColor = Color(0xffD2E2FF);
   static const Color borderColor = Color(0xffB9C3E2);
   static const Color progressColor = Color(0xffCED6F0);
+  static Color secondayColorWithOpacity = secondaryColor.withOpacity(0.20);
   static const LinearGradient appLinearGradient = LinearGradient(
       colors: [Color(0xff265CFF), Color(0xff173799)],
       begin: Alignment.topCenter,
