@@ -38,26 +38,26 @@ class SignInRoundedFooter extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'هل نسيت كلمة المرور؟',
-                    style: AppTextStyle.smallBody.copyWith(
-                        color: AppColors.secondaryColor,
-                        decoration: TextDecoration.underline),
-                  ),
                   SizedBox(
                     height: 25.h,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
+                        const LoginCheckmark(),
+                        SizedBox(width: 5.w),
                         Text(
                           'تذكرني',
                           style: AppTextStyle.smallBody
                               .copyWith(color: AppColors.secondaryColor),
                         ),
-                        SizedBox(width: 5.w),
-                        const LoginCheckmark(),
                       ],
                     ),
+                  ),
+                  Text(
+                    'هل نسيت كلمة المرور؟',
+                    style: AppTextStyle.smallBody.copyWith(
+                        color: AppColors.secondaryColor,
+                        decoration: TextDecoration.underline),
                   ),
                 ],
               ),
