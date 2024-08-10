@@ -36,7 +36,7 @@ class CustomDropDown extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                SvgDisplay(
+                const SvgDisplay(
                   path: SvgAssetsPaths.location,
                   size: Size(22, 22),
                   color: AppColors.secondaryColor,

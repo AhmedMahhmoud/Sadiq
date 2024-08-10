@@ -3,7 +3,9 @@ import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 
 class AppbarHeader extends StatelessWidget implements PreferredSizeWidget {
-  const AppbarHeader({super.key});
+  final Color? backGC;
+
+  const AppbarHeader({super.key, this.backGC = Colors.white});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class AppbarHeader extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
-      backgroundColor: Colors.white, // Set the desired background color
+      backgroundColor: backGC, // Set the desired background color
       elevation: 0, // Set the desired elevation
     );
   }

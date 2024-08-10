@@ -72,26 +72,34 @@ class SupportScreen extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
-            padding: const EdgeInsets.symmetric(horizontal: 5),
+            margin: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
-              color: AppColors.primaryColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
+              color: AppColors.primaryColor.withOpacity(0.08),
+              borderRadius: BorderRadius.circular(25),
               border: Border.all(
-                color: AppColors.secondaryColor.withOpacity(0.2),
+                color: AppColors.secondaryColor.withOpacity(0.3),
               ),
             ),
             child: TextFormField(
               cursorColor: AppColors.secondaryColor,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 15),
-                  hintText: "اكتب هنا....",
-                  border: InputBorder.none,
-                  hintStyle: TextStyle(
-                      color: AppColors.secondaryColor.withOpacity(0.5))),
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                hintText: "اكتب هنا....",
+                border: InputBorder.none,
+                hintStyle: TextStyle(
+                  color: AppColors.secondaryColor.withOpacity(0.4),
+                ),
+                suffixIcon: const Icon(
+                  Icons.send,
+                  color: AppColors.secondaryColor,
+                  size: 30,
+                ),
+              ),
               textAlign: TextAlign.right,
             ),
           )

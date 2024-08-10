@@ -9,7 +9,6 @@ import '../../../../Core/Shared/ui/images/png_display.dart';
 import '../../../../Core/Shared/ui/images/svg_display.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
 import '../../../../Core/Theme/text/text_style.dart';
-import '../widgets/sign_in_rounded_footer.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen({super.key});
@@ -94,7 +93,7 @@ class SuccessScreen extends StatelessWidget {
             ),
             Positioned(
               top: MediaQuery.sizeOf(context).height / 2.8,
-              child: SvgDisplay(
+              child: const SvgDisplay(
                 path: SvgAssetsPaths.deliveryBoy,
               ),
             )

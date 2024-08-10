@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:easy_stepper/easy_stepper.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Features/Authentication/View/sections/choose_type_step.dart';
