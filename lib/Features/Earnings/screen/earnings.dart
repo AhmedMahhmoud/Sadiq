@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../Core/Shared/ui/Pickers/custom_date_picker_widget.dart';
 import '../../../Core/Shared/ui/buttons/back_btn.dart';
 import '../../../Core/Shared/ui/cards/home_rounded_bottom_card.dart';
 import '../../../Core/Theme/Colors/app_colors.dart';
 import '../../../Core/Theme/text/text_style.dart';
+import '../../Authentication/View/widgets/login_checkmark.dart';
+import '../../Home/View/MyOrders/View/Widgets/order_table_view.dart';
 
 class EarningsScreen extends StatelessWidget {
   const EarningsScreen({super.key});
@@ -59,7 +62,75 @@ class EarningsScreen extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
+        SizedBox(height: 15.h),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          child: SizedBox(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    CustomDatePickerButton(
+                        title: 'من', initialDate: DateTime.now()),
+                    SizedBox(width: 15.w),
+                    CustomDatePickerButton(
+                        title: 'الي', initialDate: DateTime.now()),
+                    SizedBox(width: 12.w),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 15.h,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const LoginCheckmark(),
+                              SizedBox(width: 5.w),
+                              Text(
+                                'تم الدفع',
+                                style: AppTextStyle.smallBody
+                                    .copyWith(color: AppColors.secondaryColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 15.h,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const LoginCheckmark(),
+                              SizedBox(width: 5.w),
+                              Text(
+                                'القادمة',
+                                style: AppTextStyle.smallBody
+                                    .copyWith(color: AppColors.secondaryColor),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height * 0.50,
+                  child: ListView(
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      const OrdersTableView(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
