@@ -48,11 +48,9 @@ class _StationListState extends State<StationList> {
             });
           },
           child: Container(
-            width: 360,
-            height: 75,
-            margin: const EdgeInsets.symmetric(vertical: 3, horizontal: 15),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 10,
+            margin: EdgeInsets.symmetric(vertical: 3, horizontal: 15.w),
+            padding: EdgeInsets.symmetric(
+              horizontal: 10.w,
             ),
             decoration: BoxDecoration(
               color: Colors.white,
