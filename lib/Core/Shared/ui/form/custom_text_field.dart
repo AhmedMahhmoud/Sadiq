@@ -12,6 +12,9 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final String? errorMsg;
   final double height;
+  final Color bGColor;
+  final Color iconColor;
+
   const CustomTextField(
       {Key? key,
       required this.hintText,
@@ -20,7 +23,9 @@ class CustomTextField extends StatefulWidget {
       this.validator,
       this.errorMsg,
       this.errorHeight = 40,
-      this.height = 57})
+      this.height = 57,
+      this.bGColor = AppColors.fieldsBGfillColor,
+      this.iconColor = AppColors.secondaryColor})
       : super(key: key);
 
   @override
@@ -35,7 +40,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-        color: AppColors.fieldsBGfillColor,
+        color: widget.bGColor,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
           color: AppColors.secondaryColor.withOpacity(0.2),
@@ -53,7 +58,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         SvgDisplay(
                           path: widget.icon,
                           size: const Size(20, 20),
-                          color: AppColors.secondaryColor,
+                          color: widget.iconColor,
                         ),
                         VerticalDivider(
                           color: AppColors.secondaryColor.withOpacity(0.2),
@@ -74,12 +79,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   cursorColor: AppColors.secondaryColor,
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   decoration: InputDecoration(
-                      errorText: widget.errorMsg,
-                      contentPadding: const EdgeInsets.symmetric(vertical: 15),
-                      hintText: widget.hintText,
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(
-                          color: AppColors.secondaryColor.withOpacity(0.5))),
+                    errorText: widget.errorMsg,
+                    contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                    hintText: widget.hintText,
+                    border: InputBorder.none,
+                    hintStyle: TextStyle(
+                      color: AppColors.secondaryColor.withOpacity(0.5),
+                      fontSize: 14.sp,
+                    ),
+                  ),
                   textAlign: TextAlign.right,
                 ),
               ),

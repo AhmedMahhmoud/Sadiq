@@ -46,7 +46,7 @@ class NewOrdersDisplay extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const DistanceTimeVerticalDots(),
+              const DistanceTimeVerticalDots(noOfLines: 4),
               SizedBox(
                 width: 15.w,
               ),
@@ -88,7 +88,7 @@ class NewOrdersDisplay extends StatelessWidget {
                   SizedBox(
                     height: 5.h,
                   ),
-                  DistanceTimeIndicatorContent(
+                  CenteredDistanceTimeIndicatorContent(
                     distance: '٢٥ كم',
                     time: 'ساعة و ٢٣ دقيقة',
                     style: AppTextStyle.smallBody.copyWith(

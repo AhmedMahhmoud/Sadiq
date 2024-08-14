@@ -21,20 +21,21 @@ class ChargingStationsScreen extends StatelessWidget {
         children: [
           const MapViewDisplay(),
           Positioned(
-              top: 5.h,
-              right: 5.w,
-              child: RoundedButton(
-                onPressed: () {},
-                btnColor: AppColors.secondaryColor,
-                title: 'محطات الشحن',
-                btnSize: const Size(170, 50),
-                iconWidget: const SvgDisplay(
-                  path: SvgAssetsPaths.charginStation,
-                  color: Colors.white,
-                ),
-                style: AppTextStyle.bodyBold
-                    .copyWith(fontSize: 14, color: Colors.white),
-              )),
+            top: 5.h,
+            right: 5.w,
+            child: RoundedButton(
+              onPressed: () {},
+              btnColor: AppColors.secondaryColor,
+              title: 'محطات الشحن',
+              btnSize: const Size(170, 50),
+              iconWidget: const SvgDisplay(
+                path: SvgAssetsPaths.charginStation,
+                color: Colors.white,
+              ),
+              style: AppTextStyle.bodyBold
+                  .copyWith(fontSize: 14, color: Colors.white),
+            ),
+          ),
           Positioned(
               bottom: 50.h,
               child: SizedBox(

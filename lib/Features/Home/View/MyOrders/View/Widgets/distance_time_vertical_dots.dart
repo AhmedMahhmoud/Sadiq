@@ -5,7 +5,9 @@ import 'package:sadiq/Core/Shared/ui/buttons/rounded/rounded_svg_container.dart'
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 
 class DistanceTimeVerticalDots extends StatelessWidget {
-  const DistanceTimeVerticalDots({Key? key}) : super(key: key);
+  final int noOfLines;
+  const DistanceTimeVerticalDots({required this.noOfLines, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +20,8 @@ class DistanceTimeVerticalDots extends StatelessWidget {
           size: 35,
           svgPath: SvgAssetsPaths.gradientBox,
         ),
-        _buildConnectingLine(),
-        ..._buildVerticalDots(),
+        const BuildConnectingLine(),
+        ..._buildVerticalDots(noOfLines),
         const RoundedSvgContainer(
           borderColor: AppColors.secondaryColor,
           backgroundColor: AppColors.primaryColor,
@@ -31,23 +33,28 @@ class DistanceTimeVerticalDots extends StatelessWidget {
     );
   }
 
-  Widget _buildConnectingLine() {
-    return Container(
-      width: 3,
-      height: 5,
-      color: AppColors.secondaryColor.withOpacity(0.20),
-    );
-  }
-
-  List<Widget> _buildVerticalDots() {
+  List<Widget> _buildVerticalDots(int noOFLines) {
     return List.generate(
-      4,
+      noOFLines,
       (_) => Container(
         margin: const EdgeInsets.symmetric(vertical: 2),
         width: 2.w,
         height: 4.5.h,
         color: AppColors.secondaryColor.withOpacity(0.20),
       ),
+    );
+  }
+}
+
+class BuildConnectingLine extends StatelessWidget {
+  const BuildConnectingLine({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 3,
+      height: 5,
+      color: AppColors.secondaryColor.withOpacity(0.20),
     );
   }
 }

@@ -62,27 +62,28 @@ class _OrdersFilterationState extends State<OrdersFilteration> {
                 ? const ActiveOrdersDisplay()
                 : SizedBox(
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomDatePickerButton(
-                                  title: 'من', initialDate: DateTime.now()),
-                              CustomDatePickerButton(
-                                  title: 'الي', initialDate: DateTime.now()),
-                              CustomDropdownButton(
-                                title: 'الحالة',
-                                items: const ['الجميع', 'منتهي', 'غير منتهي'],
-                                initialValue: 'الجميع',
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          const OrdersTableView()
-                        ]),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CustomDatePickerButton(
+                                title: 'من', initialDate: DateTime.now()),
+                            CustomDatePickerButton(
+                                title: 'الي', initialDate: DateTime.now()),
+                            CustomDropdownButton(
+                              title: 'الحالة',
+                              items: const ['الجميع', 'منتهي', 'غير منتهي'],
+                              initialValue: 'الجميع',
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: 5.h,
+                        ),
+                        const OrdersTableView()
+                      ],
+                    ),
                   ),
             SizedBox(
               height: 70.h,

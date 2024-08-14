@@ -7,6 +7,7 @@ import 'package:sadiq/Features/Home/View/MyOrders/View/Screens/my_orders.dart';
 import 'package:sadiq/Features/Home/View/MyVechile/Views/screens/my_vechile.dart';
 import 'package:sadiq/Features/Home/View/Screen/bottom_nav.dart';
 import 'package:sadiq/Features/Home/View/Widgets/appbar_header.dart';
+import 'package:sadiq/Features/Profile/Screen/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final pages = const [MyVechile(), MyOrders(), SizedBox()];
+  final pages = const [MyVechile(), MyOrders(), ProfileScreen()];
   Future<void> _checkLocationPermission() async {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied ||
@@ -44,7 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
             return true;
           },
           child: Scaffold(
-            appBar: const AppbarHeader(),
+            appBar: AppbarHeader(
+              backGC: state.currentIndex == 2
+                  ? AppColors.backgroundSecondaryColor
+                  : Colors.white,
+            ),
             backgroundColor: AppColors.backgroundSecondaryColor,
             body: Stack(
               alignment: Alignment.bottomCenter,

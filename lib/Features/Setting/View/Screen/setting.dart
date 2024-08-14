@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:wheel_picker/wheel_picker.dart';
 import '../../../../Core/Paths/image_paths.dart';
+import '../../../../Core/Shared/ui/buttons/back_btn.dart';
 import '../../../../Core/Shared/ui/buttons/rounded/rounded_button.dart';
 import '../../../../Core/Shared/ui/images/app_logo_with_title.dart';
 
@@ -15,155 +16,180 @@ import '../cubit/setting_cubit.dart';
 import '../widgets/setting_card.dart';
 
 class SettingScreen extends StatelessWidget {
-  const SettingScreen({super.key});
+  final bool inAppStart;
+  const SettingScreen({super.key, this.inAppStart = false});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SettingCubit, SettingState>(
       builder: (context, state) {
         final settingCubit = context.read<SettingCubit>();
-        return Scaffold(
-          backgroundColor: const Color(0xfff2f5ff),
-          body: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-            width: MediaQuery.sizeOf(context).width,
-            height: MediaQuery.sizeOf(context).height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  color: const Color(0xfff2f5ff),
-                  child: const Center(
-                    child: SizedBox(
-                      child: DisplayAppTitleWithLogo(
-                        appIconsize: Size(50, 50),
-                        appTitleSize: Size(35, 35),
-                      ),
-                    ),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      'قوم بضبط الإعدادات التالية',
-                      style: AppTextStyle.headline.copyWith(
-                        color: AppColors.secondaryColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    SizedBox(height: 35.h),
-                    SettingCard(
-                      title: 'جاهز للعمل',
-                      isSVG: false,
-                      icon: PngAssetsPaths.available,
-                      widget: SizedBox(
-                        child: FittedBox(
-                          fit: BoxFit.fill,
-                          child: Switch(
-                            activeColor: AppColors.primaryColor,
-                            value: settingCubit.isReady,
-                            onChanged: (value) {
-                              settingCubit.changeReadyStatus();
-                            },
-                          ),
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            inAppStart
+                ? Container(
+                    color: const Color(0xfff2f5ff),
+                    child: const Center(
+                      child: SizedBox(
+                        child: DisplayAppTitleWithLogo(
+                          appIconsize: Size(50, 50),
+                          appTitleSize: Size(35, 35),
                         ),
                       ),
                     ),
-                    SizedBox(height: 10.h),
-                    SettingCard(
-                      title: 'تفعيل اعدادات الخرائط',
-                      isSVG: true,
-                      icon: SvgAssetsPaths.location,
-                      widget: SizedBox(
+                  )
+                : const SizedBox(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+              child: Column(
+                children: [
+                  inAppStart
+                      ? Text(
+                          'قوم بضبط الإعدادات التالية',
+                          style: AppTextStyle.headline.copyWith(
+                            color: AppColors.secondaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Column(
+                              children: [
+                                SizedBox(height: 5.h),
+                                Text(
+                                  'الإعدادات',
+                                  style: AppTextStyle.headline.copyWith(
+                                      color: AppColors.secondaryColor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                            const BackBtn(
+                              height: 35,
+                              iconSize: 22,
+                              width: 35,
+                            ),
+                          ],
+                        ),
+                  SizedBox(height: 35.h),
+                  SettingCard(
+                    title: 'جاهز للعمل',
+                    isSVG: false,
+                    icon: PngAssetsPaths.available,
+                    widget: SizedBox(
+                      child: FittedBox(
+                        fit: BoxFit.fill,
                         child: Switch(
                           activeColor: AppColors.primaryColor,
-                          value: settingCubit.openLocation,
+                          value: settingCubit.isReady,
                           onChanged: (value) {
-                            settingCubit.changeLocationStatus();
+                            settingCubit.changeReadyStatus();
                           },
                         ),
                       ),
                     ),
-                    SizedBox(height: 10.h),
-                    SettingCard(
-                      title: 'نوع حقيبة التوصيل',
-                      isSVG: true,
-                      icon: SvgAssetsPaths.delivery,
-                      widget: Padding(
-                        padding: EdgeInsets.only(left: 10.w),
-                        child: InkWell(
-                          onTap: () {
-                            bottomSheet(context);
-                          },
-                          child: Text(
-                            'نوع الحقيبة هنا...',
-                            style: AppTextStyle.caption.copyWith(
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
-                    SettingCard(
-                      title: 'درجة حرارة الجسم',
-                      isSVG: true,
-                      icon: SvgAssetsPaths.temperature,
-                      widget: Padding(
-                        padding: EdgeInsets.only(left: 10.w),
-                        child: InkWell(
-                          onTap: () {},
-                          child: Text(
-                            '36.5',
-                            style: AppTextStyle.caption.copyWith(
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const LoginCheckmark(),
-                        SizedBox(width: 5.w),
-                        Text(
-                          'أوافق علي ',
-                          style: AppTextStyle.smallBody.copyWith(
-                            color: AppColors.secondaryColor,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text(
-                          'سياسة الخصوصية',
-                          style: AppTextStyle.smallBody.copyWith(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w700,
-                            decoration: TextDecoration.underline,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                RoundedButton(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, '/home', (route) => false);
-                  },
-                  title: 'إبدأ العمل',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w700,
                   ),
-                ),
-              ],
+                  SizedBox(height: 10.h),
+                  SettingCard(
+                    title: 'تفعيل اعدادات الخرائط',
+                    isSVG: true,
+                    icon: SvgAssetsPaths.location,
+                    widget: SizedBox(
+                      child: Switch(
+                        activeColor: AppColors.primaryColor,
+                        value: settingCubit.openLocation,
+                        onChanged: (value) {
+                          settingCubit.changeLocationStatus();
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  SettingCard(
+                    title: 'نوع حقيبة التوصيل',
+                    isSVG: true,
+                    icon: SvgAssetsPaths.delivery,
+                    widget: Padding(
+                      padding: EdgeInsets.only(left: 10.w),
+                      child: InkWell(
+                        onTap: () {
+                          bottomSheet(context);
+                        },
+                        child: Text(
+                          'نوع الحقيبة هنا...',
+                          style: AppTextStyle.caption.copyWith(
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  SettingCard(
+                    title: 'درجة حرارة الجسم',
+                    isSVG: true,
+                    icon: SvgAssetsPaths.temperature,
+                    widget: Padding(
+                      padding: EdgeInsets.only(left: 10.w),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Text(
+                          '36.5',
+                          style: AppTextStyle.caption.copyWith(
+                            color: AppColors.primaryColor,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  inAppStart
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const LoginCheckmark(),
+                            SizedBox(width: 5.w),
+                            Text(
+                              'أوافق علي ',
+                              style: AppTextStyle.smallBody.copyWith(
+                                color: AppColors.secondaryColor,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            Text(
+                              'سياسة الخصوصية',
+                              style: AppTextStyle.smallBody.copyWith(
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.w700,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ],
+                        )
+                      : const SizedBox(),
+                ],
+              ),
             ),
-          ),
+            inAppStart
+                ? RoundedButton(
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/home', (route) => false);
+                    },
+                    title: 'إبدأ العمل',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  )
+                : const SizedBox(),
+          ],
         );
       },
     );

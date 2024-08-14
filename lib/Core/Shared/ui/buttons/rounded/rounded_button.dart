@@ -61,8 +61,8 @@ class RoundedButton extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         iconWidget!,
-                        const SizedBox(
-                          width: 10,
+                        SizedBox(
+                          width: width! == 112 ? 5 : 10,
                         ),
                         Text(title, textAlign: TextAlign.center, style: style),
                       ],

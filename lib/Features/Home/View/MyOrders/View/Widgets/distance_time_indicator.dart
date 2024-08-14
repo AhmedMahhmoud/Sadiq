@@ -27,7 +27,56 @@ class DistanceTimeIndicator extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(5.r),
       ),
-      child: DistanceTimeIndicatorContent(distance: distance, time: time),
+      child:
+          CenteredDistanceTimeIndicatorContent(distance: distance, time: time),
+    );
+  }
+}
+
+class CenteredDistanceTimeIndicatorContent extends StatelessWidget {
+  const CenteredDistanceTimeIndicatorContent({
+    super.key,
+    required this.distance,
+    required this.time,
+    this.style,
+  });
+
+  final String distance;
+  final String time;
+  final TextStyle? style;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          distance,
+          style: style ??
+              AppTextStyle.smallBodyBold
+                  .copyWith(fontSize: 11.sp, color: AppColors.primaryColor),
+        ),
+        const SizedBox(
+          width: 5,
+        ),
+        Container(
+          width: 5,
+          height: 5,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.primaryColor,
+          ),
+        ),
+        const SizedBox(
+          width: 5,
+        ),
+        Text(
+          time,
+          style: style ??
+              AppTextStyle.smallBodyBold
+                  .copyWith(fontSize: 11.sp, color: AppColors.primaryColor),
+        ),
+      ],
     );
   }
 }
@@ -46,8 +95,6 @@ class DistanceTimeIndicatorContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           distance,

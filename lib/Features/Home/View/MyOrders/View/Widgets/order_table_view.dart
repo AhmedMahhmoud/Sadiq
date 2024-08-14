@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
+import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/order_table_item_details_bs.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/orders_filteration.dart';
 
 class OrdersTableView extends StatelessWidget {
@@ -84,7 +85,22 @@ class OrdersTableView extends StatelessWidget {
                   child: ListView.separated(
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, i) {
-                        return const OrderTableItem();
+                        return InkWell(
+                            onTap: () {
+                              showModalBottomSheet(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.r),
+                                      topRight: Radius.circular(20.r)),
+                                ),
+                                context: context,
+                                backgroundColor: Colors.transparent,
+                                isScrollControlled: true,
+                                builder: (context) =>
+                                    const OrderItemDetailsBS(),
+                              );
+                            },
+                            child: const OrderTableItem());
                       },
                       separatorBuilder: (context, index) {
                         return SizedBox(
