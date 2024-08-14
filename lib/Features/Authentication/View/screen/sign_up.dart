@@ -94,6 +94,8 @@ class SignUpScreen extends StatelessWidget {
                         top: MediaQuery.sizeOf(context).height * 0.001,
                         left: 10.w,
                         child: BackBtn(
+                          height: 39.59,
+                          width: 39.59,
                           onClick: () {
                             authCubit
                                 .changeSignUpStep(authCubit.signUpStep - 1);

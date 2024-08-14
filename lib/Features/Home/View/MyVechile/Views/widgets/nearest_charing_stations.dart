@@ -50,14 +50,15 @@ class NearestChargingStations extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30.w),
                     child: RoundedButton(
-                        navigationArrowEnabled: true,
-                        onPressed: () {
-                          RouteNavService.navigateToPage(
-                              const ChargingStationsScreen(), context);
-                        },
-                        title: 'عرض اقرب محطة شحن',
-                        style: AppTextStyle.smallBodyBold
-                            .copyWith(color: Colors.white)),
+                      navigationArrowEnabled: true,
+                      onPressed: () {
+                        RouteNavService.navigateToPage(
+                            const ChargingStationsScreen(), context);
+                      },
+                      title: 'عرض اقرب محطة شحن',
+                      style: AppTextStyle.smallBodyBold
+                          .copyWith(color: Colors.white),
+                    ),
                   )
                 ],
               )

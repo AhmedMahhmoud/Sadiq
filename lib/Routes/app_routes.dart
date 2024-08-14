@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:sadiq/Features/Authentication/View/screen/sign_in.dart';
-import 'package:sadiq/Features/Authentication/View/screen/sign_up.dart';
-import 'package:sadiq/Features/Authentication/View/screen/success.dart';
-import 'package:sadiq/Features/Home/View/Screen/home.dart';
-import 'package:sadiq/Features/Profile/Screen/profile.dart';
-import 'package:sadiq/Features/Setting/View/Screen/setting.dart';
-import 'package:sadiq/Features/Splash/View/Screen/splash_screen.dart';
-import 'package:sadiq/Features/support/View/Screens/support.dart';
-import 'package:sadiq/Routes/routes.dart';
 
+import '../Features/Authentication/View/screen/sign_in.dart';
+import '../Features/Authentication/View/screen/sign_up.dart';
+import '../Features/Authentication/View/screen/success.dart';
+import '../Features/Home/View/Screen/home.dart';
 import '../Features/Notification/View/Screen/notification.dart';
+import '../Features/Earnings/screen/earnings.dart';
+import '../Features/Policy/screen/policy.dart';
+import '../Features/Profile/Screen/profile.dart';
+import '../Features/Profile/Screen/profile_details.dart';
+import '../Features/Profile/Screen/subscription.dart';
+import '../Features/TermsAndCondictions/screen/terms_conditions.dart';
+import '../Features/Setting/View/Screen/setting.dart';
+import '../Features/Splash/View/Screen/splash_screen.dart';
+import '../Features/support/View/Screens/support.dart';
+import 'routes.dart';
 
 class AppRouter {
   static PageRouteBuilder<dynamic> _createRoute(Widget page) {
@@ -51,6 +56,17 @@ class AppRouter {
         return _createRoute(const SupportScreen());
       case AppRoutes.profile:
         return _createRoute(const ProfileScreen());
+      case AppRoutes.profileDetails:
+        return _createRoute(const ProfileDetailsScreen());
+      case AppRoutes.subscription:
+        return _createRoute(const SubscriptionScreen());
+      case AppRoutes.termsConditionsScreen:
+        return _createRoute(const TermsConditionsScreen());
+      case AppRoutes.policyScreen:
+        return _createRoute(const PolicyScreen());
+      case AppRoutes.earningsScreen:
+        return _createRoute(const EarningsScreen());
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

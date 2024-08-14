@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
-import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 
 class RoundedSvgContainer extends StatelessWidget {
   final Color borderColor;
