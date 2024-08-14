@@ -7,6 +7,7 @@ import '../../../Core/Theme/Colors/app_colors.dart';
 import '../../../Core/Theme/text/text_style.dart';
 import '../../../Routes/route_naviation_service.dart';
 import '../../Earnings/screen/earnings.dart';
+import '../../Setting/View/Screen/setting.dart';
 import '../Widgets/contact_details_card.dart';
 import '../Widgets/profile_card.dart';
 import '../Widgets/profile_tile.dart';
@@ -176,7 +177,9 @@ class ProfileScreen extends StatelessWidget {
             title: 'الإعدادات',
             icon: SvgAssetsPaths.setting,
             iconSize: const Size(22, 22),
-            onClick: () {},
+            onClick: () {
+              RouteNavService.navigateToPage(const SettingScreen(), context);
+            },
           ),
           ProfileTile(
             title: 'الشروط و الأحكام',
