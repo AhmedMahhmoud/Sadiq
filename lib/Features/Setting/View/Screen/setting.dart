@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
+import 'package:sadiq/Core/Shared/ui/secondary_app_bar.dart';
 import 'package:wheel_picker/wheel_picker.dart';
 import '../../../../Core/Paths/image_paths.dart';
 import '../../../../Core/Shared/ui/buttons/back_btn.dart';
@@ -27,6 +28,9 @@ class SettingScreen extends StatelessWidget {
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            SecondaryAppHeader(
+              bgColor: AppColors.iconsBackgroundColor.withOpacity(0.1),
+            ),
             inAppStart
                 ? Container(
                     color: const Color(0xfff2f5ff),

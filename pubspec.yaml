@@ -56,10 +56,11 @@ dependencies:
 
   flutter_chat_bubble: ^2.0.2
 
-
-
   google_maps_flutter: ^2.5.3
   geolocator: ^11.1.0
+  dotted_border: ^2.1.0
+  image_picker: ^1.0.8
+  smooth_star_rating_null_safety: ^1.0.4+2
 
 dev_dependencies:
   flutter_test:

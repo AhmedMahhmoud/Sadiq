@@ -45,11 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
             return true;
           },
           child: Scaffold(
-            appBar: AppbarHeader(
-              backGC: state.currentIndex == 2
-                  ? AppColors.backgroundSecondaryColor
-                  : Colors.white,
-            ),
+            appBar: state.routes.isNotEmpty
+                ? null
+                : AppbarHeader(
+                    backGC: state.currentIndex == 2
+                        ? AppColors.backgroundSecondaryColor
+                        : Colors.white,
+                  ),
             backgroundColor: AppColors.backgroundSecondaryColor,
             body: Stack(
               alignment: Alignment.bottomCenter,

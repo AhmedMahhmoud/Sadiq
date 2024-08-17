@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadiq/Core/Shared/ui/secondary_app_bar.dart';
 
 import '../../../Core/Shared/ui/Pickers/custom_date_picker_widget.dart';
 import '../../../Core/Shared/ui/buttons/back_btn.dart';
@@ -18,11 +19,14 @@ class EarningsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HomeRoundedBottomCard(
-          height: 78,
+          height: 55.h,
           widget: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Column(
               children: [
+                const SecondaryAppHeader(
+                  bgColor: Colors.white,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,

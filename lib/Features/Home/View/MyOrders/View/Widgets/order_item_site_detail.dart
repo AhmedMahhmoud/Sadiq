@@ -89,8 +89,8 @@ class OrderItemSiteDetail extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        const Center(
-          child: DrivierCallButton(),
+        Center(
+          child: DrivierCallButton(onTapp: () {}),
         )
       ],
     );

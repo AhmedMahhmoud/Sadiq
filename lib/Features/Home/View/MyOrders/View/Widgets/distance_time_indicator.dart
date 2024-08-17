@@ -7,28 +7,35 @@ class DistanceTimeIndicator extends StatelessWidget {
   final String distance;
   final String time;
   final TextStyle? style;
+  final Size? size;
+  final Color? bgColor;
   const DistanceTimeIndicator({
     Key? key,
     required this.distance,
     required this.time,
+    this.bgColor,
+    this.size,
     this.style,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 260,
-      height: 30,
+      width: size?.width ?? 260,
+      height: size?.height ?? 30,
       decoration: BoxDecoration(
-        color: AppColors.primaryColor.withOpacity(0.05),
+        color: bgColor ?? AppColors.primaryColor.withOpacity(0.05),
         border: Border.all(
           width: 1,
           color: AppColors.secondaryColor.withOpacity(0.20),
         ),
         borderRadius: BorderRadius.circular(5.r),
       ),
-      child:
-          CenteredDistanceTimeIndicatorContent(distance: distance, time: time),
+      child: CenteredDistanceTimeIndicatorContent(
+        distance: distance,
+        time: time,
+        style: style,
+      ),
     );
   }
 }

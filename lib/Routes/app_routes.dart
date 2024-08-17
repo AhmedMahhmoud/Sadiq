@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sadiq/Features/Home/View/MyOrders/View/Screens/change_order_status.dart';
 
 import '../Features/Authentication/View/screen/sign_in.dart';
 import '../Features/Authentication/View/screen/sign_up.dart';
@@ -66,7 +67,8 @@ class AppRouter {
         return _createRoute(const PolicyScreen());
       case AppRoutes.earningsScreen:
         return _createRoute(const EarningsScreen());
-
+      case AppRoutes.changeOrderStatus:
+        return _createRoute(const ChangeOrderStatus());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(

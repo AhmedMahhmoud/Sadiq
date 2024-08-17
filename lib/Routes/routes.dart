@@ -13,4 +13,5 @@ class AppRoutes {
   static const String termsConditionsScreen = '/termsConditionsScreen';
   static const String policyScreen = '/policyScreen';
   static const String earningsScreen = '/EarningsScreen';
+  static const String changeOrderStatus = '/ChangeOrderStatus';
 }

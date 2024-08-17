@@ -50,10 +50,13 @@ class SvgAssetsPaths {
   static const String creditCard = "$imgPath/creditCard.svg";
   static const String setting = "$imgPath/settings.svg";
   static const String termsConditions = "$imgPath/termsconditions.svg";
+  static const String upload = "$imgPath/upload.svg";
   static const String privacyPolicy = "$imgPath/privacyPolicy.svg";
   static const String logout = "$imgPath/logout.svg";
   static const String refresh = "$imgPath/refresh.svg";
   static const String camera = "$imgPath/camera.svg";
   static const String close = "$imgPath/close.svg";
   static const String completed = "$imgPath/completed.svg";
+  static const String arrowLeft = "$imgPath/arrow_left.svg";
+  static const String late = "$imgPath/late.svg";
 }

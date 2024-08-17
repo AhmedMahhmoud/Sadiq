@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/buttons/rounded/rounded_button.dart';
@@ -7,6 +8,10 @@ import 'package:sadiq/Core/Shared/ui/buttons/rounded/rounded_svg_container.dart'
 import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
+import 'package:sadiq/Features/BottomNav/bloc/home_bloc.dart';
+import 'package:sadiq/Features/Home/View/MyOrders/View/Screens/change_order_status.dart';
+import 'package:sadiq/Features/Home/View/MyOrders/cubit/order_details_stepper_cubit.dart';
+import 'package:sadiq/Routes/routes.dart';
 
 class ActiveOrdersDisplay extends StatelessWidget {
   const ActiveOrdersDisplay({
@@ -126,7 +131,10 @@ class ActiveOrdersDisplay extends StatelessWidget {
               const Spacer(),
               Center(
                 child: RoundedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<OrderDetailsStepperCubit>().resetCubit();
+                    Navigator.pushNamed(context, AppRoutes.changeOrderStatus);
+                  },
                   style: AppTextStyle.bodyBold
                       .copyWith(color: Colors.white, fontSize: 14),
                   title: 'تحديث الحالة',
