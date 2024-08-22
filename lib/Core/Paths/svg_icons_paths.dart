@@ -59,4 +59,5 @@ class SvgAssetsPaths {
   static const String completed = "$imgPath/completed.svg";
   static const String arrowLeft = "$imgPath/arrow_left.svg";
   static const String late = "$imgPath/late.svg";
+  static const String warning = "$imgPath/warning.svg";
 }

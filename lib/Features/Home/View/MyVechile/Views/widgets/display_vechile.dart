@@ -38,7 +38,7 @@ class DisplayVechile extends StatelessWidget {
           ),
           Row(
             children: [
-              SvgDisplay(
+              const SvgDisplay(
                   path: SvgAssetsPaths.location, color: AppColors.primaryColor),
               const SizedBox(
                 width: 10,

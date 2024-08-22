@@ -50,15 +50,19 @@ class CustomOutlineButton extends StatelessWidget {
             onTap: () => onPress(),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (icon != null) ...[
                   icon!,
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 5),
                 ],
-                Text(
-                  text,
-                  style: AppTextStyle.smallBodyBold.copyWith(
-                    color: textColor ?? AppColors.primaryColor,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: Text(
+                    text,
+                    style: AppTextStyle.smallBodyBold.copyWith(
+                      color: textColor ?? AppColors.primaryColor,
+                    ),
                   ),
                 ),
               ],

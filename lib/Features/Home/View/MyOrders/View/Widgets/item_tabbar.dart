@@ -3,18 +3,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/buttons/rounded/rounded_svg_container.dart';
 import 'package:sadiq/Core/Shared/ui/form/gradient_text.dart';
-import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Core/extenstions/date_extenstion.dart';
+import 'package:sadiq/Features/Home/View/MyOrders/View/Screens/order_details_view.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/distance_time_indicator.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/distance_time_vertical_dots.dart';
-import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/driver_call_button.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/order_item_site_detail.dart';
 
 class ItemTapBar extends StatefulWidget {
+  final bool isNewOrder;
   const ItemTapBar({
+    required this.isNewOrder,
     super.key,
   });
 
@@ -100,15 +101,15 @@ class _ItemTapBarState extends State<ItemTapBar> {
                             SizedBox(
                               height: 45.h,
                             ),
-                            const RoundedSvgContainer(
+                            RoundedSvgContainer(
                               borderColor: AppColors.secondaryColor,
                               backgroundColor: AppColors.primaryColor,
                               borderWidth: 2,
-                              size: 35,
+                              size: widget.isNewOrder ? 45 : 35,
                               svgPath: SvgAssetsPaths.gradientBox,
                             ),
                             const BuildConnectingLine(),
-                            ..._buildVerticalDots(10),
+                            ..._buildVerticalDots(widget.isNewOrder ? 4 : 10),
                             SizedBox(
                               width: 45.7.w,
                               child: Row(
@@ -134,12 +135,12 @@ class _ItemTapBarState extends State<ItemTapBar> {
                                 ],
                               ),
                             ),
-                            ..._buildVerticalDots(4),
-                            const RoundedSvgContainer(
+                            ..._buildVerticalDots(5),
+                            RoundedSvgContainer(
                               borderColor: AppColors.secondaryColor,
                               backgroundColor: AppColors.primaryColor,
                               borderWidth: 2,
-                              size: 35,
+                              size: widget.isNewOrder ? 45 : 35,
                               svgPath: SvgAssetsPaths.gradientlocation,
                             ),
                           ]),
@@ -157,6 +158,7 @@ class _ItemTapBarState extends State<ItemTapBar> {
                               const SizedBox(height: 5),
                               OrderItemSiteDetail(
                                   site: 'الوجهة ١',
+                                  isNewOrder: widget.isNewOrder,
                                   isDeliveringSite: true,
                                   timeLeft: DateTime.now().toArabicTime()),
                               SizedBox(
@@ -174,16 +176,21 @@ class _ItemTapBarState extends State<ItemTapBar> {
                                 height: 10.h,
                               ),
                               OrderItemSiteDetail(
+                                isNewOrder: widget.isNewOrder,
                                 site: 'الوجهة ٢',
                                 timeLeft: DateTime.now().toArabicTime(),
                                 isDeliveringSite: false,
                               ),
+                              if (widget.isNewOrder) ...[
+                                Spacer(),
+                                AcceptOrRejectOrder()
+                              ]
                             ],
                           ),
                         ],
                       ),
                     ),
-                    const Text('Content for تفاصيل الطلب'),
+                    OrderDetailsView(isNewOrder: widget.isNewOrder),
                   ],
                 ),
               ),

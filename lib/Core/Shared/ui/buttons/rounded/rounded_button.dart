@@ -66,7 +66,11 @@ class RoundedButton extends StatelessWidget {
                     ],
                   )
                 : iconWidget == null
-                    ? Text(title, textAlign: TextAlign.center, style: style)
+                    ? Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Text(title,
+                            textAlign: TextAlign.center, style: style),
+                      )
                     : Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -75,8 +79,11 @@ class RoundedButton extends StatelessWidget {
                           SizedBox(
                             width: width! == 112 ? 5 : 10,
                           ),
-                          Text(title,
-                              textAlign: TextAlign.center, style: style),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 5),
+                            child: Text(title,
+                                textAlign: TextAlign.center, style: style),
+                          ),
                         ],
                       ),
           ),

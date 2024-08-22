@@ -20,9 +20,9 @@ class MyVechile extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Column(children: [
-        HomeRoundedBottomCard(
-          widget: const DisplayVechile(),
-          height: 90.h,
+        const HomeRoundedBottomCard(
+          widget: DisplayVechile(),
+          height: 170,
         ),
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.40,

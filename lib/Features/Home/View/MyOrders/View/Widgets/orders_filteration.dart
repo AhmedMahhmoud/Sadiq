@@ -7,6 +7,7 @@ import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Core/extenstions/date_extenstion.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/active_orders_display.dart';
+import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/order_table_item_details_bs.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/order_table_view.dart';
 
 class OrdersFilteration extends StatefulWidget {
@@ -59,7 +60,16 @@ class _OrdersFilterationState extends State<OrdersFilteration> {
               height: 5.h,
             ),
             _selectedOrderIndex == 0
-                ? const ActiveOrdersDisplay()
+                ? InkWell(
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (context) =>
+                            const OrderItemDetailsBS(isNewOrder: true),
+                      );
+                    },
+                    child: const ActiveOrdersDisplay())
                 : SizedBox(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

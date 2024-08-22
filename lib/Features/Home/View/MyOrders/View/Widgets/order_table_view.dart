@@ -97,7 +97,7 @@ class OrdersTableView extends StatelessWidget {
                                 backgroundColor: Colors.transparent,
                                 isScrollControlled: true,
                                 builder: (context) =>
-                                    const OrderItemDetailsBS(),
+                                    const OrderItemDetailsBS(isNewOrder: false),
                               );
                             },
                             child: const OrderTableItem());

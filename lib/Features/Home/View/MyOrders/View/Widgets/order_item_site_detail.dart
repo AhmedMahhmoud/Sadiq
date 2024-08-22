@@ -12,10 +12,12 @@ class OrderItemSiteDetail extends StatelessWidget {
   final String site;
   final bool isDeliveringSite;
   final String timeLeft;
+  final bool isNewOrder;
   const OrderItemSiteDetail({
     required this.isDeliveringSite,
     required this.timeLeft,
     required this.site,
+    required this.isNewOrder,
     super.key,
   });
 
@@ -44,20 +46,22 @@ class OrderItemSiteDetail extends StatelessWidget {
                     isDeliveringSite ? 'موقع الاستلام' : 'موقع التسليم',
                     style: AppTextStyle.largeBodyBold.copyWith(fontSize: 13.sp),
                   ),
-                  Row(
-                    children: [
-                      const SvgDisplay(
-                          path: SvgAssetsPaths.completed, size: Size(15, 15)),
-                      SizedBox(
-                        width: 6.w,
-                      ),
-                      Text(
-                        'تم الاستلام',
-                        style: AppTextStyle.smallBodyBold.copyWith(
-                            fontSize: 13.sp, color: AppColors.primaryColor),
-                      )
-                    ],
-                  )
+                  if (!isNewOrder) ...[
+                    Row(
+                      children: [
+                        const SvgDisplay(
+                            path: SvgAssetsPaths.completed, size: Size(15, 15)),
+                        SizedBox(
+                          width: 6.w,
+                        ),
+                        Text(
+                          'تم الاستلام',
+                          style: AppTextStyle.smallBodyBold.copyWith(
+                              fontSize: 13.sp, color: AppColors.primaryColor),
+                        )
+                      ],
+                    )
+                  ]
                 ],
               ),
             ),
@@ -88,10 +92,12 @@ class OrderItemSiteDetail extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 10),
-        Center(
-          child: DrivierCallButton(onTapp: () {}),
-        )
+        if (!isNewOrder) ...[
+          const SizedBox(height: 10),
+          Center(
+            child: DrivierCallButton(onTapp: () {}),
+          )
+        ]
       ],
     );
   }

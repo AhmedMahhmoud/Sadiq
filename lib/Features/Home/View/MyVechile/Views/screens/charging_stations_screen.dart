@@ -43,7 +43,7 @@ class ChargingStationsScreen extends StatelessWidget {
                 ),
               ),
               Positioned(
-                  bottom: 50.h,
+                  bottom: 65.h,
                   child: SizedBox(
                       width: MediaQuery.sizeOf(context).width,
                       height: 200.h,

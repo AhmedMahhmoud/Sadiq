@@ -76,19 +76,22 @@ class _StationListState extends State<StationList> {
                     backgroundImage: NetworkImage(stations[index]["image"]!)),
                 const SizedBox(width: 10),
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(stations[index]["title"]!,
-                          style: AppTextStyle.bodyBold),
-                      SizedBox(
-                        width: 200.w,
-                        child: Text(stations[index]["subtitle"]!,
-                            style: AppTextStyle.smallBody
-                                .copyWith(fontWeight: FontWeight.w300)),
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(stations[index]["title"]!,
+                            style: AppTextStyle.bodyBold),
+                        SizedBox(
+                          width: 200.w,
+                          child: Text(stations[index]["subtitle"]!,
+                              style: AppTextStyle.smallBody
+                                  .copyWith(fontWeight: FontWeight.w300)),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 RoundedButton(
