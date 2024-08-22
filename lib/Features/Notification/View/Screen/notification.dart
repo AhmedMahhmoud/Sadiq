@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../Core/Paths/svg_icons_paths.dart';
 import '../../../../Core/Shared/ui/images/svg_display.dart';
+import '../../../../Core/Shared/ui/secondary_app_bar.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
 
 import '../../../../Core/Theme/text/text_style.dart';
@@ -15,8 +16,11 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SecondaryAppHeader(
+          bgColor: Colors.white,
+        ),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 15.h),
+          padding: EdgeInsets.symmetric(vertical: 7.h),
           width: MediaQuery.sizeOf(context).width,
           color: Colors.white,
           child: Center(

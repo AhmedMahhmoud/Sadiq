@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
-import 'package:sadiq/Core/Shared/ui/secondary_app_bar.dart';
 import 'package:wheel_picker/wheel_picker.dart';
 import '../../../../Core/Paths/image_paths.dart';
 import '../../../../Core/Shared/ui/buttons/back_btn.dart';
@@ -10,6 +9,7 @@ import '../../../../Core/Shared/ui/buttons/rounded/rounded_button.dart';
 import '../../../../Core/Shared/ui/images/app_logo_with_title.dart';
 
 import '../../../../Core/Shared/ui/images/svg_display.dart';
+import '../../../../Core/Shared/ui/secondary_app_bar.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
 import '../../../../Core/Theme/text/text_style.dart';
 import '../../../Authentication/View/widgets/login_checkmark.dart';
@@ -28,8 +28,8 @@ class SettingScreen extends StatelessWidget {
         return Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SecondaryAppHeader(
-              bgColor: AppColors.iconsBackgroundColor.withOpacity(0.1),
+            const SecondaryAppHeader(
+              bgColor: AppColors.backgroundSecondaryColor,
             ),
             inAppStart
                 ? Container(

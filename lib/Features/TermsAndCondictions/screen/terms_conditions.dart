@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../Core/Shared/ui/buttons/back_btn.dart';
+import '../../../Core/Shared/ui/secondary_app_bar.dart';
 import '../../../Core/Theme/Colors/app_colors.dart';
 import '../../../Core/Theme/text/text_style.dart';
 import '../widgets/terms_and_policy_card.dart';
@@ -14,6 +15,9 @@ class TermsConditionsScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SecondaryAppHeader(
+          bgColor: Colors.white,
+        ),
         Container(
           padding: EdgeInsets.symmetric(
             horizontal: 12.w,

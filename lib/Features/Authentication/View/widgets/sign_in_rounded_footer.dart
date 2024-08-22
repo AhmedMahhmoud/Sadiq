@@ -65,13 +65,21 @@ class SignInRoundedFooter extends StatelessWidget {
                 height: 5.h,
               ),
               Center(
-                  child: RoundedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/setting');
-                },
-                title: 'تسجيل الدخول',
-                style: AppTextStyle.smallBodyBold.copyWith(color: Colors.white),
-              )),
+                child: RoundedButton(
+                  onPressed: () {
+                    /*Navigator.pushNamed(
+                      context,
+                      '/setting',
+                      arguments: true,
+                    );*/
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (route) => false);
+                  },
+                  title: 'تسجيل الدخول',
+                  style:
+                      AppTextStyle.smallBodyBold.copyWith(color: Colors.white),
+                ),
+              ),
               const SizedBox(
                 height: 5,
               ),

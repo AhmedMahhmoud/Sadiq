@@ -20,51 +20,55 @@ class EarningsScreen extends StatelessWidget {
       children: [
         HomeRoundedBottomCard(
           height: 55.h,
-          widget: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            child: Column(
-              children: [
-                const SecondaryAppHeader(
-                  bgColor: Colors.white,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          widget: Column(
+            children: [
+              const SecondaryAppHeader(
+                bgColor: Colors.white,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Column(
                   children: [
-                    Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 5.h),
-                        Text(
-                          'الأرباح',
-                          style: AppTextStyle.headline.copyWith(
-                              color: AppColors.secondaryColor,
-                              fontWeight: FontWeight.w500),
+                        Column(
+                          children: [
+                            SizedBox(height: 5.h),
+                            Text(
+                              'الأرباح',
+                              style: AppTextStyle.headline.copyWith(
+                                  color: AppColors.secondaryColor,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                        const BackBtn(
+                          height: 35,
+                          iconSize: 22,
+                          width: 35,
                         ),
                       ],
                     ),
-                    const BackBtn(
-                      height: 35,
-                      iconSize: 22,
-                      width: 35,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const TotalMoneyCard(
+                          title: 'الدفعات\nالقادمة',
+                          amount: '١،٥٠٠',
+                        ),
+                        SizedBox(width: 5.w),
+                        const TotalMoneyCard(
+                          title: 'اجمالي\nالأرباح',
+                          amount: '١،٥٠٠',
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const TotalMoneyCard(
-                      title: 'الدفعات\nالقادمة',
-                      amount: '١،٥٠٠',
-                    ),
-                    SizedBox(width: 5.w),
-                    const TotalMoneyCard(
-                      title: 'اجمالي\nالأرباح',
-                      amount: '١،٥٠٠',
-                    ),
-                  ],
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
         SizedBox(height: 15.h),
