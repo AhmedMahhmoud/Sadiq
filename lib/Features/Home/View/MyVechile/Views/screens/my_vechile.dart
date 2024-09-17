@@ -22,7 +22,7 @@ class MyVechile extends StatelessWidget {
       child: Column(children: [
         const HomeRoundedBottomCard(
           widget: DisplayVechile(),
-          height: 170,
+          height: 163.6,
         ),
         SizedBox(
           height: MediaQuery.sizeOf(context).height * 0.40,

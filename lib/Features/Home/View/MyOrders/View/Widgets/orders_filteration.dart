@@ -60,16 +60,7 @@ class _OrdersFilterationState extends State<OrdersFilteration> {
               height: 5.h,
             ),
             _selectedOrderIndex == 0
-                ? InkWell(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        builder: (context) =>
-                            const OrderItemDetailsBS(isNewOrder: true),
-                      );
-                    },
-                    child: const ActiveOrdersDisplay())
+                ? const ActiveOrdersDisplay()
                 : SizedBox(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
