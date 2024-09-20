@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sadiq/Features/Authentication/View/cubit/auth_cubit.dart';
+import 'package:sadiq/Features/Authentication/Presentation/cubit/auth_cubit.dart';
 import 'package:sadiq/Features/BottomNav/bloc/home_bloc.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/cubit/order_details_stepper_cubit.dart';
 

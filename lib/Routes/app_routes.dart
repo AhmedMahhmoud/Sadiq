@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Screens/change_order_status.dart';
 
-import '../Features/Authentication/View/screen/sign_in.dart';
-import '../Features/Authentication/View/screen/sign_up.dart';
-import '../Features/Authentication/View/screen/success.dart';
+import '../Features/Authentication/Presentation/screen/sign_in.dart';
+import '../Features/Authentication/Presentation/screen/sign_up.dart';
+import '../Features/Authentication/Presentation/screen/success.dart';
 import '../Features/Home/View/Screen/home.dart';
 import '../Features/Notification/View/Screen/notification.dart';
 import '../Features/Earnings/screen/earnings.dart';

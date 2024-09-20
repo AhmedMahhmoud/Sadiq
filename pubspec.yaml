@@ -54,6 +54,13 @@ dependencies:
   #Wheel Picker
   wheel_picker: ^0.0.5
 
+  #dartz:
+  dartz: ^0.10.1
+
+  shared_preferences: ^2.3.2
+
+  internet_connection_checker: ^2.0.0
+
   flutter_chat_bubble: ^2.0.2
 
   google_maps_flutter: ^2.5.3

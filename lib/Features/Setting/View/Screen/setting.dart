@@ -12,7 +12,7 @@ import '../../../../Core/Shared/ui/images/svg_display.dart';
 import '../../../../Core/Shared/ui/secondary_app_bar.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
 import '../../../../Core/Theme/text/text_style.dart';
-import '../../../Authentication/View/widgets/login_checkmark.dart';
+import '../../../Authentication/Presentation/widgets/login_checkmark.dart';
 import '../cubit/setting_cubit.dart';
 import '../widgets/setting_card.dart';
 

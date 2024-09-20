@@ -5,7 +5,7 @@ import 'package:sadiq/Core/Shared/ui/buttons/rounded/rounded_button.dart';
 import 'package:sadiq/Core/Shared/ui/form/custom_text_field.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
-import 'package:sadiq/Features/Authentication/View/widgets/login_checkmark.dart';
+import 'package:sadiq/Features/Authentication/Presentation/widgets/login_checkmark.dart';
 
 class SignInRoundedFooter extends StatelessWidget {
   const SignInRoundedFooter({

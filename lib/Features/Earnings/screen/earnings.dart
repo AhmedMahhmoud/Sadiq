@@ -7,7 +7,7 @@ import '../../../Core/Shared/ui/buttons/back_btn.dart';
 import '../../../Core/Shared/ui/cards/home_rounded_bottom_card.dart';
 import '../../../Core/Theme/Colors/app_colors.dart';
 import '../../../Core/Theme/text/text_style.dart';
-import '../../Authentication/View/widgets/login_checkmark.dart';
+import '../../Authentication/Presentation/widgets/login_checkmark.dart';
 import '../../Home/View/MyOrders/View/Widgets/order_table_view.dart';
 
 class EarningsScreen extends StatelessWidget {
