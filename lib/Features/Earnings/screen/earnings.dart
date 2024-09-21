@@ -7,7 +7,7 @@ import '../../../Core/Shared/ui/buttons/back_btn.dart';
 import '../../../Core/Shared/ui/cards/home_rounded_bottom_card.dart';
 import '../../../Core/Theme/Colors/app_colors.dart';
 import '../../../Core/Theme/text/text_style.dart';
-import '../../Authentication/View/widgets/login_checkmark.dart';
+import '../../Authentication/Presentation/widgets/login_checkmark.dart';
 import '../../Home/View/MyOrders/View/Widgets/order_table_view.dart';
 
 class EarningsScreen extends StatelessWidget {
@@ -19,52 +19,56 @@ class EarningsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HomeRoundedBottomCard(
-          height: 200,
-          widget: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.w),
-            child: Column(
-              children: [
-                const SecondaryAppHeader(
-                  bgColor: Colors.white,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          height: 55.h,
+          widget: Column(
+            children: [
+              const SecondaryAppHeader(
+                bgColor: Colors.white,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Column(
                   children: [
-                    Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 5.h),
-                        Text(
-                          'الأرباح',
-                          style: AppTextStyle.headline.copyWith(
-                              color: AppColors.secondaryColor,
-                              fontWeight: FontWeight.w500),
+                        Column(
+                          children: [
+                            SizedBox(height: 5.h),
+                            Text(
+                              'الأرباح',
+                              style: AppTextStyle.headline.copyWith(
+                                  color: AppColors.secondaryColor,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                        const BackBtn(
+                          height: 35,
+                          iconSize: 22,
+                          width: 35,
                         ),
                       ],
                     ),
-                    const BackBtn(
-                      height: 35,
-                      iconSize: 22,
-                      width: 35,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const TotalMoneyCard(
+                          title: 'الدفعات\nالقادمة',
+                          amount: '١،٥٠٠',
+                        ),
+                        SizedBox(width: 5.w),
+                        const TotalMoneyCard(
+                          title: 'اجمالي\nالأرباح',
+                          amount: '١،٥٠٠',
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const TotalMoneyCard(
-                      title: 'الدفعات\nالقادمة',
-                      amount: '١،٥٠٠',
-                    ),
-                    SizedBox(width: 5.w),
-                    const TotalMoneyCard(
-                      title: 'اجمالي\nالأرباح',
-                      amount: '١،٥٠٠',
-                    ),
-                  ],
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ),
         SizedBox(height: 15.h),

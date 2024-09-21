@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../Core/Shared/ui/secondary_app_bar.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
 import '../../../../Core/Theme/text/text_style.dart';
-import '../../../Home/View/Widgets/appbar_header.dart';
 
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
@@ -12,11 +12,14 @@ class SupportScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.sizeOf(context).height,
+      height: MediaQuery.sizeOf(context).height * 0.825,
       child: Column(
         children: [
+          const SecondaryAppHeader(
+            bgColor: Colors.white,
+          ),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 15.h),
+            padding: EdgeInsets.symmetric(vertical: 7.h),
             width: MediaQuery.sizeOf(context).width,
             color: Colors.white,
             child: Center(

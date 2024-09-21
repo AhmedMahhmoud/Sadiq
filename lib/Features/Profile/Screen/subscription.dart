@@ -11,51 +11,56 @@ class SubscriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 7.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SecondaryAppHeader(
-              bgColor: AppColors.iconsBackgroundColor.withOpacity(0.2)),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SecondaryAppHeader(
+            bgColor: AppColors.iconsBackgroundColor.withOpacity(0.2)),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
+          child: Column(
             children: [
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 5.h),
-                  Text(
-                    'خطة اشتراكك',
-                    style: AppTextStyle.headline.copyWith(
-                        color: AppColors.secondaryColor,
-                        fontWeight: FontWeight.w500),
+                  Column(
+                    children: [
+                      SizedBox(height: 5.h),
+                      Text(
+                        'خطة اشتراكك',
+                        style: AppTextStyle.headline.copyWith(
+                            color: AppColors.secondaryColor,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  const BackBtn(
+                    height: 35,
+                    iconSize: 22,
+                    width: 35,
                   ),
                 ],
               ),
-              const BackBtn(
-                height: 35,
-                iconSize: 22,
-                width: 35,
+              const SubscriptionPlanCard(
+                amount: '١،٥٠٠',
+                isCurrentPlan: true,
+              ),
+              Text(
+                'خطط اخري',
+                style: AppTextStyle.headline.copyWith(
+                    color: AppColors.secondaryColor,
+                    fontWeight: FontWeight.w500),
+              ),
+              const SubscriptionPlanCard(
+                amount: '٢،٥٠٠',
+                discountPercentage: '٣٠',
+                discountAmount: '٣،٥٠٠',
               ),
             ],
           ),
-          const SubscriptionPlanCard(
-            amount: '١،٥٠٠',
-            isCurrentPlan: true,
-          ),
-          Text(
-            'خطط اخري',
-            style: AppTextStyle.headline.copyWith(
-                color: AppColors.secondaryColor, fontWeight: FontWeight.w500),
-          ),
-          const SubscriptionPlanCard(
-            amount: '٢،٥٠٠',
-            discountPercentage: '٣٠',
-            discountAmount: '٣،٥٠٠',
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

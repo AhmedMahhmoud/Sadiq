@@ -5,6 +5,8 @@ import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/new_orders_display.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/orders_filteration.dart';
 
+import '../Widgets/order_table_item_details_bs.dart';
+
 class MyOrders extends StatelessWidget {
   const MyOrders({super.key});
 
@@ -31,19 +33,28 @@ class MyOrders extends StatelessWidget {
                     ),
                     Expanded(
                       child: ListView.separated(
-                          physics: const BouncingScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => Padding(
-                                padding: EdgeInsets.all(5.0.w),
-                                child: const NewOrdersDisplay(),
-                              ),
-                          separatorBuilder: (context, index) => SizedBox(
-                                width: 10.w,
-                              ),
-                          itemCount: 2),
-                    ),
-                    SizedBox(
-                      height: 5.h,
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: InkWell(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  builder: (context) =>
+                                      const OrderItemDetailsBS(
+                                          isNewOrder: true),
+                                );
+                              },
+                              child: const NewOrdersDisplay()),
+                        ),
+                        separatorBuilder: (context, index) => SizedBox(
+                          width: 10.w,
+                        ),
+                        itemCount: 2,
+                      ),
                     )
                   ],
                 ),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:easy_stepper/easy_stepper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sadiq/Features/Authentication/View/sections/choose_type_step.dart';
-import 'package:sadiq/Features/Authentication/View/sections/main_details_step.dart';
+import 'package:sadiq/Features/Authentication/Presentation/sections/choose_type_step.dart';
+import 'package:sadiq/Features/Authentication/Presentation/sections/main_details_step.dart';
 
 import '../../../../Core/Paths/image_paths.dart';
 import '../../../../Core/Shared/ui/buttons/back_btn.dart';

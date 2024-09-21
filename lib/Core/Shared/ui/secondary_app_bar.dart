@@ -22,7 +22,7 @@ class SecondaryAppHeader extends StatelessWidget {
       color: bgColor,
       height: 30.h,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Row(
           children: [
             const SvgDisplay(path: SvgAssetsPaths.logoHorizontal),

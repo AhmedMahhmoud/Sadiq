@@ -13,7 +13,7 @@ class PriceDisplay extends StatelessWidget {
     return Center(
       child: Container(
         width: 359,
-        height: 144,
+        height: 148,
         decoration: BoxDecoration(
             color: AppColors.primaryColor.withOpacity(0.05),
             borderRadius: BorderRadius.circular(10.r),
