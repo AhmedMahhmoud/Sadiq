@@ -14,8 +14,7 @@ class NewOrdersDisplay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15.r),
@@ -60,26 +59,23 @@ class NewOrdersDisplay extends StatelessWidget {
                         'موقع الإستلام',
                         style: AppTextStyle.smallBodyBold,
                       ),
-                      const SizedBox(
-                        width: 5,
+                      SizedBox(
+                        width: 5.w,
                       ),
-                      Container(
-                        child: SizedBox(
-                          width: 140.w,
-                          child: Text(
-                            DateTime.now().toArabicTime(),
-                            style: AppTextStyle.smallBodyBold.copyWith(
-                                fontSize: 11.sp,
-                                color:
-                                    AppColors.secondaryColor.withOpacity(0.5)),
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                      SizedBox(
+                        width: 140.w,
+                        child: Text(
+                          DateTime.now().toArabicTime(),
+                          style: AppTextStyle.smallBodyBold.copyWith(
+                              fontSize: 11.sp,
+                              color: AppColors.secondaryColor.withOpacity(0.5)),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    width: 5,
+                  SizedBox(
+                    width: 5.w,
                   ),
                   Text(
                     'اسم الشارع، اسم الحي، المدينة',

@@ -19,7 +19,7 @@ class EarningsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         HomeRoundedBottomCard(
-          height: 55.h,
+          height: 200,
           widget: Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Column(

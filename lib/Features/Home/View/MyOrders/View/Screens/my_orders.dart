@@ -12,6 +12,7 @@ class MyOrders extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           HomeRoundedBottomCard(
             widget: SizedBox(
@@ -22,32 +23,33 @@ class MyOrders extends StatelessWidget {
                   children: [
                     Text(
                       'طلبات جديدة (3)',
-                      style: AppTextStyle.largeBodyBold.copyWith(fontSize: 24),
+                      style:
+                          AppTextStyle.largeBodyBold.copyWith(fontSize: 24.sp),
                     ),
                     SizedBox(
                       height: 5.h,
                     ),
-                    Container(
-                      margin: const EdgeInsets.all(5),
-                      height: 140.h,
+                    Expanded(
                       child: ListView.separated(
-                          shrinkWrap: true,
                           physics: const BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => const Padding(
-                                padding: EdgeInsets.all(5.0),
-                                child: NewOrdersDisplay(),
+                          itemBuilder: (context, index) => Padding(
+                                padding: EdgeInsets.all(5.0.w),
+                                child: const NewOrdersDisplay(),
                               ),
                           separatorBuilder: (context, index) => SizedBox(
                                 width: 10.w,
                               ),
                           itemCount: 2),
+                    ),
+                    SizedBox(
+                      height: 5.h,
                     )
                   ],
                 ),
               ),
             ),
-            height: 90.h,
+            height: 300,
           ),
           const OrdersFilteration()
         ],

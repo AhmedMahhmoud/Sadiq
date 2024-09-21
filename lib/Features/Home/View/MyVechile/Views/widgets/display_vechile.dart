@@ -4,7 +4,7 @@ import 'package:sadiq/Core/Shared/ui/images/svg_display.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Features/Home/View/MyVechile/Views/widgets/vechile_info.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Features/Home/View/Widgets/vehicle_status.dart';
 
 class DisplayVechile extends StatelessWidget {
@@ -15,7 +15,7 @@ class DisplayVechile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(10.0.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -40,8 +40,8 @@ class DisplayVechile extends StatelessWidget {
             children: [
               const SvgDisplay(
                   path: SvgAssetsPaths.location, color: AppColors.primaryColor),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: 10.w,
               ),
               Text(
                 'حي الياسمين - الرياض - المملكة العربية السعودية',

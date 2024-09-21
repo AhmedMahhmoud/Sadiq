@@ -13,7 +13,7 @@ class HomeRoundedBottomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height.h,
+      height: height,
       width: MediaQuery.sizeOf(context).width,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -21,8 +21,8 @@ class HomeRoundedBottomCard extends StatelessWidget {
             BoxShadow(blurRadius: 15, color: Colors.black.withOpacity(0.2))
           ],
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20.r),
-              bottomRight: Radius.circular(20.r))),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20))),
       child: widget,
     );
   }

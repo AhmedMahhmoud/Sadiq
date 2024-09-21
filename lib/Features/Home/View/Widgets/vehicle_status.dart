@@ -49,8 +49,8 @@ class VechileStatus extends StatelessWidget {
           SlideInRight(
             duration: const Duration(milliseconds: 1200),
             child: SizedBox(
-              width: 235,
-              height: 168,
+              width: 200,
+              height: 150,
               child: PngDisplay(path: PngAssetsPaths.vehiclePng),
             ),
           )
