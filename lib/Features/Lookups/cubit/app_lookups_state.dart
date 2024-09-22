@@ -8,6 +8,8 @@ final class AppLookupsInitial extends AppLookupsState {}
 
 final class CitiesLookupsLoadingState extends AppLookupsState {}
 
+final class CompaniesLookupsLoadingState extends AppLookupsState {}
+
 final class AppLookupsLoadedState extends AppLookupsState {}
 
 final class AppLookupsErrorState extends AppLookupsState {

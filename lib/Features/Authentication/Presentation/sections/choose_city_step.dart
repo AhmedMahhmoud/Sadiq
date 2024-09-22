@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/CommonData/Models/city_model.dart';
+import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
 import 'package:sadiq/Core/Shared/ui/snackbar/custom_snackbar.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
@@ -66,6 +67,7 @@ class ChooseCityStep extends StatelessWidget {
                         ),
                       )
                     : CustomDropDown<CityModel>(
+                        locationIcon: SvgAssetsPaths.location,
                         options: lookupsCubit.cities,
                         selectedOption: authCubit.choosedCity,
                         onchange: (p0) {

@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:sadiq/Features/Lookups/Datasource/lookup_datasource.dart';
-import 'package:sadiq/Features/Lookups/Repository/lookups_repo.dart';
+import 'package:sadiq/Features/Lookups/Data/Datasource/lookup_datasource.dart';
+import 'package:sadiq/Features/Lookups/Data/Repository/lookups_repo.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
 class LookupsInj {

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sadiq/Core/CommonData/Models/city_model.dart';
-import 'package:sadiq/Features/Lookups/Repository/lookups_repo.dart';
+import 'package:sadiq/Features/Lookups/Data/Repository/lookups_repo.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
 mixin CityMixin on Cubit<AppLookupsState> {
@@ -16,4 +16,5 @@ mixin CityMixin on Cubit<AppLookupsState> {
       },
     );
   }
+  
 }

@@ -12,10 +12,12 @@ class CustomDropDown<T> extends StatelessWidget {
     required this.options,
     required this.hintText,
     required this.onchange,
+    required this.locationIcon,
     required this.selectedOption,
     required this.itemToString, // Function to convert item T to string
   });
   final String hintText;
+  final String locationIcon;
   final List<T> options;
   final Function(T?) onchange;
   final T? selectedOption;
@@ -40,8 +42,8 @@ class CustomDropDown<T> extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const SvgDisplay(
-                  path: SvgAssetsPaths.location,
+                 SvgDisplay(
+                  path:locationIcon,
                   size: Size(22, 22),
                   color: AppColors.secondaryColor,
                 ),
