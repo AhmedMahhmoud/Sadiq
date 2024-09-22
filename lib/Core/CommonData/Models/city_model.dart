@@ -13,4 +13,8 @@ class CityModel {
       name: map['name'] ?? '',
     );
   }
+  static parseCityModelList(json) {
+    final list = json as List;
+    return list.map((e) => CityModel.fromJson(e)).toList();
+  }
 }

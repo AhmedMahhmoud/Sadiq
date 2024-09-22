@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 
 import '../Constants/type_def/type_def.dart';
@@ -21,6 +23,10 @@ class RepoImplementerHandler {
       return Left(ServerFailure());
     } on UnAuthorizedException {
       return Left(UnUthorizedFailure());
+    } on TimeoutException {
+      return Left(TimeoutFailure());
+    } on NotfoundException {
+      return Left(NotfoundFailure());
     } catch (e) {
       print('catched error $e');
       return Left(UnExpectedFailure());
