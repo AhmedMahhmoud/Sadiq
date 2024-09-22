@@ -14,19 +14,28 @@ class CustomTextField extends StatefulWidget {
   final double height;
   final Color bGColor;
   final Color iconColor;
+  final TextInputType textInputType;
+  final bool obscureText;
+  final TextInputAction textInputAction;
 
-  const CustomTextField(
-      {Key? key,
-      required this.hintText,
-      this.icon = '',
-      this.controller,
-      this.validator,
-      this.errorMsg,
-      this.errorHeight = 40,
-      this.height = 57,
-      this.bGColor = AppColors.fieldsBGfillColor,
-      this.iconColor = AppColors.secondaryColor})
-      : super(key: key);
+  final String? Function(String?)? onFieldSubmitted;
+
+  const CustomTextField({
+    Key? key,
+    required this.hintText,
+    this.icon = '',
+    this.controller,
+    this.validator,
+    this.onFieldSubmitted,
+    this.errorMsg,
+    this.errorHeight = 40,
+    this.height = 57,
+    this.bGColor = AppColors.fieldsBGfillColor,
+    this.iconColor = AppColors.secondaryColor,
+    this.textInputType = TextInputType.text,
+    this.obscureText = false,
+    this.textInputAction = TextInputAction.next,
+  }) : super(key: key);
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -76,8 +85,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 child: TextFormField(
                   validator: widget.validator,
                   controller: widget.controller,
+                  obscureText: widget.obscureText,
                   cursorColor: AppColors.secondaryColor,
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                  textInputAction: widget.textInputAction,
                   decoration: InputDecoration(
                     errorText: widget.errorMsg,
                     contentPadding: const EdgeInsets.symmetric(vertical: 15),
@@ -89,6 +100,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ),
                   ),
                   textAlign: TextAlign.right,
+                  onFieldSubmitted: widget.onFieldSubmitted,
                 ),
               ),
             ),
