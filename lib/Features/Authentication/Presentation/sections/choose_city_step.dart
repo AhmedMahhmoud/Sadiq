@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadiq/Core/CommonData/Models/city_model.dart';
+import 'package:sadiq/Core/Shared/ui/snackbar/custom_snackbar.dart';
+import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
 import '../../../../Core/Shared/ui/buttons/rounded/rounded_button.dart';
 import '../../../../Core/Shared/ui/form/custom_drompdown.dart';
@@ -42,15 +45,36 @@ class ChooseCityStep extends StatelessWidget {
               ],
             ),
             SizedBox(height: 15.h),
-            CustomDropDown(
-              options: const [
-                'Category 1',
-                'Category 2',
-                'Category 3',
-                'Category 4',
-              ],
-              selectedOption: authCubit.choosedCity,
-              onchange: authCubit.chooseCity,
+            BlocConsumer<AppLookupsCubit, AppLookupsState>(
+              buildWhen: (previous, current) =>
+                  previous is CitiesLookupsLoadingState ||
+                  current is CitiesLookupsLoadingState,
+              listenWhen: (previous, current) =>
+                  previous is CitiesLookupsLoadingState ||
+                  current is CitiesLookupsLoadingState,
+              listener: (context, state) {
+                if (state is AppLookupsErrorState) {
+                  CustomSnackbar.show(context, state.errorMsg, isError: true);
+                }
+              },
+              builder: (context, state) {
+                final lookupsCubit = context.read<AppLookupsCubit>();
+                return state is CitiesLookupsLoadingState
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
+                      )
+                    : CustomDropDown<CityModel>(
+                        options: lookupsCubit.cities,
+                        selectedOption: authCubit.choosedCity,
+                        onchange: (p0) {
+                          authCubit.chooseCity(p0!);
+                        },
+                        hintText: 'اختر المدينة',
+                        itemToString: (city) => city.name,
+                      );
+              },
             ),
             SizedBox(height: 12.h),
             Center(

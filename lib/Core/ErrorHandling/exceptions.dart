@@ -9,4 +9,6 @@ class EndpointException implements Exception {
   EndpointException({required this.errorMsg});
 }
 
+class NotfoundException implements Exception {}
+
 class UnExpectedException implements Exception {}

@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadiq/Core/CommonData/Models/city_model.dart';
 
 import '../../../Paths/svg_icons_paths.dart';
 import '../../../Theme/Colors/app_colors.dart';
 import '../images/svg_display.dart';
 
-class CustomDropDown extends StatelessWidget {
+class CustomDropDown<T> extends StatelessWidget {
   const CustomDropDown({
     super.key,
     required this.options,
+    required this.hintText,
     required this.onchange,
     required this.selectedOption,
+    required this.itemToString, // Function to convert item T to string
   });
-
-  final List<String> options;
-  final Function onchange;
-  final String selectedOption;
+  final String hintText;
+  final List<T> options;
+  final Function(T?) onchange;
+  final T? selectedOption;
+  final String Function(T) itemToString;
 
   @override
   Widget build(BuildContext context) {
@@ -50,33 +54,32 @@ class CustomDropDown extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: DropdownButton<String>(
+            child: DropdownButton<T>(
               menuMaxHeight: 300,
               icon: const Icon(
                 Icons.keyboard_arrow_down_sharp,
                 color: AppColors.secondaryColor,
               ),
-              items: options.map((String value) {
-                return DropdownMenuItem<String>(
+              value: selectedOption,
+              items: options.map((value) {
+                return DropdownMenuItem<T>(
                   value: value,
                   child: Text(
-                    value,
+                    itemToString(value),
                   ),
                 );
               }).toList(),
               hint: Text(
-                selectedOption.isEmpty ? 'اختر المدينة' : selectedOption,
+                hintText,
                 style: TextStyle(
-                    color: selectedOption.isEmpty
+                    color: selectedOption == null
                         ? AppColors.secondaryColor.withOpacity(0.5)
                         : AppColors.secondaryColor),
               ),
               borderRadius: BorderRadius.circular(10),
               underline: const SizedBox(),
               isExpanded: true,
-              onChanged: (value) {
-                onchange(value);
-              },
+              onChanged: onchange,
             ),
           ),
         ],

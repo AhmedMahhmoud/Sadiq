@@ -32,6 +32,20 @@ class UnUthorizedFailure extends Failure {
   UnUthorizedFailure({this.message = Constants.UNAUTHORIZED});
 }
 
+class TimeoutFailure extends Failure {
+  @override
+  final String message;
+
+  TimeoutFailure({this.message = Constants.UNAUTHORIZED});
+}
+
+class NotfoundFailure extends Failure {
+  @override
+  final String message;
+
+  NotfoundFailure({this.message = Constants.notfoundFailure});
+}
+
 class EndpointFailure extends Failure {
   @override
   final String message;
