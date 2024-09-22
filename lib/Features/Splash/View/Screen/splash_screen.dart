@@ -22,8 +22,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Future getPref() async {}
-
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
