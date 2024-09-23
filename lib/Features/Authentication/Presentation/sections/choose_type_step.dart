@@ -92,21 +92,26 @@ class ChooseTypeStep extends StatelessWidget {
                               .read<AppLookupsCubit>()
                               .getCompaniesFromMixin();
                         })
-                      : Center(
-                          child: RoundedButton(
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700,
+                      : Opacity(
+                          opacity: authCubit.choosedType == -1 ? 0.5 : 1,
+                          child: Center(
+                            child: RoundedButton(
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                              ),
+                              onPressed: () {
+                                if (authCubit.choosedType != -1) {
+                                  if (authCubit.choosedType == 0) {
+                                    context
+                                        .read<AppLookupsCubit>()
+                                        .getCompaniesFromMixin();
+                                  }
+                                }
+                              },
+                              title: 'ابدأ التسجيل',
                             ),
-                            onPressed: () {
-                              if (authCubit.choosedType == 0) {
-                                context
-                                    .read<AppLookupsCubit>()
-                                    .getCompaniesFromMixin();
-                              }
-                            },
-                            title: 'ابدأ التسجيل',
                           ),
                         );
             },

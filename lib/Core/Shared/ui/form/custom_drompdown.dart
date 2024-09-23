@@ -6,7 +6,7 @@ import '../../../Paths/svg_icons_paths.dart';
 import '../../../Theme/Colors/app_colors.dart';
 import '../images/svg_display.dart';
 
-class CustomDropDown<T> extends StatelessWidget {
+class CustomDropDown<T> extends StatefulWidget {
   const CustomDropDown({
     super.key,
     required this.options,
@@ -24,6 +24,13 @@ class CustomDropDown<T> extends StatelessWidget {
   final String Function(T) itemToString;
 
   @override
+  State<CustomDropDown<T>> createState() => _CustomDropDownState<T>();
+}
+
+bool _haserror = false;
+
+class _CustomDropDownState<T> extends State<CustomDropDown<T>> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 30.h,
@@ -32,7 +39,9 @@ class CustomDropDown<T> extends StatelessWidget {
         color: AppColors.fieldsBGfillColor,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: AppColors.secondaryColor.withOpacity(0.2),
+          color: _haserror
+              ? AppColors.errorColor
+              : AppColors.secondaryColor.withOpacity(0.2),
         ),
       ),
       child: Row(
@@ -42,9 +51,9 @@ class CustomDropDown<T> extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                 SvgDisplay(
-                  path:locationIcon,
-                  size: Size(22, 22),
+                SvgDisplay(
+                  path: widget.locationIcon,
+                  size: const Size(22, 22),
                   color: AppColors.secondaryColor,
                 ),
                 Container(
@@ -56,32 +65,44 @@ class CustomDropDown<T> extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: DropdownButton<T>(
+            child: DropdownButtonFormField<T>(
+              decoration: const InputDecoration.collapsed(hintText: ''),
+              validator: (value) {
+                if (value == null) {
+                  setState(() {
+                    _haserror = true;
+                  });
+                } else {
+                  setState(() {
+                    _haserror = false;
+                  });
+                }
+                return null;
+              },
               menuMaxHeight: 300,
               icon: const Icon(
                 Icons.keyboard_arrow_down_sharp,
                 color: AppColors.secondaryColor,
               ),
-              value: selectedOption,
-              items: options.map((value) {
+              value: widget.selectedOption,
+              items: widget.options.map((value) {
                 return DropdownMenuItem<T>(
                   value: value,
                   child: Text(
-                    itemToString(value),
+                    widget.itemToString(value),
                   ),
                 );
               }).toList(),
               hint: Text(
-                hintText,
+                widget.hintText,
                 style: TextStyle(
-                    color: selectedOption == null
+                    color: widget.selectedOption == null
                         ? AppColors.secondaryColor.withOpacity(0.5)
                         : AppColors.secondaryColor),
               ),
               borderRadius: BorderRadius.circular(10),
-              underline: const SizedBox(),
               isExpanded: true,
-              onChanged: onchange,
+              onChanged: widget.onchange,
             ),
           ),
         ],

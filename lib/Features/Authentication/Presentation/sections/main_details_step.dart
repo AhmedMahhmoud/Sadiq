@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/CommonData/Models/company_model.dart';
+import 'package:sadiq/Core/Constants/api_constants.dart';
 import 'package:sadiq/Core/Shared/ui/form/custom_drompdown.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
@@ -31,7 +32,6 @@ class _MainDetailsStepState extends State<MainDetailsStep> {
 
   @override
   void dispose() {
-    authCubit.companyModel = null;
     super.dispose();
   }
 
@@ -40,91 +40,134 @@ class _MainDetailsStepState extends State<MainDetailsStep> {
     final AppLookupsCubit lookupscubit = context.read<AppLookupsCubit>();
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        return SizedBox(
-          child: Column(
-            children: [
-              Text(
-                'البيانات الاساسية',
-                style: AppTextStyle.largeBodyMedium
-                    .copyWith(color: AppColors.primaryColor, fontSize: 24),
-              ),
-              if (authCubit.choosedType == 0) ...[
-                SizedBox(height: 6.h),
-                CustomDropDown<CompanyModel>(
-                  options: lookupscubit.companies,
-                  locationIcon: SvgAssetsPaths.company,
-                  hintText: 'اختر الشركة',
-                  onchange: (p0) {
-                    authCubit.companyModel = p0;
-                    setState(() {});
-                  },
-                  selectedOption: authCubit.companyModel,
-                  itemToString: (p0) => p0.name,
-                )
-              ],
-              SizedBox(height: 6.h),
-              Column(
-                children: [
-                  const Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          hintText: 'الاسم الاول',
-                          icon: SvgAssetsPaths.user,
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: CustomTextField(
-                          hintText: 'اسم العائلة',
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 6.h),
-                  const CustomTextField(
-                    hintText: 'رقم الجوال',
-                    icon: SvgAssetsPaths.phone,
-                  ),
-                  SizedBox(height: 6.h),
-                  const CustomTextField(
-                    hintText: 'البريد الالكتروني',
-                    icon: SvgAssetsPaths.email,
-                  ),
-                  SizedBox(height: 6.h),
-                  const CustomTextField(
-                    hintText: 'رقم الهوية',
-                    icon: SvgAssetsPaths.iD,
-                  ),
-                  SizedBox(height: 6.h),
-                  const CustomTextField(
-                    hintText: 'الجنسية',
-                    icon: SvgAssetsPaths.world,
-                  ),
-                  SizedBox(height: 6.h),
-                  const CustomTextField(
-                    hintText: 'تاريخ الميلاد',
-                    icon: SvgAssetsPaths.calender,
-                  ),
-                ],
-              ),
-              SizedBox(height: 5.h),
-              Center(
-                child: RoundedButton(
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  onPressed: () {
-                    authCubit.changeSignUpStep(3);
-                  },
-                  title: 'استمر',
+        return Form(
+          key: authCubit.formKey,
+          child: SizedBox(
+            child: Column(
+              children: [
+                Text(
+                  'البيانات الاساسية',
+                  style: AppTextStyle.largeBodyMedium
+                      .copyWith(color: AppColors.primaryColor, fontSize: 24),
                 ),
-              ),
-              SizedBox(height: 5.h),
-            ],
+                if (authCubit.choosedType == 0) ...[
+                  SizedBox(height: 6.h),
+                  CustomDropDown<CompanyModel>(
+                    options: lookupscubit.companies,
+                    locationIcon: SvgAssetsPaths.company,
+                    hintText: 'اختر الشركة',
+                    onchange: (p0) {
+                      authCubit.setCompanyModel(p0!);
+                    },
+                    selectedOption: authCubit.companyModel,
+                    itemToString: (p0) => p0.name,
+                  )
+                ],
+                SizedBox(height: 6.h),
+                Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                            hintText: 'الاسم الاول',
+                            icon: SvgAssetsPaths.user,
+                            initialValue:
+                                authCubit.registerInputsBuilder.firstName,
+                            textInputAction: TextInputAction.next,
+                            textInputType: TextInputType.text,
+                            onSaved: (p0) =>
+                                authCubit.registerInputsBuilder.firstName = p0!,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: CustomTextField(
+                            hintText: 'اسم العائلة',
+                            initialValue:
+                                authCubit.registerInputsBuilder.lastName,
+                            textInputAction: TextInputAction.next,
+                            textInputType: TextInputType.text,
+                            onSaved: (p0) =>
+                                authCubit.registerInputsBuilder.lastName = p0!,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 6.h),
+                    CustomTextField(
+                      hintText: 'رقم الجوال',
+                      onSaved: (p0) =>
+                          authCubit.registerInputsBuilder.phone = p0!,
+                      initialValue: authCubit.registerInputsBuilder.phone,
+                      textInputType: TextInputType.phone,
+                      textInputAction: TextInputAction.next,
+                      icon: SvgAssetsPaths.phone,
+                    ),
+                    SizedBox(height: 6.h),
+                    CustomTextField(
+                      hintText: 'البريد الالكتروني',
+                      initialValue: authCubit.registerInputsBuilder.email,
+                      onSaved: (p0) =>
+                          authCubit.registerInputsBuilder.email = p0!,
+                      textInputType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      icon: SvgAssetsPaths.email,
+                    ),
+                    SizedBox(height: 6.h),
+                    CustomTextField(
+                      hintText: 'رقم الهوية',
+                      initialValue: authCubit.registerInputsBuilder.identityNo,
+                      icon: SvgAssetsPaths.iD,
+                      textInputAction: TextInputAction.next,
+                      textInputType: TextInputType.number,
+                      onSaved: (p0) =>
+                          authCubit.registerInputsBuilder.identityNo = p0!,
+                    ),
+                    SizedBox(height: 6.h),
+                    CustomTextField(
+                      hintText: 'الجنسية',
+                      icon: SvgAssetsPaths.world,
+                      initialValue: authCubit.registerInputsBuilder.nationality,
+                      textInputType: TextInputType.text,
+                      textInputAction: TextInputAction.next,
+                      onSaved: (p0) =>
+                          authCubit.registerInputsBuilder.nationality = p0!,
+                    ),
+                    SizedBox(height: 6.h),
+                    CustomTextField(
+                      hintText: 'تاريخ الميلاد',
+                      icon: SvgAssetsPaths.calender,
+                      initialValue: authCubit.registerInputsBuilder.dateofBirth,
+                      textInputAction: TextInputAction.done,
+                      onSaved: (p0) =>
+                          authCubit.registerInputsBuilder.dateofBirth = p0!,
+                    ),
+                  ],
+                ),
+                SizedBox(height: 5.h),
+                Center(
+                  child: RoundedButton(
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    onPressed: () {
+                      if (!authCubit.formKey.currentState!.validate()) {
+                        return;
+                      } else {
+                        authCubit.formKey.currentState!.save();
+                        authCubit.changeSignUpStep(3);
+                      }
+                    },
+                    title: 'استمر',
+                  ),
+                ),
+                SizedBox(height: 5.h),
+              ],
+            ),
           ),
         );
       },

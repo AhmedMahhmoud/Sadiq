@@ -13,22 +13,26 @@ class CustomTextField extends StatefulWidget {
   final String? errorMsg;
   final double height;
   final Color bGColor;
+  final String? initialValue;
   final Color iconColor;
   final TextInputType textInputType;
   final bool obscureText;
   final TextInputAction textInputAction;
-
+  final bool enableValidation;
   final String? Function(String?)? onFieldSubmitted;
-
+  final String? Function(String?)? onSaved;
   const CustomTextField({
     Key? key,
     required this.hintText,
     this.icon = '',
+    this.onSaved,
     this.controller,
     this.validator,
     this.onFieldSubmitted,
+    this.enableValidation = true,
     this.errorMsg,
-    this.errorHeight = 40,
+    this.initialValue,
+    this.errorHeight = 1,
     this.height = 57,
     this.bGColor = AppColors.fieldsBGfillColor,
     this.iconColor = AppColors.secondaryColor,
@@ -52,7 +56,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         color: widget.bGColor,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: AppColors.secondaryColor.withOpacity(0.2),
+          color: _hasError
+              ? AppColors.errorColor
+              : AppColors.secondaryColor.withOpacity(0.2),
         ),
       ),
       child: IntrinsicHeight(
@@ -83,15 +89,38 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ? widget.height + widget.errorHeight
                     : widget.height,
                 child: TextFormField(
-                  validator: widget.validator,
+                  initialValue: widget.initialValue,
+                  validator: !widget.enableValidation
+                      ? null
+                      : (value) {
+                          if (widget.validator == null) {
+                            //default validations..
+                            if (value == null || value.isEmpty) {
+                              setState(() {
+                                _hasError = true;
+                              });
+                              return 'مطلوب';
+                            } else {
+                              setState(() {
+                                _hasError = false;
+                              });
+                            }
+                          } else {
+                            final validationError =
+                                widget.validator?.call(value);
+                            setState(() {
+                              _hasError = validationError != null;
+                            });
+                            return validationError;
+                          }
+                        },
                   controller: widget.controller,
                   obscureText: widget.obscureText,
                   cursorColor: AppColors.secondaryColor,
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   textInputAction: widget.textInputAction,
                   decoration: InputDecoration(
-                    errorText: widget.errorMsg,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                    contentPadding: const EdgeInsets.symmetric(vertical: 5),
                     hintText: widget.hintText,
                     border: InputBorder.none,
                     hintStyle: TextStyle(
@@ -99,6 +128,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       fontSize: 14.sp,
                     ),
                   ),
+                  onSaved: widget.onSaved,
                   textAlign: TextAlign.right,
                   onFieldSubmitted: widget.onFieldSubmitted,
                 ),
