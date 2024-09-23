@@ -20,15 +20,13 @@ class AuthCubit extends Cubit<AuthState> with SigninMixin, SignUpMixin {
       emit(AuthLoginErrorState(errorMsg: l.message));
     }, (loginModel) async {
       driver = loginModel.driver;
-
       final pref = await SharedPreferences.getInstance();
       await pref.setString('accessToken', loginModel.accessToken);
 
-      if (rememberMe) {
+      if (rememberMe && pref.getString('loginData') != null) {
         await pref.setString(
             'loginData', json.encode({'email': email, 'password': password}));
       }
-
       emit(AuthLoginSuccessState());
     });
   }
