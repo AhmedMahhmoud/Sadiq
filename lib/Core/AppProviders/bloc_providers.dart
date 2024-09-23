@@ -13,7 +13,6 @@ MultiBlocProvider appProviders(Widget child) {
     providers: [
       BlocProvider(create: (context) => di.getIt<AuthCubit>()),
       BlocProvider(
-          lazy: false,
           create: (context) =>
               di.getIt<AppLookupsCubit>()..getCitiesFromMixin()),
       BlocProvider(

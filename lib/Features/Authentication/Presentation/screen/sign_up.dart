@@ -27,7 +27,7 @@ class SignUpScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: SizedBox(
             width: MediaQuery.sizeOf(context).width,
-            height: MediaQuery.sizeOf(context).height - 10,
+            height: MediaQuery.sizeOf(context).height - 20.h,
             child: Stack(
               children: [
                 Positioned(

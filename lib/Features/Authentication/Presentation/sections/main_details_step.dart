@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/CommonData/Models/company_model.dart';
 import 'package:sadiq/Core/Shared/ui/form/custom_drompdown.dart';
-import 'package:sadiq/Core/Shared/ui/snackbar/custom_snackbar.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
 import '../../../../Core/Paths/svg_icons_paths.dart';
@@ -26,14 +25,19 @@ class _MainDetailsStepState extends State<MainDetailsStep> {
   @override
   void initState() {
     authCubit = context.read<AuthCubit>();
-    if (authCubit.choosedType == 0) {
-      context.read<AppLookupsCubit>().getCompaniesFromMixin();
-    }
+
     super.initState();
   }
 
   @override
+  void dispose() {
+    authCubit.companyModel = null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final AppLookupsCubit lookupscubit = context.read<AppLookupsCubit>();
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         return SizedBox(
@@ -46,40 +50,17 @@ class _MainDetailsStepState extends State<MainDetailsStep> {
               ),
               if (authCubit.choosedType == 0) ...[
                 SizedBox(height: 6.h),
-                BlocConsumer<AppLookupsCubit, AppLookupsState>(
-                  buildWhen: (previous, current) =>
-                      previous is CompaniesLookupsLoadingState ||
-                      current is CompaniesLookupsLoadingState,
-                  listenWhen: (previous, current) =>
-                      previous is CompaniesLookupsLoadingState ||
-                      current is CompaniesLookupsLoadingState,
-                  listener: (context, state) {
-                    if (state is AppLookupsErrorState) {
-                      CustomSnackbar.show(context, state.errorMsg,
-                          isError: true);
-                    }
+                CustomDropDown<CompanyModel>(
+                  options: lookupscubit.companies,
+                  locationIcon: SvgAssetsPaths.company,
+                  hintText: 'اختر الشركة',
+                  onchange: (p0) {
+                    authCubit.companyModel = p0;
+                    setState(() {});
                   },
-                  builder: (context, state) {
-                    final lookupcubit = context.read<AppLookupsCubit>();
-                    return state is CompaniesLookupsLoadingState
-                        ? const Center(
-                            child: CircularProgressIndicator(
-                              color: AppColors.primaryColor,
-                            ),
-                          )
-                        : CustomDropDown<CompanyModel>(
-                            options: lookupcubit.companies,
-                            locationIcon: SvgAssetsPaths.company,
-                            hintText: 'اختر الشركة',
-                            onchange: (p0) {
-                              authCubit.companyModel = p0;
-                              setState(() {});
-                            },
-                            selectedOption: authCubit.companyModel,
-                            itemToString: (p0) => p0.name,
-                          );
-                  },
-                ),
+                  selectedOption: authCubit.companyModel,
+                  itemToString: (p0) => p0.name,
+                )
               ],
               SizedBox(height: 6.h),
               Column(

@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/CommonData/Models/city_model.dart';
 import 'package:sadiq/Core/Paths/svg_icons_paths.dart';
+import 'package:sadiq/Core/Shared/ui/circular_indicator.dart';
 import 'package:sadiq/Core/Shared/ui/snackbar/custom_snackbar.dart';
+import 'package:sadiq/Core/error/error_retry_widget.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
 import '../../../../Core/Shared/ui/buttons/rounded/rounded_button.dart';
@@ -12,16 +14,33 @@ import '../../../../Core/Theme/Colors/app_colors.dart';
 import '../../../../Core/Theme/text/text_style.dart';
 import '../cubit/auth_cubit.dart';
 
-class ChooseCityStep extends StatelessWidget {
+class ChooseCityStep extends StatefulWidget {
   const ChooseCityStep({
     super.key,
   });
 
   @override
+  State<ChooseCityStep> createState() => _ChooseCityStepState();
+}
+
+class _ChooseCityStepState extends State<ChooseCityStep> {
+  late AuthCubit authCubit;
+  @override
+  void dispose() {
+    authCubit.choosedCity = null;
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    authCubit = context.read<AuthCubit>();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        final authCubit = context.read<AuthCubit>();
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -61,35 +80,40 @@ class ChooseCityStep extends StatelessWidget {
               builder: (context, state) {
                 final lookupsCubit = context.read<AppLookupsCubit>();
                 return state is CitiesLookupsLoadingState
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: AppColors.primaryColor,
-                        ),
-                      )
-                    : CustomDropDown<CityModel>(
-                        locationIcon: SvgAssetsPaths.location,
-                        options: lookupsCubit.cities,
-                        selectedOption: authCubit.choosedCity,
-                        onchange: (p0) {
-                          authCubit.chooseCity(p0!);
-                        },
-                        hintText: 'اختر المدينة',
-                        itemToString: (city) => city.name,
-                      );
+                    ? CustomCircularIndicator()
+                    : state is AppLookupsErrorState
+                        ? RetryWidget(retryFunction: () {
+                            lookupsCubit.getCitiesFromMixin();
+                          })
+                        : CustomDropDown<CityModel>(
+                            locationIcon: SvgAssetsPaths.location,
+                            options: lookupsCubit.cities,
+                            selectedOption: authCubit.choosedCity,
+                            onchange: (p0) {
+                              authCubit.chooseCity(p0!);
+                            },
+                            hintText: 'اختر المدينة',
+                            itemToString: (city) => city.name,
+                          );
               },
             ),
             SizedBox(height: 12.h),
             Center(
-              child: RoundedButton(
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w700,
+              child: Opacity(
+                opacity: authCubit.choosedCity == null ? 0.5 : 1,
+                child: RoundedButton(
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  onPressed: () {
+                    if (authCubit.choosedCity != null) {
+                      authCubit.changeSignUpStep(1);
+                    }
+                  },
+                  title: 'التالي',
                 ),
-                onPressed: () {
-                  authCubit.changeSignUpStep(1);
-                },
-                title: 'التالي',
               ),
             ),
             Column(
