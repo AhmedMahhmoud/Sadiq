@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sadiq/Core/Shared/ui/circular_indicator.dart';
+import 'package:sadiq/Core/Shared/ui/snackbar/custom_snackbar.dart';
+import 'package:sadiq/Core/error/error_retry_widget.dart';
+import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
 import '../../../../Core/Paths/svg_icons_paths.dart';
 import '../../../../Core/Shared/ui/buttons/radio/radio_icon.dart';
@@ -65,18 +69,52 @@ class ChooseTypeStep extends StatelessWidget {
             ],
           ),
           SizedBox(height: 12.h),
-          Center(
-            child: RoundedButton(
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w700,
-              ),
-              onPressed: () {
+          BlocConsumer<AppLookupsCubit, AppLookupsState>(
+            buildWhen: (previous, current) =>
+                previous is CompaniesLookupsLoadingState ||
+                current is CompaniesLookupsLoadingState,
+            listenWhen: (previous, current) =>
+                previous is CompaniesLookupsLoadingState ||
+                current is CompaniesLookupsLoadingState,
+            listener: (context, state) {
+              if (state is AppLookupsErrorState) {
+                CustomSnackbar.show(context, state.errorMsg, isError: true);
+              } else if (state is AppLookupsLoadedState) {
                 authCubit.changeSignUpStep(2);
-              },
-              title: 'ابدأ التسجيل',
-            ),
+              }
+            },
+            builder: (context, state) {
+              return state is CompaniesLookupsLoadingState
+                  ? const CustomCircularIndicator()
+                  : state is AppLookupsErrorState
+                      ? RetryWidget(retryFunction: () {
+                          context
+                              .read<AppLookupsCubit>()
+                              .getCompaniesFromMixin();
+                        })
+                      : Opacity(
+                          opacity: authCubit.choosedType == -1 ? 0.5 : 1,
+                          child: Center(
+                            child: RoundedButton(
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w700,
+                              ),
+                              onPressed: () {
+                                if (authCubit.choosedType != -1) {
+                                  if (authCubit.choosedType == 0) {
+                                    context
+                                        .read<AppLookupsCubit>()
+                                        .getCompaniesFromMixin();
+                                  }
+                                }
+                              },
+                              title: 'ابدأ التسجيل',
+                            ),
+                          ),
+                        );
+            },
           ),
           SizedBox(height: 5.h),
         ],

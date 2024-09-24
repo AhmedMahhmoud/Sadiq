@@ -52,3 +52,45 @@ class RegisterInputs {
     };
   }
 }
+
+class RegisterInputsBuilder {
+  String? cityID;
+  String? vehicleID;
+  String? type;
+  String? deliveryCompanyID;
+  String? firstName;
+  String? lastName;
+  String? phone;
+  String? email;
+  String? identityNo;
+  String? password;
+  String? passwordConfirmation;
+  String? nationality;
+  String? dateofBirth;
+  File? avatar;
+  File? identityFile;
+  File? formFile;
+  File? drivingLicenseFile;
+
+  RegisterInputs build() {
+    return RegisterInputs(
+      cityID: cityID ?? '',
+      vehicleID: vehicleID ?? '',
+      type: type ?? '',
+      deliveryCompanyID: deliveryCompanyID ?? '',
+      firstName: firstName ?? '',
+      lastName: lastName ?? '',
+      phone: phone ?? '',
+      email: email ?? '',
+      identityNo: identityNo ?? '',
+      password: password ?? '',
+      passwordConfirmation: passwordConfirmation ?? '',
+      nationality: nationality ?? '',
+      dateofBirth: dateofBirth ?? '',
+      avatar: avatar ?? File(''),
+      identityFile: identityFile ?? File(''),
+      formFile: formFile ?? File(''),
+      drivingLicenseFile: drivingLicenseFile ?? File(''),
+    );
+  }
+}

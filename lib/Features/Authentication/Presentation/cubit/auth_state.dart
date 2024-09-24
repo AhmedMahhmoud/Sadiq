@@ -19,8 +19,8 @@ final class ChangeSignUpStep extends AuthState {}
 
 final class ChangeStepperStep extends AuthState {}
 
-final class ChooseCity extends AuthState {}
+// final class ChooseCity extends AuthState {}
 
-final class ChooseType extends AuthState {}
+// final class ChooseType extends AuthState {}
 
-final class ChooseVehicle extends AuthState {}
+// final class ChooseVehicle extends AuthState {}
