@@ -15,6 +15,7 @@ class CustomTextField extends StatefulWidget {
   final Color bGColor;
   final String? initialValue;
   final Color iconColor;
+  final bool isEnabled;
   final TextInputType textInputType;
   final bool obscureText;
   final TextInputAction textInputAction;
@@ -27,6 +28,7 @@ class CustomTextField extends StatefulWidget {
     this.icon = '',
     this.onSaved,
     this.controller,
+    this.isEnabled = true,
     this.validator,
     this.onFieldSubmitted,
     this.enableValidation = true,
@@ -89,6 +91,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ? widget.height + widget.errorHeight
                     : widget.height,
                 child: TextFormField(
+                  style: const TextStyle(color: Colors.black),
+                  enabled: widget.isEnabled,
                   initialValue: widget.initialValue,
                   validator: !widget.enableValidation
                       ? null
@@ -106,6 +110,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               });
                             }
                           } else {
+                            if (value == null || value.isEmpty) {
+                              setState(() {
+                                _hasError = true;
+                              });
+                              return 'مطلوب';
+                            }
                             final validationError =
                                 widget.validator?.call(value);
                             setState(() {
@@ -120,7 +130,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   textInputAction: widget.textInputAction,
                   decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 5),
+                    contentPadding: const EdgeInsets.only(top: 5),
                     hintText: widget.hintText,
                     border: InputBorder.none,
                     hintStyle: TextStyle(

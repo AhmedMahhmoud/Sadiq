@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'package:sadiq/Features/DeliveryCars/Data/Models/car_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Models/login_model.dart';
 import '../../../../../Core/Constants/api_constants.dart';
@@ -30,4 +31,5 @@ class AuthRemoteDS {
 
     return loginModel;
   }
+
 }

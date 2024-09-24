@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../Core/Paths/svg_icons_paths.dart';
-import '../../../../Core/Shared/ui/buttons/radio/radio_icon.dart';
+import 'package:sadiq/Core/Shared/ui/buttons/radio/radio_img.dart';
+import 'package:sadiq/Features/DeliveryCars/Data/Models/car_model.dart';
+import 'package:sadiq/Features/DeliveryCars/View/cubit/carsdelivery_cubit.dart';
 import '../../../../Core/Shared/ui/buttons/rounded/rounded_button.dart';
 import '../../../../Core/Theme/Colors/app_colors.dart';
 import '../../../../Core/Theme/text/text_style.dart';
@@ -19,7 +19,7 @@ class VehicleDetailsStep extends StatelessWidget {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
         final authCubit = context.read<AuthCubit>();
-        inspect(authCubit.registerInputsBuilder.build());
+
         return Column(
           children: [
             Text(
@@ -28,54 +28,35 @@ class VehicleDetailsStep extends StatelessWidget {
                   .copyWith(color: AppColors.primaryColor, fontSize: 24),
             ),
             SizedBox(height: 12.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                RadioIcon(
-                  icon: SvgAssetsPaths.normalCar,
-                  title: 'سيارة عادية',
-                  isChooised: authCubit.choosedVehcile == 0 ? true : false,
-                  size: const Size(50, 43),
-                  onClick: () {
-                    authCubit.chooseVehcile(0);
+
+            // GridView.builder to display vehicles from API
+            BlocBuilder<CarsdeliveryCubit, CarsdeliveryState>(
+              builder: (context, state) {
+                final vehicles = state as CarsLoadedState;
+                inspect(vehicles.carsList);
+                return GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1.0,
+                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: 10.0,
+                  ),
+                  itemCount: vehicles.carsList.length,
+                  itemBuilder: (context, index) {
+                    final vehicle = vehicles.carsList[index];
+
+                    return RadioImageIcon(
+                      imageUrl: vehicle.image, // Use image from model
+                      title: vehicle.name,
+                      isChooised: authCubit.choosedVehcile == vehicle.id,
+                      onClick: () {
+                        authCubit.chooseVehcile(vehicle.id);
+                      },
+                    );
                   },
-                ),
-                SizedBox(width: 10.w),
-                RadioIcon(
-                  icon: SvgAssetsPaths.normalMoto,
-                  title: 'دباب عادي',
-                  isChooised: authCubit.choosedVehcile == 1 ? true : false,
-                  size: const Size(59, 53),
-                  onClick: () {
-                    authCubit.chooseVehcile(1);
-                  },
-                ),
-              ],
-            ),
-            SizedBox(height: 5.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                RadioIcon(
-                  icon: SvgAssetsPaths.electricCar,
-                  title: 'سيارة فيجو',
-                  isChooised: authCubit.choosedVehcile == 2 ? true : false,
-                  size: const Size(59, 53),
-                  onClick: () {
-                    authCubit.chooseVehcile(2);
-                  },
-                ),
-                SizedBox(width: 10.w),
-                RadioIcon(
-                  icon: SvgAssetsPaths.electricMoto,
-                  size: const Size(59, 53),
-                  title: 'دباب فيجو',
-                  isChooised: authCubit.choosedVehcile == 3 ? true : false,
-                  onClick: () {
-                    authCubit.chooseVehcile(3);
-                  },
-                ),
-              ],
+                );
+              },
             ),
             SizedBox(height: 12.h),
             Center(

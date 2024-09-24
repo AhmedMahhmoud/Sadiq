@@ -25,86 +25,93 @@ class SignUpScreen extends StatelessWidget {
       return Scaffold(
         backgroundColor: AppColors.backgroundOfWhite,
         body: SingleChildScrollView(
-          child: SizedBox(
-            width: MediaQuery.sizeOf(context).width,
-            height: MediaQuery.sizeOf(context).height - 20.h,
-            child: Stack(
-              children: [
-                Positioned(
-                  top: MediaQuery.sizeOf(context).height * 0.2,
-                  child: PngDisplay(
-                    path: PngAssetsPaths.city,
-                    size: Size(390.w, 160.h),
-                    boxFit: BoxFit.cover,
-                  ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width,
+                height: authCubit.signUpStep == 2
+                    ? null
+                    : MediaQuery.sizeOf(context).height - 20.h,
+                child: Stack(
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 10.h),
-                      color: AppColors.backgroundOfWhite,
-                      child: const Center(
-                        child: SizedBox(
-                          child: DisplayAppTitleWithLogo(
-                            appIconsize: Size(47, 47),
-                            appTitleSize: Size(30, 30),
+                    Positioned(
+                      top: MediaQuery.sizeOf(context).height * 0.2,
+                      child: PngDisplay(
+                        path: PngAssetsPaths.city,
+                        size: Size(390.w, 160.h),
+                        boxFit: BoxFit.cover,
+                      ),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 10.h),
+                          color: AppColors.backgroundOfWhite,
+                          child: const Center(
+                            child: SizedBox(
+                              child: DisplayAppTitleWithLogo(
+                                appIconsize: Size(47, 47),
+                                appTitleSize: Size(30, 30),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 12.h,
-                        horizontal: 12.w,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.r),
-                          topRight: Radius.circular(20.r),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 12.h,
+                            horizontal: 12.w,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20.r),
+                              topRight: Radius.circular(20.r),
+                            ),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              authCubit.signUpStep == 0
+                                  ? const ChooseCityStep()
+                                  : authCubit.signUpStep == 1
+                                      ? const ChooseTypeStep()
+                                      : Column(
+                                          children: [
+                                            SignUpStepper(
+                                              activeStep:
+                                                  authCubit.signUpStep - 2,
+                                            ),
+                                            authCubit.signUpStep == 2
+                                                ? const MainDetailsStep()
+                                                : authCubit.signUpStep == 3
+                                                    ? const VehicleDetailsStep()
+                                                    : const DocumentsStep(),
+                                          ],
+                                        )
+                            ],
+                          ),
                         ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          authCubit.signUpStep == 0
-                              ? const ChooseCityStep()
-                              : authCubit.signUpStep == 1
-                                  ? const ChooseTypeStep()
-                                  : Column(
-                                      children: [
-                                        SignUpStepper(
-                                          activeStep: authCubit.signUpStep - 2,
-                                        ),
-                                        authCubit.signUpStep == 2
-                                            ? const MainDetailsStep()
-                                            : authCubit.signUpStep == 3
-                                                ? const VehicleDetailsStep()
-                                                : const DocumentsStep(),
-                                      ],
-                                    )
-                        ],
-                      ),
+                      ],
                     ),
+                    authCubit.signUpStep > 0
+                        ? Positioned(
+                            top: MediaQuery.sizeOf(context).height * 0.001,
+                            left: 10.w,
+                            child: BackBtn(
+                              height: 39.59,
+                              width: 39.59,
+                              onClick: () {
+                                authCubit
+                                    .changeSignUpStep(authCubit.signUpStep - 1);
+                              },
+                            ),
+                          )
+                        : const SizedBox(),
                   ],
                 ),
-                authCubit.signUpStep > 0
-                    ? Positioned(
-                        top: MediaQuery.sizeOf(context).height * 0.001,
-                        left: 10.w,
-                        child: BackBtn(
-                          height: 39.59,
-                          width: 39.59,
-                          onClick: () {
-                            authCubit
-                                .changeSignUpStep(authCubit.signUpStep - 1);
-                          },
-                        ),
-                      )
-                    : const SizedBox(),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );

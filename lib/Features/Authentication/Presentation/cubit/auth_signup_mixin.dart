@@ -14,7 +14,7 @@ mixin SignUpMixin on Cubit<AuthState> {
   int choosedVehcile = -1;
   CompanyModel? companyModel;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  final TextEditingController birthdateController = TextEditingController();
   final RegisterInputsBuilder registerInputsBuilder = RegisterInputsBuilder();
   changeSignUpStep(int step) {
     signUpStep = step;
