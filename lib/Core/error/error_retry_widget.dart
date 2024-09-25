@@ -24,7 +24,7 @@ class RetryWidgetState extends State<RetryWidget> {
             child: const Column(
               children: [
                 Text(
-                  'Tap to Retry',
+                  'اضغط لإعادة المحاولة',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,

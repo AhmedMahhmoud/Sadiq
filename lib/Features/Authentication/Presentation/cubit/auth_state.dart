@@ -19,6 +19,18 @@ final class ChangeSignUpStep extends AuthState {}
 
 final class ChangeStepperStep extends AuthState {}
 
+final class AuthRegisterSuccessState extends AuthState {
+  final RegisterResponse registerResponse;
+
+  AuthRegisterSuccessState({required this.registerResponse});
+}
+
+final class AuthRegisterErrorState extends AuthState {
+  final String errorMsg;
+  AuthRegisterErrorState({required this.errorMsg});
+}
+
+final class AuthRegisterLoadingState extends AuthState {}
 // final class ChooseCity extends AuthState {}
 
 // final class ChooseType extends AuthState {}

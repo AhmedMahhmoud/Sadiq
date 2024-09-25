@@ -81,8 +81,11 @@ class ChooseTypeStep extends StatelessWidget {
                 CustomSnackbar.show(context, state.errorMsg, isError: true);
               } else if (state is AppLookupsLoadedState) {
                 final authCubit = context.read<AuthCubit>();
-                authCubit.companyModel = null;
-                authCubit.birthdateController.text = '';
+                authCubit
+                  ..companyModel = null
+                  ..birthdateController.text = ''
+                  ..confirmPasswordController.text = ''
+                  ..passwordController.text = '';
                 authCubit.changeSignUpStep(2);
               }
             },

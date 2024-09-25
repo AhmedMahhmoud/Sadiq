@@ -11,7 +11,6 @@ import 'Features/Splash/View/Screen/splash_screen.dart';
 import 'Routes/app_routes.dart';
 import 'Core/DependencyInj/dep_inj.dart' as di;
 
-GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await di.setupDependencies();
@@ -32,6 +31,7 @@ void main() async {
   ));
 }
 
+GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

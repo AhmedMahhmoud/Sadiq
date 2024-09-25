@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:sadiq/Features/Authentication/Data/Models/register_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Data/Respositories/auth_repo_impl.dart';
@@ -29,5 +30,17 @@ class AuthCubit extends Cubit<AuthState> with SigninMixin, SignUpMixin {
       }
       emit(AuthLoginSuccessState());
     });
+  }
+
+  signUp() async {
+    emit(AuthRegisterLoadingState());
+    final response =
+        await authRepoImp.authRegister(registerInputsBuilder.build());
+    response.fold(
+      (l) {
+        emit(AuthRegisterErrorState(errorMsg: l.message));
+      },
+      (r) => emit(AuthRegisterSuccessState(registerResponse: r)),
+    );
   }
 }

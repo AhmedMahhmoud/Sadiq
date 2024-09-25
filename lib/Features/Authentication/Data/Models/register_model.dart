@@ -39,7 +39,7 @@ class RegisterInputs {
     required this.drivingLicenseFile,
   });
 
-  toJson() {
+  Map<String, String> toJson() {
     return {
       'city_id': cityID,
       'vehicle_id': vehicleID,
@@ -48,7 +48,14 @@ class RegisterInputs {
       'first_name': firstName,
       'last_name': lastName,
       'phone': phone,
-      'email': deliveryCompanyID,
+      'email': email,
+      'identity_no': identityNo,
+      'password': password,
+      'password_confirmation': passwordConfirmation,
+      'nationality': nationality,
+      'date_of_birth': dateofBirth,
+
+      'driving_license_file': drivingLicenseFile.path, // File path
     };
   }
 }

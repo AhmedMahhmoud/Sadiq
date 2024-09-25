@@ -16,6 +16,9 @@ mixin SignUpMixin on Cubit<AuthState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController birthdateController = TextEditingController();
   final RegisterInputsBuilder registerInputsBuilder = RegisterInputsBuilder();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
   changeSignUpStep(int step) {
     signUpStep = step;
     emit(ChangeSignUpStep());
@@ -42,6 +45,7 @@ mixin SignUpMixin on Cubit<AuthState> {
 
   chooseVehcile(int type) {
     choosedVehcile = type;
+    registerInputsBuilder.vehicleID = type.toString();
     emit(AuthInitial());
   }
 }
