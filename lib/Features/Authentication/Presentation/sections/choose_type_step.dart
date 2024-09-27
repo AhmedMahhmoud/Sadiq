@@ -113,6 +113,8 @@ class ChooseTypeStep extends StatelessWidget {
                                     context
                                         .read<AppLookupsCubit>()
                                         .getCompaniesFromMixin();
+                                  } else {
+                                    authCubit.changeSignUpStep(2);
                                   }
                                 }
                               },

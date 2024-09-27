@@ -60,16 +60,21 @@ class VehicleDetailsStep extends StatelessWidget {
             ),
             SizedBox(height: 12.h),
             Center(
-              child: RoundedButton(
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w700,
+              child: Opacity(
+                opacity: authCubit.choosedVehcile == -1 ? 0.5 : 1,
+                child: RoundedButton(
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  onPressed: () {
+                    if (authCubit.choosedVehcile != -1) {
+                      authCubit.changeSignUpStep(4);
+                    }
+                  },
+                  title: 'استمر',
                 ),
-                onPressed: () {
-                  authCubit.changeSignUpStep(4);
-                },
-                title: 'استمر',
               ),
             ),
           ],

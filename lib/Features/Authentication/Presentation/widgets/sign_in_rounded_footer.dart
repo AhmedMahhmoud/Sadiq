@@ -136,10 +136,6 @@ class SignInRoundedFooter extends StatelessWidget {
                                 '/setting',
                                 arguments: true,
                               );*/
-                              if (state is AuthLoginSuccessState) {
-                                Navigator.pushNamedAndRemoveUntil(
-                                    context, '/home', (route) => false);
-                              }
                             },
                           ),
                   ),
@@ -178,5 +174,7 @@ class SignInRoundedFooter extends StatelessWidget {
 void authenticationBlocListener(BuildContext context, AuthState state) {
   if (state is AuthLoginErrorState) {
     SnackBarHelper.showErrorSnackBar(context, state.errorMsg);
+  } else if (state is AuthLoginSuccessState) {
+    Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
   }
 }
