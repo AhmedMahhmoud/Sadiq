@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Shared/ui/secondary_app_bar.dart';
 import 'package:sadiq/Core/Theme/Colors/app_colors.dart';
 
-import '../../../Core/Shared/ui/buttons/back_btn.dart';
-import '../../../Core/Theme/text/text_style.dart';
+import '../../../../Core/Shared/ui/buttons/back_btn.dart';
+import '../../../../Core/Theme/text/text_style.dart';
 
 class SubscriptionScreen extends StatelessWidget {
   const SubscriptionScreen({super.key});

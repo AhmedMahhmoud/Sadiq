@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../Core/Shared/ui/images/svg_display.dart';
-import '../../../Core/Theme/Colors/app_colors.dart';
-import '../../../Core/Theme/text/text_style.dart';
+import '../../../../Core/Shared/ui/images/svg_display.dart';
+import '../../../../Core/Theme/Colors/app_colors.dart';
+import '../../../../Core/Theme/text/text_style.dart';
 
 class ProfileCard extends StatelessWidget {
   final Color bgColor;

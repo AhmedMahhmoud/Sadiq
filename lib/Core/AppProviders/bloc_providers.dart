@@ -5,6 +5,7 @@ import 'package:sadiq/Features/BottomNav/bloc/home_bloc.dart';
 import 'package:sadiq/Features/DeliveryCars/View/cubit/carsdelivery_cubit.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/cubit/order_details_stepper_cubit.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
+import 'package:sadiq/Features/Profile/View/cubit/profile_cubit.dart';
 
 import '../../Features/Setting/View/cubit/setting_cubit.dart';
 import '../DependencyInj/dep_inj.dart' as di;
@@ -25,7 +26,8 @@ MultiBlocProvider appProviders(Widget child) {
       BlocProvider(
         create: (context) => OrderDetailsStepperCubit(),
       ),
-      BlocProvider(create: (context) => di.getIt<CarsdeliveryCubit>())
+      BlocProvider(create: (context) => di.getIt<CarsdeliveryCubit>()),
+      BlocProvider(create: (context) => di.getIt<ProfileCubit>()),
     ],
     child: child,
   );

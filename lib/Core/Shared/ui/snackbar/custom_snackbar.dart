@@ -12,9 +12,7 @@ class CustomSnackbar {
               child: Text(
                 message,
                 style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                    color: Colors.white, fontSize: 18, fontFamily: 'DIN'),
               ),
             ),
             backgroundColor: isError

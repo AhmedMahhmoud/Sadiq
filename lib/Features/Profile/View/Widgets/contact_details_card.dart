@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../Core/Theme/Colors/app_colors.dart';
-import '../../../Core/Theme/text/text_style.dart';
+import '../../../../Core/Theme/Colors/app_colors.dart';
+import '../../../../Core/Theme/text/text_style.dart';
 
 class ContactDetailsCard extends StatelessWidget {
   final String title;

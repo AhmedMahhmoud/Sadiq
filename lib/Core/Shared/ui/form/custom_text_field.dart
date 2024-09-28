@@ -19,6 +19,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType textInputType;
   final bool obscureText;
   final TextInputAction textInputAction;
+  final EdgeInsetsGeometry? contentPadding;
   final bool enableValidation;
   final String? Function(String?)? onFieldSubmitted;
   final String? Function(String?)? onSaved;
@@ -30,6 +31,7 @@ class CustomTextField extends StatefulWidget {
     this.controller,
     this.isEnabled = true,
     this.validator,
+    this.contentPadding,
     this.onFieldSubmitted,
     this.enableValidation = true,
     this.errorMsg,
@@ -130,7 +132,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   textInputAction: widget.textInputAction,
                   decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(top: 5),
+                    contentPadding:
+                        widget.contentPadding ?? const EdgeInsets.only(top: 5),
                     hintText: widget.hintText,
                     border: InputBorder.none,
                     hintStyle: TextStyle(

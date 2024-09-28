@@ -7,7 +7,7 @@ import 'package:sadiq/Features/Home/View/MyOrders/View/Screens/my_orders.dart';
 import 'package:sadiq/Features/Home/View/MyVechile/Views/screens/my_vechile.dart';
 import 'package:sadiq/Features/Home/View/Screen/bottom_nav.dart';
 import 'package:sadiq/Features/Home/View/Widgets/appbar_header.dart';
-import 'package:sadiq/Features/Profile/Screen/profile.dart';
+import 'package:sadiq/Features/Profile/View/Screen/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

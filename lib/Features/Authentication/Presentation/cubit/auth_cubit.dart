@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
+import 'package:sadiq/Core/CommonData/Models/my_profile_singelton.dart';
 import 'package:sadiq/Features/Authentication/Data/Models/register_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -21,6 +22,9 @@ class AuthCubit extends Cubit<AuthState> with SigninMixin, SignUpMixin {
       emit(AuthLoginErrorState(errorMsg: l.message));
     }, (loginModel) async {
       driver = loginModel.driver;
+      //add the driver to our singleton
+      MyProfile profile = MyProfile();
+      profile.setDriver(driver, loginModel.accessToken);
       final pref = await SharedPreferences.getInstance();
       await pref.setString('accessToken', loginModel.accessToken);
 

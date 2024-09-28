@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Shared/ui/secondary_app_bar.dart';
 
-import '../../../Core/Paths/svg_icons_paths.dart';
-import '../../../Core/Shared/ui/images/svg_display.dart';
-import '../../../Core/Theme/Colors/app_colors.dart';
-import '../../../Core/Theme/text/text_style.dart';
-import '../../../Routes/route_naviation_service.dart';
-import '../../Earnings/screen/earnings.dart';
-import '../../Setting/View/Screen/setting.dart';
+import '../../../../Core/Paths/svg_icons_paths.dart';
+import '../../../../Core/Shared/ui/images/svg_display.dart';
+import '../../../../Core/Theme/Colors/app_colors.dart';
+import '../../../../Core/Theme/text/text_style.dart';
+import '../../../../Routes/route_naviation_service.dart';
+import '../../../Earnings/screen/earnings.dart';
+import '../../../Setting/View/Screen/setting.dart';
 import '../Widgets/contact_details_card.dart';
 import '../Widgets/profile_card.dart';
 import '../Widgets/profile_tile.dart';
-import '../../Policy/screen/policy.dart';
+import '../../../Policy/screen/policy.dart';
 import 'profile_details.dart';
 import 'subscription.dart';
-import '../../TermsAndCondictions/screen/terms_conditions.dart';
+import '../../../TermsAndCondictions/screen/terms_conditions.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
