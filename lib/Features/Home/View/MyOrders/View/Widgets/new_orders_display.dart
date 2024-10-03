@@ -5,9 +5,12 @@ import 'package:sadiq/Core/Theme/text/text_style.dart';
 import 'package:sadiq/Core/extenstions/date_extenstion.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/distance_time_indicator.dart';
 import 'package:sadiq/Features/Home/View/MyOrders/View/Widgets/distance_time_vertical_dots.dart';
+import 'package:sadiq/Features/shipments/data/models/shipments_model.dart';
 
 class NewOrdersDisplay extends StatelessWidget {
+  final Shipment newShipment;
   const NewOrdersDisplay({
+    required this.newShipment,
     super.key,
   });
 
@@ -29,7 +32,7 @@ class NewOrdersDisplay extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'اسم الشحنة',
+            newShipment.title ?? '',
             style: AppTextStyle.bodyBold,
           ),
           SizedBox(
@@ -65,7 +68,7 @@ class NewOrdersDisplay extends StatelessWidget {
                       SizedBox(
                         width: 140.w,
                         child: Text(
-                          DateTime.now().toArabicTime(),
+                          newShipment.receivingDateTime ?? '',
                           style: AppTextStyle.smallBodyBold.copyWith(
                               fontSize: 11.sp,
                               color: AppColors.secondaryColor.withOpacity(0.5)),
@@ -78,11 +81,10 @@ class NewOrdersDisplay extends StatelessWidget {
                     width: 5.w,
                   ),
                   Text(
-                    'اسم الشارع، اسم الحي، المدينة',
+                    newShipment.receivingAddress ?? '',
                     style: AppTextStyle.smallBody.copyWith(fontSize: 12.sp),
-                  ),
-                  SizedBox(
-                    height: 5.h,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                   CenteredDistanceTimeIndicatorContent(
                     distance: '٢٥ كم',
@@ -92,16 +94,15 @@ class NewOrdersDisplay extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color: AppColors.primaryColor),
                   ),
-                  SizedBox(
-                    height: 7.h,
-                  ),
                   Text(
-                    'موقع الإستلام',
+                    'موقع التسليم',
                     style: AppTextStyle.smallBodyBold,
                   ),
                   Text(
-                    'اسم الشارع، اسم الحي، المدينة',
+                    newShipment.deliveryAddress ?? '',
                     style: AppTextStyle.smallBody.copyWith(fontSize: 12.sp),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               )
