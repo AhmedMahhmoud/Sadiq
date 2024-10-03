@@ -26,9 +26,8 @@ class AuthCubit extends Cubit<AuthState> with SigninMixin, SignUpMixin {
       MyProfile profile = MyProfile();
       profile.setDriver(driver, loginModel.accessToken);
       final pref = await SharedPreferences.getInstance();
-      await pref.setString('accessToken', loginModel.accessToken);
 
-      if (rememberMe && pref.getString('loginData') != null) {
+      if (rememberMe) {
         await pref.setString(
             'loginData', json.encode({'email': email, 'password': password}));
       }

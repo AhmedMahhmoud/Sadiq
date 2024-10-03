@@ -6,6 +6,7 @@ import 'package:sadiq/Core/CommonData/Models/my_profile_singelton.dart';
 import 'package:sadiq/Core/Constants/api_constants.dart';
 import 'package:sadiq/Core/Network/form_data_service.dart';
 import 'package:sadiq/Features/Profile/Data/Model/update_profile_inputs.dart';
+import 'package:http/http.dart' as http;
 
 class ProfileDatasource {
   Future<DriverModel> updateProfile(UpdateProfileInputs inputs) async {
@@ -22,5 +23,18 @@ class ProfileDatasource {
     DriverModel driverModel = DriverModel.fromJson(decodedResp['data']);
     MyProfile().setDriver(driverModel);
     return driverModel;
+  }
+
+  logout() async {
+    final url = Uri.parse(
+      baseUrl + profile + logOut,
+    );
+    final decodedResp = await http.get(
+      url,
+      headers: {
+        HttpHeaders.authorizationHeader: 'Bearer ${MyProfile().accessToken}',
+      },
+    );
+    print('response $decodedResp');
   }
 }

@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
-      /*SharedPreferences pref = await SharedPreferences.getInstance();
+      SharedPreferences pref = await SharedPreferences.getInstance();
       if (pref.getBool('rememberMe') != null &&
           pref.getBool('rememberMe')! &&
           pref.getString('loginData') != null) {
@@ -35,9 +35,9 @@ class _SplashScreenState extends State<SplashScreen> {
           email: loginData['email'],
           password: loginData['password'],
         );
-      } else {*/
-      Navigator.popAndPushNamed(context, '/signin');
-      //}
+      } else {
+        Navigator.popAndPushNamed(context, '/signin');
+      }
     });
     super.initState();
   }

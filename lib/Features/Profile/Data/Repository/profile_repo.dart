@@ -16,6 +16,12 @@ class ProfileRepo {
   futureEither<DriverModel> updateProfile(UpdateProfileInputs inputs) async {
     return RepoImplementerHandler.apiCall(() async {
       return profileDatasource.updateProfile(inputs);
-    }, connectionChecker); 
+    }, connectionChecker);
+  }
+
+  logout() {
+    return RepoImplementerHandler.apiCall(() async {
+      return profileDatasource.logout();
+    }, connectionChecker);
   }
 }

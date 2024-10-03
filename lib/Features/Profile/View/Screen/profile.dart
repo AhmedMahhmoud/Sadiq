@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sadiq/Core/Shared/ui/secondary_app_bar.dart';
 
@@ -13,6 +14,7 @@ import '../Widgets/contact_details_card.dart';
 import '../Widgets/profile_card.dart';
 import '../Widgets/profile_tile.dart';
 import '../../../Policy/screen/policy.dart';
+import '../cubit/profile_cubit.dart';
 import 'profile_details.dart';
 import 'subscription.dart';
 import '../../../TermsAndCondictions/screen/terms_conditions.dart';
@@ -22,6 +24,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late ProfileCubit profileCubit;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
       child: Column(
@@ -201,35 +204,49 @@ class ProfileScreen extends StatelessWidget {
             },
           ),
           SizedBox(height: 10.h),
-          Container(
-            width: 191.w,
-            height: 24.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              color: AppColors.backgroundSecondaryColor,
-              border: Border.all(color: AppColors.primaryColor),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SvgDisplay(
-                  path: SvgAssetsPaths.logout,
-                  size: Size(15, 15),
-                  color: AppColors.primaryColor,
-                ),
-                SizedBox(width: 5.w),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 5),
-                  child: Text(
-                    'تسجيل خروج',
-                    style: AppTextStyle.smallBodyBold.copyWith(
+          BlocBuilder<ProfileCubit, ProfileState>(
+            builder: (context, state) {
+              return InkWell(
+                onTap: () {
+                  context.read<ProfileCubit>().logout();
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/signin',
+                    (route) => false,
+                  );
+                },
+                child: Container(
+                  width: 191.w,
+                  height: 24.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: AppColors.backgroundSecondaryColor,
+                    border: Border.all(color: AppColors.primaryColor),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SvgDisplay(
+                        path: SvgAssetsPaths.logout,
+                        size: Size(15, 15),
                         color: AppColors.primaryColor,
-                        fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(width: 5.w),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
+                        child: Text(
+                          'تسجيل خروج',
+                          style: AppTextStyle.smallBodyBold.copyWith(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              );
+            },
           ),
         ],
       ),

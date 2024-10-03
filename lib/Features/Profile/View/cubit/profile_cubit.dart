@@ -3,6 +3,7 @@ import 'package:sadiq/Core/CommonData/Models/driver_model.dart';
 import 'package:sadiq/Core/CommonData/Models/my_profile_singelton.dart';
 import 'package:sadiq/Features/Profile/Data/Repository/profile_repo.dart';
 import 'package:sadiq/Features/Profile/View/cubit/profile_mixin.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'profile_state.dart';
 
@@ -22,5 +23,13 @@ class ProfileCubit extends Cubit<ProfileState> with ProfileMixin {
       (r) => emit(state.copyWith(
           isLoading: false, driver: r, errorMsg: '', isProfileCompleted: true)),
     );
+  }
+
+  logout() async {
+    profileRepo.logout();
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    MyProfile().clearProfile();
+    pref.remove('rememberMe');
+    pref.remove('loginData');
   }
 }
