@@ -4,6 +4,7 @@ import 'package:sadiq/Features/Lookups/Data/Repository/lookups_repo.dart';
 import 'package:sadiq/Features/Lookups/cubit/app_lookups_cubit.dart';
 
 class LookupsInj {
+
   static init() {
     final GetIt getIt = GetIt.instance;
     //Bloc

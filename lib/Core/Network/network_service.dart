@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:sadiq/Core/CommonData/Models/my_profile_singelton.dart';
 import 'package:sadiq/Core/Constants/constants.dart';
 import 'package:sadiq/Core/ErrorHandling/exceptions.dart';
 import 'package:sadiq/Core/error/exception_handler.dart';
@@ -12,8 +13,16 @@ class GetNetworkService {
   Future<dynamic> get<T>(String url) async {
     final Dio dio = Dio();
     try {
+      final String? token = MyProfile().accessToken;
+      final options = Options(
+        headers: {
+          if (token != null) 'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
+        },
+      );
       final response = await dio.get(
         url,
+        options: options,
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
         log(response.data.toString());

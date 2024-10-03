@@ -12,3 +12,5 @@ const cities = '/cities';
 const deliveryCompanies = '/delivery-companies';
 const deliveryBags = '/delivery-bags';
 const deliveryVehicles = '/delivery-vehicles';
+const shipments = '/shipments';
+const newShipments = '/new-shipments';
